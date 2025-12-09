@@ -1,0 +1,96 @@
+/* =================== Body =================== */
+body {
+    background-color: #f5f5f5;  /* svetlo siva pozadina */
+    color: #333333;             /* tamno sivi tekst */
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* =================== Sidebar =================== */
+.navbar-vertical {
+    background-color: #f8f9fa; /* skoro bela */
+    border-right: 1px solid #dddddd;
+}
+
+.navbar-vertical .nav-link {
+    color: #333333;
+}
+
+.navbar-vertical .nav-link:hover {
+    color: #0059b3; /* plava akcent */
+}
+
+/* =================== Topbar =================== */
+.navbar-top {
+    background-color: #ffffff !important; /* bela */
+    border-bottom: 1px solid #dddddd;
+}
+
+.navbar-top .navbar-text,
+.navbar-top .nav-link,
+.navbar-top .btn {
+    color: #333333 !important;
+}
+
+/* =================== Hero sekcija =================== */
+.card.bg-primary.text-white {
+    background-color: #e3eefc !important; /* blago plava / svetla */
+    color: #333333 !important;
+}
+
+/* =================== Dugmad / CTA =================== */
+.btn-primary {
+    background-color: #0059b3 !important; /* plava akcent */
+    border-color: #0059b3 !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #004080 !important;
+    border-color: #004080 !important;
+}
+
+/* =================== Kartice =================== */
+.card.shadow-sm {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+}
+
+/* =================== Tekstovi =================== */
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+}
+
+p, span, li {
+    color: #333333;
+}
+
+
+/* =================== Dugmad / CTA Hover =================== */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* =================== Kartice Hover =================== */
+.card.shadow-sm {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.shadow-sm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* =================== Sidebar link hover =================== */
+.navbar-vertical .nav-link {
+    transition: color 0.2s ease;
+}
+
+.navbar-vertical .nav-link:hover {
+    color: #0059b3; /* plava akcent */
+}
