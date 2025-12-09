@@ -4,177 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251208_1">
-      <change afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/volt.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/volt.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/brand/dark.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/brand/light.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/android-chrome-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/android-chrome-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/browserconfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/mstile-150x150.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/safari-pinned-tab.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/favicon/site.webmanifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/aland-islands.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/albania.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/algeria.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/american-samoa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/anguilla.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/argentina.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/armenia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/australia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/austria.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/azerbaijan.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/bahrain.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/belarus.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/belgium.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/bolivia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/bosnia-and-herzegovina.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/botswana.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/brazil.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/bulgaria.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/cambodia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/cameroon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/canada.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/chile.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/china.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/colombia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/costa-rica.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/croatia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/cuba.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/cyprus.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/czech-republic.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/denmark.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/ecuador.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/egypt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/estonia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/ethiopia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/finland.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/france.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/georgia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/germany.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/greece.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/haiti.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/hong-kong.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/hungary.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/iceland.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/india.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/indonesia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/iran.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/iraq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/ireland.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/israel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/italy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/ivory-coast.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/japan.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/kazakhstan.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/kuwait.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/latvia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/liechtenstein.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/lithuania.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/luxembourg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/malaysia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/mexico.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/mongolia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/montenegro.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/nauru.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/netherlands.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/nicaragua.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/nigeria.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/norway.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/pakistan.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/panama.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/paraguay.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/peru.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/philippines.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/portugal.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/puerto-rico.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/republic-of-macedonia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/republic-of-poland.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/romania.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/russia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/serbia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/singapore.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/slovakia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/slovenia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/south-africa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/south-korea.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/spain.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/sri-lanka.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/sweden.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/switzerland.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/taiwan.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/thailand.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/tunisia.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/turkey.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/ukraine.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/united-arab-emirates.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/united-kingdom.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/united-states-of-america.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/united-states.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/uruguay.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/venezuela.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/flags/vietnam.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/icons/github.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/icons/google-tag-manager.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/icons/google_analytics.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/illustrations/404.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/illustrations/500.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/illustrations/bs5-illustrations.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/illustrations/signin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/marker.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/mockup-calendar-presentation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/mockup-kanban-presentation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/mockup-map-presentation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/mockup-presentation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/404.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/500.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/forgot-password.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/lock.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/mockup-presentation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/overview.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/reset-password.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/settings.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/sign-in.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/sign-up.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/pages/transactions.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/paypal-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/profile-cover.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/team/profile-picture-6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/technologies/bootstrap-5-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/technologies/react-logo-primary.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/technologies/react-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/technologies/vuejs-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/themesberg-logo-alt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/themesberg-mockup.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/img/themesberg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/js/volt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/games.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/news.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/teams.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/db_utils.py" beforeDir="false" />
-    </list>
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251209_1300" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -266,7 +96,7 @@
       <workItem from="1765190062556" duration="1089000" />
       <workItem from="1765191719667" duration="4337000" />
       <workItem from="1765271408317" duration="1199000" />
-      <workItem from="1765274319796" duration="5752000" />
+      <workItem from="1765274319796" duration="5802000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -292,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765199158083</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="20251209_1300">
+      <option name="closed" value="true" />
+      <created>1765281756982</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765281756982</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial" />
     <MESSAGE value="20251208_1" />
-    <option name="LAST_COMMIT_MESSAGE" value="20251208_1" />
+    <MESSAGE value="20251209_1300" />
+    <option name="LAST_COMMIT_MESSAGE" value="20251209_1300" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1765280788996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
