@@ -14,12 +14,12 @@ class Round(Base):
     __table_args__ = {"schema": "dwh"}
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    index = Column(Integer)
-    season_code = Column(String)
-    phase_type_code = Column(String)
-    min_game_start_date = Column(DateTime)
-    max_game_start_date = Column(DateTime)
+    round_name = Column(String)
+    round_index = Column(Integer)
+    id_seasons = Column(Integer)
+    phase= Column(String)
+    min_game_start = Column(DateTime)
+    max_game_start = Column(DateTime)
 
 class Team(Base):
     __tablename__ = "teams"
@@ -59,8 +59,8 @@ def get_current_round():
     try:
         today = datetime.today()
         round_ = session.query(Round).filter(
-            Round.min_game_start_date <= today,
-            Round.max_game_start_date >= today
+            Round.min_game_start <= today,
+            Round.max_game_start >= today
         ).first()
         return round_
     finally:

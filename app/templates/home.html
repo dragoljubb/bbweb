@@ -4,8 +4,8 @@
 <div class="container-fluid pt-4">
     {% if current_round %}
     <div class="card bg-primary text-white mb-4 p-3">
-        <h2>{{ current_round.name }}</h2>
-        <p>{{ current_round.min_game_start_date.strftime('%b %d, %Y') }} - {{ current_round.max_game_start_date.strftime('%b %d, %Y') }}</p>
+        <h2>{{ current_round.round_name }}</h2>
+        <p>{{ current_round.min_game_start.strftime('%b %d, %Y') }} - {{ current_round.max_game_start.strftime('%b %d, %Y') }}</p>
     </div>
     {% endif %}
 
