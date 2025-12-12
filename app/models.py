@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 from datetime import datetime
+from sqlalchemy import text
 
 # =================== Database setup ===================
 DATABASE_URL = "postgresql+psycopg2://user_view:2222@localhost:5432/bb_test"
@@ -48,48 +49,54 @@ class News(Base):
     __table_args__ = {"schema": "dwh"}
 
     id = Column(Integer, primary_key=True)
-    title = Column(String)
-    lead = Column(String)
+    newstitle = Column(String)
+    newslead = Column(String)
     image_url = Column(String)
-    created_at = Column(DateTime)
+    created = Column(DateTime)
 
 # =================== Data fetching functions ===================
-def get_current_round():
-    session = SessionLocal()
-    try:
-        today = datetime.today()
-        round_ = session.query(Round).filter(
-            Round.min_game_start <= today,
-            Round.max_game_start >= today
+def get_current_round(comp_code: str, year: int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text("""
+                SELECT *
+                FROM dwh.vw_current_round
+                WHERE comp_code = :comp_code
+                  AND season_year = :year
+            """),
+            {"comp_code": comp_code, "year": year}
         ).first()
-        return round_
-    finally:
-        session.close()
+        return result  # ovo je SQLAlchemy Row object
 
 def get_upcoming_games(round_id):
-    session = SessionLocal()
-    try:
-        today = datetime.today()
-        games = session.query(Game).filter(
-            Game.round_id == round_id,
-            Game.game_date >= today
-        ).order_by(Game.game_date).all()
-        return games
-    finally:
-        session.close()
+    with SessionLocal() as session:
+        result = session.execute(
+            text("""
+                SELECT *
+                FROM dwh.vw_gamesinfo
+                WHERE round_id = :round_id
+            """),
+            {"round_id": round_id}
+        ).fetchall()  # fetchall vraća listu Row objekata
+        return result
 
 def get_latest_news(limit=6):
     session = SessionLocal()
     try:
-        news = session.query(News).order_by(News.created_at.desc()).limit(limit).all()
+        news = session.query(News).order_by(News.created.desc()).limit(limit).all()
         return news
     finally:
         session.close()
 
-def get_teams():
-    session = SessionLocal()
-    try:
-        teams = session.query(Team).order_by(Team.name).all()
-        return teams
-    finally:
-        session.close()
+def get_teams(comp_code: str, season_year: int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text("""
+                SELECT *
+                FROM dwh.teams_sidebar
+                WHERE comp_code = :comp_code
+                  AND season_year = :season_year
+            """),
+            {"comp_code": comp_code, "season_year": season_year}
+        ).fetchall()
+        return result

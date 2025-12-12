@@ -13,7 +13,7 @@
             {% for team in teams_sidebar %}
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="{{ team.logo_url }}" alt="{{ team.name }}" width="24" class="me-2">
+                    <img src="{{ team.crest_url }}" alt="{{ team.team_name }}" width="24" class="me-2">
                     {{ team.name }}
                 </a>
             </li>
@@ -33,7 +33,7 @@
             {% if current_round %}
             <div class="card bg-primary text-white mb-4 p-3">
                 <h2>{{ current_round.name }}</h2>
-                <p>{{ current_round.min_game_start_date.strftime('%b %d, %Y') }} - {{ current_round.max_game_start_date.strftime('%b %d, %Y') }}</p>
+                <p>{{ current_round.min_game_start.strftime('%b %d, %Y') }} - {{ current_round.max_game_start.strftime('%b %d, %Y') }}</p>
             </div>
             {% endif %}
 
@@ -43,9 +43,9 @@
                 <div class="col-md-6 mb-3">
                     <div class="card shadow-sm p-3">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span>{{ game.teamA.name }}</span>
+                            <span>{{ game.home_team_name }}</span>
                             <span>vs</span>
-                            <span>{{ game.teamB.name }}</span>
+                            <span>{{ game.road_team_name }}</span>
                         </div>
                         <small>{{ game.game_date.strftime('%b %d, %Y %H:%M') }}</small>
                     </div>
