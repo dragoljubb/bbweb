@@ -1,24 +1,70 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Hero sekcija
-    const hero = document.querySelector('.card.bg-primary');
-    if (hero) {
-        hero.style.opacity = 0;
-        hero.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-        setTimeout(() => {
-            hero.style.opacity = 1;
-            hero.style.transform = "translateY(0)";
-        }, 100);
+    const slider = document.querySelector(".games-slider");
+    if (!slider) return; // ako ne postoji slider na stranici, prekini
+
+    const btnLeft = document.querySelector(".slide-btn.left");
+    const btnRight = document.querySelector(".slide-btn.right");
+
+    // širina kartice + gap (prema CSS-u)
+    const scrollDistance = 160 + 12;
+
+    // Klik na strelice
+    btnLeft.addEventListener("click", () => {
+        slider.scrollBy({ left: -scrollDistance, behavior: "smooth" });
+    });
+
+    btnRight.addEventListener("click", () => {
+        slider.scrollBy({ left: scrollDistance, behavior: "smooth" });
+    });
+
+    // Skrivanje strelica kada nema scrolla
+    function updateArrows() {
+        if (!slider.scrollLeft) {
+            btnLeft.style.visibility = "hidden";
+        } else {
+            btnLeft.style.visibility = "visible";
+        }
+
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
+            btnRight.style.visibility = "hidden";
+        } else {
+            btnRight.style.visibility = "visible";
+        }
     }
 
-    // Kartice utakmica
-    const cards = document.querySelectorAll('.card.shadow-sm');
-    cards.forEach((card, index) => {
-        card.style.opacity = 0;
-        card.style.transform = "translateY(20px)";
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        setTimeout(() => {
-            card.style.opacity = 1;
-            card.style.transform = "translateY(0)";
-        }, 100);
+    slider.addEventListener("scroll", updateArrows);
+    window.addEventListener("resize", updateArrows);
+    updateArrows();
+
+    // Optional: touch podrška (klizanje prstom na mobilnim)
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('dragging'); });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('dragging'); });
+    slider.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1; // scroll-fastness
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch events
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1;
+        slider.scrollLeft = scrollLeft - walk;
     });
 });

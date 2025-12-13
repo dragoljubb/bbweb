@@ -2,109 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EuroLeague Home</title>
+    <title>EuroLeague Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/volt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 </head>
 <body>
     <!-- Sidebar -->
-   <nav class="navbar">
-    <ul class="navbar-nav flex-row justify-content-center w-100">
-        {% for team in teams_sidebar %}
-        <li class="nav-item mx-2">
-            <a class="nav-link d-flex align-items-center" href="#">
-                <img src="{{ team.crest_url }}" width="28" class="me-2">
-                {{ team.name }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</nav>
+    <nav class="navbar">
+        <ul class="navbar-nav flex-row justify-content-center w-100">
+            {% for team in teams_sidebar %}
+            <li class="nav-item mx-2">
+                <a class="nav-link d-flex align-items-center" href="#">
+                    <img src="{{ team.crest_url }}" width="28" class="me-2">
+                    {{ team.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
 
     <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-top">
-    <div class="container-fluid">
-
-        <!-- Levo (logo / title) -->
-        <span class="navbar-brand fw-bold">
-            BBStatistics
-        </span>
-
-        <!-- Centar (menu) -->
-     <!--   <ul class="navbar-nav mx-auto flex-row gap-3"> -->
-            <ul class="navbar-nav flex-row gap-3 navbar-menu">
-             <li class="nav-item">
-                <a class="nav-link" href="/news">News</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/games">Games</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/players">Players</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/teams">Teams</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/standings">Standings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/stats">Stats</a>
-            </li>
-        </ul>
-
-        <!-- Desno (user / settings) -->
-        <div class="d-flex align-items-center gap-3">
-            <i class="bi bi-gear"></i>
-            <i class="bi bi-person-circle"></i>
-        </div>
-
-    </div>
-</nav>
+    {% include 'navbar.html' %}
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container-fluid pt-4">
-            <!-- Hero / Trenutna runda -->
-            {% if current_round %}
-            <div class="card bg-primary text-white mb-4 p-3">
-                <h2>{{ current_round.name }}</h2>
-                <p>{{ current_round.min_game_start.strftime('%b %d, %Y') }} - {{ current_round.max_game_start.strftime('%b %d, %Y') }}</p>
-            </div>
-            {% endif %}
-
-            <!-- Najave utakmica -->
-            <div class="row mb-4">
-                {% for game in games %}
-                <div class="col-md-6 mb-3">
-                    <div class="card shadow-sm p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>{{ game.home_team_name }}</span>
-                            <span>vs</span>
-                            <span>{{ game.away_team_name }}</span>
-                        </div>
-                        <small>{{ game.game_date.strftime('%b %d, %Y %H:%M') }}</small>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-
-            <!-- Vesti -->
-            <div class="row">
-                {% for new in news %}
-                <div class="col-md-4 mb-3">
-                    <div class="card shadow-sm">
-                        <img src="{{ new.image_url }}" class="card-img-top" alt="{{ new.title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ new.title }}</h5>
-                            <p class="card-text">{{ new.lead }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+        {% block content %}{% endblock %}
     </main>
+
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

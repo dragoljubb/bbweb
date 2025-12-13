@@ -1,164 +1,140 @@
-/* =================== Body =================== */
-body {
-    background-color: #f5f5f5;  /* svetlo siva pozadina */
-    color: #333333;             /* tamno sivi tekst */
-    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
-}
-
 /* =================== Sidebar =================== */
-.navbar-vertical {
+.navbar-vertical,
+.navbar {
     background-color: #f8f9fa; /* skoro bela */
     border-right: 1px solid #dddddd;
 }
 
-.navbar-vertical .nav-link {
+.navbar-vertical .nav-link,
+.navbar .nav-link {
     color: #333333;
+    transition: color 0.2s ease;
 }
 
-.navbar-vertical .nav-link:hover {
+.navbar-vertical .nav-link:hover,
+.navbar .nav-link:hover {
     color: #0059b3; /* plava akcent */
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.navbar-nav .nav-link img {
+    width: 28px;
 }
 
 /* =================== Topbar =================== */
 .navbar-top {
-    background-color: #ffffff !important; /* bela */
-    border-bottom: 1px solid #dddddd
-}
-
-.navbar-top .navbar-text,
-.navbar-top .nav-link,
-.navbar-top .btn {
-    color: #333333 !important;
-}
-
-/* =================== Hero sekcija =================== */
-.card.bg-primary.text-white {
-    background-color: #e3eefc !important; /* blago plava / svetla */
-    color: #333333 !important;
-}
-
-/* =================== Dugmad / CTA =================== */
-.btn-primary {
-    background-color: #0059b3 !important; /* plava akcent */
-    border-color: #0059b3 !important;
-    color: #ffffff !important;
-}
-
-.btn-primary:hover {
-    background-color: #004080 !important;
-    border-color: #004080 !important;
-}
-
-/* =================== Kartice =================== */
-.card.shadow-sm {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-}
-
-/* =================== Tekstovi =================== */
-h1, h2, h3, h4, h5, h6 {
-    color: #333333;
-}
-
-p, span, li {
-    color: #333333;
-}
-
-
-/* =================== Dugmad / CTA Hover =================== */
-.btn-primary {
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* =================== Kartice Hover =================== */
-.card.shadow-sm {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card.shadow-sm:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* =================== Sidebar link hover =================== */
-.navbar-vertical .nav-link {
-    transition: color 0.2s ease;
-}
-
-.navbar-vertical .nav-link:hover {
-    color: #0059b3; /* plava akcent */
-}
-
-/* Ako Bootstrap ili navbar-vertical nameću column, ovaj override će ih poništiti */
-.navbar-vertical .navbar-nav {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap; /* promeni u wrap ako želiš da se prelamaju u više redova */
-  gap: .5rem; /* opcionalno, kontrola razmaka */
-}
-
-/* Ako li elementi i dalje zauzimaju punu širinu */
-.navbar-vertical .navbar-nav .nav-item {
-  display: inline-flex; /* ili flex */
-  align-items: center;
-
-}
-
-/* Manje paddinga na linkovima da stoje uredno u jednom redu */
-.navbar-vertical .navbar-nav .nav-link {
-  width: auto;
-  white-space: nowrap;
-}
-
-navbar-vertical .navbar-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;   /* horizontalno centriranje */
-    align-items: center !important;       /* vertikalno centriranje */
-}
-
-.navbar-nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar-top {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #dddddd;
     height: 56px;
-    border-bottom: 1px solid #e5e7eb;
-    background-color: #fff;
 }
 
 .navbar-top .nav-link {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 0.875rem;      /* 14px */
+    font-weight: 600;         /* semi-bold */
     letter-spacing: 0.02em;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    text-transform: uppercase;
+    padding: 0 0.4rem;
+    color: #374151 !important;
 }
 
 .navbar-top .nav-link:hover {
     color: #111827;
 }
 
-.navbar-top .navbar-menu {
-    justify-content: flex-start;
-    margin-left: 280px; /* podešavaj: 80–140px  ovde se podesava levi ident menija*/
+.navbar-top .navbar-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
 }
-/*  Ako se ikad doda veci logo
 
-.navbar-top .navbar-menu {
-    margin-left: clamp(200px, 20vw, 320px);
+/* =================== Slider utakmica =================== */
+.games-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
-*/
 
+.games-slider {
+    display: flex;
+    overflow-x: hidden; /* sakriva scrollbar */
+    gap: 12px;
+    scroll-behavior: smooth;
+    padding: 12px 0;
+}
 
+/* Safari / Chrome / Edge / Opera */
+.games-slider::-webkit-scrollbar {
+    display: none;
+}
 
+/* Firefox */
+.games-slider {
+    scrollbar-width: none; /* Firefox */
+}
 
+.game-card {
+    flex: 0 0 auto;
+    width: 160px;          /* širina kartice */
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.game-card .team img {
+    display: block;
+    margin: 0 auto 4px auto;
+}
+
+/* Horizontalna organizacija */
+.teams-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.team img {
+    width: 36px;
+    margin-bottom: 2px;
+}
+
+.team-code {
+    font-weight: 600;
+    font-size: 0.75rem; /* manji font */
+    text-align: center;
+}
+
+.score {
+    font-weight: 700;
+    font-size: 0.85rem; /* malo manji */
+    text-align: center;
+    min-width: 30px;
+}
+.score {
+    font-weight: 700;
+    margin: 6px 0;
+    font-size: 0.9rem;
+}
+
+.slide-btn {
+    background: rgba(0,0,0,0.05);
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
