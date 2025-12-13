@@ -75,6 +75,7 @@ def get_upcoming_games(round_id):
                 SELECT *
                 FROM dwh.vw_gamesinfo
                 WHERE round_id = :round_id
+                    ORDER BY game_date
             """),
             {"round_id": round_id}
         ).fetchall()  # fetchall vraća listu Row objekata

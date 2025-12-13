@@ -8,23 +8,59 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <nav class="navbar navbar-vertical fixed-left">
-        <ul class="navbar-nav">
-            {% for team in teams_sidebar %}
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <img src="{{ team.crest_url }}" alt="{{ team.team_name }}" width="24" class="me-2">
-                    {{ team.name }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
+   <nav class="navbar">
+    <ul class="navbar-nav flex-row justify-content-center w-100">
+        {% for team in teams_sidebar %}
+        <li class="nav-item mx-2">
+            <a class="nav-link d-flex align-items-center" href="#">
+                <img src="{{ team.crest_url }}" width="28" class="me-2">
+                {{ team.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
 
     <!-- Topbar -->
-    <nav class="navbar navbar-top">
-        <span class="navbar-text">EuroLeague Dashboard</span>
-    </nav>
+    <nav class="navbar navbar-expand navbar-top">
+    <div class="container-fluid">
+
+        <!-- Levo (logo / title) -->
+        <span class="navbar-brand fw-bold">
+            BBStatistics
+        </span>
+
+        <!-- Centar (menu) -->
+     <!--   <ul class="navbar-nav mx-auto flex-row gap-3"> -->
+            <ul class="navbar-nav flex-row gap-3 navbar-menu">
+             <li class="nav-item">
+                <a class="nav-link" href="/news">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/games">Games</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/players">Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/teams">Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/standings">Standings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stats">Stats</a>
+            </li>
+        </ul>
+
+        <!-- Desno (user / settings) -->
+        <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-gear"></i>
+            <i class="bi bi-person-circle"></i>
+        </div>
+
+    </div>
+</nav>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -45,7 +81,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span>{{ game.home_team_name }}</span>
                             <span>vs</span>
-                            <span>{{ game.road_team_name }}</span>
+                            <span>{{ game.away_team_name }}</span>
                         </div>
                         <small>{{ game.game_date.strftime('%b %d, %Y %H:%M') }}</small>
                     </div>
