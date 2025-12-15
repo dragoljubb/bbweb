@@ -1,14 +1,25 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector(".games-slider");
-    if (!slider) return; // ako ne postoji slider na stranici, prekini
+/* =========================================================
+   REUSABLE HORIZONTAL SLIDER (games, news, etc.)
+   ========================================================= */
 
-    const btnLeft = document.querySelector(".slide-btn.left");
-    const btnRight = document.querySelector(".slide-btn.right");
+function initHorizontalSlider({
+    sliderSelector,
+    leftBtnSelector,
+    rightBtnSelector,
+    cardWidth,
+    gap = 12
+}) {
+    const slider = document.querySelector(sliderSelector);
+    if (!slider) return;
 
-    // širina kartice + gap (prema CSS-u)
-    const scrollDistance = 160 + 12;
+    const btnLeft = document.querySelector(leftBtnSelector);
+    const btnRight = document.querySelector(rightBtnSelector);
 
-    // Klik na strelice
+    if (!btnLeft || !btnRight) return;
+
+    const scrollDistance = cardWidth + gap;
+
+    // Arrow clicks
     btnLeft.addEventListener("click", () => {
         slider.scrollBy({ left: -scrollDistance, behavior: "smooth" });
     });
@@ -17,54 +28,79 @@ document.addEventListener("DOMContentLoaded", function() {
         slider.scrollBy({ left: scrollDistance, behavior: "smooth" });
     });
 
-    // Skrivanje strelica kada nema scrolla
+    // Show / hide arrows
     function updateArrows() {
-        if (!slider.scrollLeft) {
-            btnLeft.style.visibility = "hidden";
-        } else {
-            btnLeft.style.visibility = "visible";
-        }
+        btnLeft.style.visibility =
+            slider.scrollLeft <= 0 ? "hidden" : "visible";
 
-        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
-            btnRight.style.visibility = "hidden";
-        } else {
-            btnRight.style.visibility = "visible";
-        }
+        btnRight.style.visibility =
+            slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1
+                ? "hidden"
+                : "visible";
     }
 
     slider.addEventListener("scroll", updateArrows);
     window.addEventListener("resize", updateArrows);
     updateArrows();
 
-    // Optional: touch podrška (klizanje prstom na mobilnim)
+    // Mouse drag
     let isDown = false;
     let startX;
-    let scrollLeft;
+    let startScrollLeft;
 
-    slider.addEventListener('mousedown', (e) => {
+    slider.addEventListener("mousedown", (e) => {
         isDown = true;
-        slider.classList.add('dragging');
+        slider.classList.add("dragging");
         startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
+        startScrollLeft = slider.scrollLeft;
     });
-    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('dragging'); });
-    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('dragging'); });
-    slider.addEventListener('mousemove', (e) => {
-        if(!isDown) return;
+
+    ["mouseleave", "mouseup"].forEach(evt =>
+        slider.addEventListener(evt, () => {
+            isDown = false;
+            slider.classList.remove("dragging");
+        })
+    );
+
+    slider.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1; // scroll-fastness
-        slider.scrollLeft = scrollLeft - walk;
+        slider.scrollLeft = startScrollLeft - (x - startX);
     });
 
-    // Touch events
-    slider.addEventListener('touchstart', (e) => {
+    // Touch support
+    slider.addEventListener("touchstart", (e) => {
         startX = e.touches[0].pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
+        startScrollLeft = slider.scrollLeft;
     });
-    slider.addEventListener('touchmove', (e) => {
+
+    slider.addEventListener("touchmove", (e) => {
         const x = e.touches[0].pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1;
-        slider.scrollLeft = scrollLeft - walk;
+        slider.scrollLeft = startScrollLeft - (x - startX);
     });
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Games slider (postojeći)
+    initHorizontalSlider({
+        sliderSelector: ".games-slider",
+        leftBtnSelector: ".slide-btn.left",
+        rightBtnSelector: ".slide-btn.right",
+        cardWidth: 160
+    });
+
+    // News slider (novi)
+    initHorizontalSlider({
+        sliderSelector: ".news-slider",
+        leftBtnSelector: ".news-btn.left",
+        rightBtnSelector: ".news-btn.right",
+        cardWidth: 320
+    });
+
 });

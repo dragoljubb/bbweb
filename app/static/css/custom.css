@@ -117,18 +117,26 @@
     text-align: center;
 }
 
+.team-code1 {
+    font-weight: 600;
+    font-size: 0.5rem; /* manji font */
+    text-align: center;
+}
+
+
 .score {
     font-weight: 700;
     font-size: 0.85rem; /* malo manji */
     text-align: center;
     min-width: 30px;
 }
+/*
 .score {
     font-weight: 700;
     margin: 6px 0;
     font-size: 0.9rem;
 }
-
+*/
 .slide-btn {
     background: rgba(0,0,0,0.05);
     border: none;
@@ -137,4 +145,104 @@
     border-radius: 6px;
     font-size: 1.2rem;
     flex-shrink: 0;
+}
+
+/* NEWS*/
+/* Pozadina sekcije */
+.news-section {
+    padding: 50px 0;
+    background: linear-gradient(to right, #F5FAFF, #F2F2F2); /* svetloplava skoro bela → svetlosiva */
+}
+
+/* Main vest u beloj kartici */
+.main-news-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 0; /* UKLONJENA MARGIN-BOTTOM */
+}
+
+/* Ako želiš malo razmaka između main i small news, koristi ovo: */
+.small-news-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px; /* mali razmak, podesivo po ukusu */
+}
+
+.main-news-img img {
+    width: 400px; /* smanjeno da stane tekst pored */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.main-news-text {
+    flex: 1; /* tekst zauzima preostali prostor pored slike */
+}
+
+.main-news-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.main-news-lead {
+    font-size: 1rem;
+    color: #000;
+}
+
+/* Tri male vesti */
+
+.small-news-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex: 0 0 calc(33.333% - 13.33px);
+}
+
+.small-news-img img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.small-news-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+    color: #222;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .small-news-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 576px) {
+    .small-news-card {
+        flex: 0 0 100%;
+    }
+
+    .main-news-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-news-img img {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }

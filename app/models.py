@@ -54,6 +54,17 @@ class News(Base):
     image_url = Column(String)
     created = Column(DateTime)
 
+class HomeNews(Base):
+    __tablename__ = "vw_news_home"
+    __table_args__ = {"schema": "dwh"}
+
+    id = Column(Integer, primary_key=True)
+    newstitle = Column(String)
+    newslead = Column(String)
+    newscontent = Column(String)
+    image_url = Column(String)
+    created = Column(DateTime)
+
 # =================== Data fetching functions ===================
 def get_current_round(comp_code: str, year: int):
     with SessionLocal() as session:
@@ -86,6 +97,18 @@ def get_latest_news(limit=6):
     try:
         news = session.query(News).order_by(News.created.desc()).limit(limit).all()
         return news
+    finally:
+        session.close()
+
+def get_home_news():
+    session = SessionLocal()
+    try:
+        news = session.query(HomeNews).all()
+
+        main_news = news[0] if news else None
+        slider_news = news[1:]  # max 5
+
+        return main_news, slider_news
     finally:
         session.close()
 

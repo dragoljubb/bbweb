@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Games</h1>
+
+<!-- ========================= -->
+<!-- Filter bar -->
+<!-- ========================= -->
+<form method="get" class="filters">
+    <!-- Sezona -->
+    <select name="season" onchange="this.form.submit()">
+        {% for s in seasons %}
+            <option value="{{ s }}" {% if s == season %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Round type -->
+    <select name="round_type" onchange="this.form.submit()">
+        {% for rt in round_types %}
+            <option value="{{ rt }}" {% if rt == round_type %}selected{% endif %}>{{ rt }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Team -->
+    <select name="team" onchange="this.form.submit()">
+        <option value="">All teams</option>
+        {% for t in teams %}
+            <option value="{{ t.code }}" {% if selected_team == t.code %}selected{% endif %}>{{ t.name }}</option>
+        {% endfor %}
+    </select>
+</form>
+
+<!-- ========================= -->
+<!-- LEAGUE VIEW -->
+<!-- ========================= -->
+{% if mode == "LEAGUE" %}
+
+<div class="round-slider">
+    {% for r in rounds %}
+        <a href="?season={{ season }}&round_type={{ round_type }}&round={{ r }}">
+            Round {{ r }}
+        </a>
+    {% endfor %}
+</div>
+
+<div class="round-games">
+    {% if games %}
+        {% for g in games %}
+            {% include "components/game_card.html" %}
+        {% endfor %}
+    {% else %}
+        <p>No games in this round.</p>
+    {% endif %}
+</div>
+
+{% else %}
+
+<!-- ========================= -->
+<!-- TEAM VIEW -->
+<!-- ========================= -->
+
+<section class="next-game">
+    <h2>Next Game</h2>
+    {% if next_game %}
+        {% include "components/game_card.html" with context %}
+    {% else %}
+        <p>No upcoming game for this team.</p>
+    {% endif %}
+</section>
+
+<section class="results">
+    <h2>Results</h2>
+    {% if results %}
+        {% for g in results %}
+            {% include "components/game_card.html" %}
+        {% endfor %}
+    {% else %}
+        <p>No results available.</p>
+    {% endif %}
+</section>
+
+<section class="upcoming">
+    <h2>Upcoming Games</h2>
+    {% if upcoming %}
+        {% for g in upcoming %}
+            {% include "components/game_card.html" %}
+        {% endfor %}
+    {% else %}
+        <p>No upcoming games.</p>
+    {% endif %}
+</section>
+
+{% endif %}
+
+{% endblock %}
