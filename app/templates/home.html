@@ -22,14 +22,14 @@
             <div class="teams-row d-flex justify-content-between align-items-center w-100">
                 <!-- Home Team -->
                 <div class="team d-flex flex-column align-items-center">
-                    <img src="{{ game.home_team_crest }}" width="28" class="mb-1">
-                    <div class="team-code">{{ game.local_club_code }}</div>
+                    <img src="{{ game.home_crest }}" width="28" class="mb-1">
+                    <div class="team-code">{{ game.home_code_tv }}</div>
                 </div>
 
                 <!-- Score -->
                 <div class="score text-center mx-0">
-                    {% if game.local_score is not none and game.road_score is not none %}
-                        {{ game.local_score }} - {{ game.road_score }}
+                    {% if game.home_score is not none and game.away_score is not none %}
+                        {{ game.home_score }} - {{ game.away_score }}
                     {% else %}
                         - -
                     {% endif %}
@@ -37,8 +37,8 @@
 
                 <!-- Away Team -->
                 <div class="team d-flex flex-column align-items-center">
-                    <img src="{{ game.away_team_crest }}" width="28" class="mb-1">
-                    <div class="team-code">{{ game.road_club_code }}</div>
+                    <img src="{{ game.away_crest }}" width="28" class="mb-1">
+                    <div class="team-code">{{ game.away_code_tv }}</div>
                 </div>
             </div>
 
