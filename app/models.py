@@ -156,15 +156,14 @@ def get_rounds(compcode: str, phase:str, season_year: int):
         ).fetchall()
         return result
 
-def get_teams_by_compcode_season(compcode :str, season_year: int):
+def get_clubsbycompcodeseason(compcode :str, season_year: int):
     with SessionLocal() as session:
         result = session.execute(
-            text("""SELECT * FROM dwh.vw_rounds 
+            text("""SELECT * FROM dwh.vw_clubsbyseason 
                     WHERE compcode = :pcompcode 
-                          AND phase = :pphase
                           AND season_year = :pseason_year
-                    ORDER BY round 
-            """), {"pcompcode": compcode, "pphase": phase, "pseason_year": season_year }
+                    ORDER BY club_name
+            """), {"pcompcode": compcode,  "pseason_year": season_year }
         ).fetchall()
         return result
 

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Blueprint, request
 from models import (get_current_round, get_upcoming_games,
                     get_home_news, get_teams, get_seasons,
-                    get_phases, get_rounds)#, get_all_games
+                    get_phases, get_rounds, get_clubsbycompcodeseason)#, get_all_games
 
 app = Flask(__name__)
 main_bp = Blueprint('main_bp', __name__)
@@ -44,7 +44,7 @@ def games():
     # -------------------------
     seasons = get_seasons(def_compcode)           # lista sezona za combo
     phases = get_phases(def_compcode)   # RS / PO / FF
-    teams = get_teams_by_compcode_season(def_compcode, season)  # lista timova za filter
+    teams = get_clubsbycompcodeseason(def_compcode, season)  # lista timova za filter
 
     # -------------------------
     # Određivanje režima
@@ -56,7 +56,7 @@ def games():
         if not selected_round:
             selected_round = current_round
 
-        games = get_upcoming_games(season, phase, selected_round)
+        games = get_upcoming_games(selected_round.round, season, def_compcode)
 
         return render_template(
             "games.html",
@@ -84,10 +84,10 @@ def games():
             phases=phases,
             teams=teams,
             selected_team=None,
-            rounds=rounds,
-            current_round=current_round,
+            #rounds=rounds,
+         #   current_round=current_round,
             selected_round=selected_round,
-            games=games,
+          #  games=games,
             teams_sidebar=teams_sidebar
         )
 
