@@ -29,6 +29,9 @@ def games():
     # PARAMETRI (query string)
     # -------------------------
     season = request.args.get("season", default=2025, type=int)
+    season = request.args.get("season")
+    if season is None:
+        season = "2025-26"
     phase = request.args.get("phase", default="RS")
     team = request.args.get("team")  # None ili ""
 
@@ -42,7 +45,8 @@ def games():
     # -------------------------
     # Zajednički podaci za filter bar
     # -------------------------
-    seasons = get_seasons(def_compcode)           # lista sezona za combo
+    listseasons = get_seasons(def_compcode)           # lista sezona za combo
+    seasons = [row.season_info_alias for row in listseasons]
     phases = get_phases(def_compcode)   # RS / PO / FF
     teams = get_clubsbycompcodeseason(def_compcode, season)  # lista timova za filter
 

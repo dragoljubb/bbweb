@@ -9,11 +9,13 @@
 <!-- ========================= -->
 <form method="get" class="filters">
     <!-- Sezona -->
-    <select name="season" onchange="this.form.submit()">
-        {% for s in seasons %}
-            <option value="{{ s }}" {% if s == season %}selected{% endif %}>{{ s }}</option>
-        {% endfor %}
-    </select>
+   <select name="season" onchange="this.form.submit()">
+    {% for s in seasons %}
+        <option value="{{ s }}" {% if s == season %}selected{% endif %}>
+            {{ s }}
+        </option>
+    {% endfor %}
+</select>
 
     <!-- Round type -->
     <select name="round_type" onchange="this.form.submit()">

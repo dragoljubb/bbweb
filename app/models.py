@@ -129,7 +129,9 @@ def get_teams(compcode: str, season_year: int):
 def get_seasons(compcode: str):
     with SessionLocal() as session:
         result = session.execute(
-            text("""SELECT * FROM dwh.vw_seasons WHERE compcode = :pcompcode ORDER BY season_year DESC
+            text("""SELECT DISTINCT season_info_alias FROM dwh.vw_seasons 
+                    WHERE compcode = :pcompcode 
+                    ORDER BY season_info_alias DESC
             """), {"pcompcode": compcode}
         ).fetchall()
         return result
