@@ -66,32 +66,30 @@ class HomeNews(Base):
     created = Column(DateTime)
 
 # =================== Data fetching functions ===================
-def get_current_round(compcode: str, season_year: int):
+def get_current_round_phase(compcode: str):
     with SessionLocal() as session:
         result = session.execute(
             text("""
                 SELECT *
                 FROM dwh.vw_current_round
-                WHERE compcode = :pcompcode
-                  AND season_year = :pseason_year
+                WHERE compcode = :pcompcode;
                     
             """),
-            {"pcompcode": compcode, "pseason_year": season_year}
+            {"pcompcode": compcode}
         ).first()
         return result  # ovo je SQLAlchemy Row object
 
-def get_upcoming_games(round: int, season_year: int, compcode : str ):
+def get_upcoming_games(round: int, season_code ):
     with SessionLocal() as session:
         result = session.execute(
             text("""
                 SELECT *
                 FROM dwh.vw_gamesinfo
-                WHERE round = :pround AND season_year = :pseason_year 
-                    AND compcode = :pcompcode
+                WHERE round = :pround AND season_code = :pseason_code 
                     ORDER BY game_date
             """),
-            {"pround": round, "pseason_year":season_year,  "pcompcode": compcode }
-        ).fetchall()  # fetchall vraća listu Row objekata
+            {"pround": round, "pseason_code":season_code }
+        ).all()  #
         return result
 
 def get_latest_news(limit=6):
@@ -129,44 +127,52 @@ def get_teams(compcode: str, season_year: int):
 def get_seasons(compcode: str):
     with SessionLocal() as session:
         result = session.execute(
-            text("""SELECT DISTINCT season_info_alias FROM dwh.vw_seasons 
+            text("""SELECT  season_info_alias, season_code, season_year FROM dwh.vw_seasons 
                     WHERE compcode = :pcompcode 
                     ORDER BY season_info_alias DESC
             """), {"pcompcode": compcode}
         ).fetchall()
         return result
-def get_phases(compcode: str):
+def get_phases(seasoncode: str):
     with SessionLocal() as session:
         result = session.execute(
             text("""SELECT * FROM dwh.vw_comp_phases 
-                    WHERE compcode = :pcompcode 
+                    WHERE season_code = :pseasoncode
                     ORDER BY default_order DESC
-            """), {"pcompcode": compcode}
+            """), {"pseasoncode": seasoncode}
         ).fetchall()
         return result
 
 
-def get_rounds(compcode: str, phase:str, season_year: int):
+def get_rounds(seasoncode:str):
     with SessionLocal() as session:
         result = session.execute(
-            text("""SELECT * FROM dwh.vw_rounds 
-                    WHERE compcode = :pcompcode 
-                          AND phase = :pphase
-                          AND season_year = :pseason_year
+            text("""SELECT season_code, round, phase, round_name  FROM dwh.vw_rounds 
+                    WHERE season_code = :pseason_code 
                     ORDER BY round 
-            """), {"pcompcode": compcode, "pphase": phase, "pseason_year": season_year }
+            """), {"pseason_code":seasoncode}
         ).fetchall()
         return result
 
-def get_clubsbycompcodeseason(compcode :str, season_year: int):
+def get_clubsbyseasoncode(seasoncode :str):
     with SessionLocal() as session:
         result = session.execute(
             text("""SELECT * FROM dwh.vw_clubsbyseason 
-                    WHERE compcode = :pcompcode 
-                          AND season_year = :pseason_year
+                    WHERE season_code = :pseasoncode 
                     ORDER BY club_name
-            """), {"pcompcode": compcode,  "pseason_year": season_year }
+            """), {"pseasoncode": seasoncode}
         ).fetchall()
+        return result
+
+def get_current_season(compcode :str):
+    with (SessionLocal() as session):
+        result = session.execute(
+            text("""SELECT * FROM dwh.vw_current_season
+                    WHERE compcode = :pcompcode 
+                    ORDER BY season_year DESC
+            """), {"pcompcode": compcode }
+        ).mappings(
+        ).first()
         return result
 
 

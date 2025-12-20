@@ -1,3 +1,15 @@
 <div class="game-card">
-    TEST GAME CARD
+    <div class="teams">
+        <span class="home">{{ g.home_code_tv}}</span>
+        vs
+        <span class="away">{{ g.away_code_tv }}</span>
+    </div>
+    <div class="score">
+        {% if g.home_score is not none and g.away_score is not none %}
+            {{ g.home_score }} - {{ g.away_score }}
+        {% else %}
+            TBD
+        {% endif %}
+    </div>
+    <div class="date">{{ g.game_date.strftime('%d %b %Y %H:%M') }}</div>
 </div>

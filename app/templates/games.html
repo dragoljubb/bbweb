@@ -8,19 +8,23 @@
 <!-- Filter bar -->
 <!-- ========================= -->
 <form method="get" class="filters">
-    <!-- Sezona -->
-   <select name="season" onchange="this.form.submit()">
-    {% for s in seasons %}
-        <option value="{{ s }}" {% if s == season %}selected{% endif %}>
-            {{ s }}
-        </option>
-    {% endfor %}
-</select>
+    <!-- Season -->
+    <select name="season" onchange="this.form.submit()">
+        {% for s in seasons %}
+            <option value="{{ s.code }}"
+                {% if s.code == season %}selected{% endif %}>
+                {{ s.label }}
+            </option>
+        {% endfor %}
+    </select>
 
-    <!-- Round type -->
-    <select name="round_type" onchange="this.form.submit()">
-        {% for rt in round_types %}
-            <option value="{{ rt }}" {% if rt == round_type %}selected{% endif %}>{{ rt }}</option>
+    <!-- Phase -->
+    <select name="phase" onchange="this.form.submit()">
+        {% for p in phases %}
+            <option value="{{ p.phase }}"
+                {% if p == phase %}selected{% endif %}>
+                {{ p.phase }}
+            </option>
         {% endfor %}
     </select>
 
@@ -28,9 +32,15 @@
     <select name="team" onchange="this.form.submit()">
         <option value="">All teams</option>
         {% for t in teams %}
-            <option value="{{ t.code }}" {% if selected_team == t.code %}selected{% endif %}>{{ t.name }}</option>
+            <option value="{{ t.code }}"
+                {% if t.code == selected_team %}selected{% endif %}>
+                {{ t.team_name }}
+            </option>
         {% endfor %}
     </select>
+
+    <!-- zadrži round -->
+    <input type="hidden" name="round" value="{{ selected_round }}">
 </form>
 
 <!-- ========================= -->
@@ -40,8 +50,8 @@
 
 <div class="round-slider">
     {% for r in rounds %}
-        <a href="?season={{ season }}&round_type={{ round_type }}&round={{ r }}">
-            Round {{ r }}
+        <a href="?season={{ season }}&round_type={{ phase }}&round={{ r.round }}">
+            Round {{ r.round }}
         </a>
     {% endfor %}
 </div>
@@ -49,8 +59,8 @@
 
 <div class="round-games">
     {% if games %}
-        {% for g in games %}
-            {% include "components/game_card.html" %}
+       {% for g in games %}
+             {% include "components/game_card.html" %}
         {% endfor %}
     {% else %}
         <p>No games in this round.</p>
