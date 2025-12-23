@@ -1,16 +1,14 @@
-from flask import Flask, render_template, Blueprint, request
-from models import (get_current_round_phase, get_upcoming_games,
-                    get_home_news, get_teams, get_seasons,get_current_season,
-                    get_phases, get_rounds, get_clubsbyseasoncode)#, get_all_games
+from flask import Flask, render_template, Blueprint, request, redirect, url_for
+from models import *
 
 app = Flask(__name__)
 main_bp = Blueprint('main_bp', __name__)
 COMPETITION_CODE = "E"
-def_season_year = 2025
-def_season_code = 'E2025'
+
 @main_bp.route('/')
 def home():
     current_round = get_current_round_phase(COMPETITION_CODE)
+    def_season_code = 'E2025'
     games = get_upcoming_games(current_round.round, def_season_code) if current_round else []
     main_news, slider_news = get_home_news()
 
@@ -27,112 +25,86 @@ def home():
 # ===========================
 from flask import request, redirect, url_for
 
-@app.route("/games")
-def games():
 
-    # -------------------------
-    # 1. URL parametri (KANON)
-    # -------------------------
-    season = request.args.get("season")        # npr. "E2025"
+
+@main_bp.route('/games')
+def games():
+    season = request.args.get("season")
     phase = request.args.get("phase", "RS")
     team = request.args.get("team")
     selected_round = request.args.get("round", type=int)
 
-    # -------------------------
-    # 2. Ako URL nije kompletan → redirect
-    # -------------------------
+    # default season / round
     if not season or not selected_round:
-        default_season_raw = get_current_season(COMPETITION_CODE) # "E2025"
-        default_season = default_season_raw ["season_code"]
+        default_season_raw = get_current_season(COMPETITION_CODE)
+    #   default_season = default_season_raw[0]["season_code"]
+        default_season = 'E2025'
         default_round = get_current_round_phase(COMPETITION_CODE).round
+        return redirect(url_for("main_bp.games",
+                                season=default_season,
+                                round=default_round,
+                                phase=phase))
 
-        return redirect(
-            url_for(
-                "games",
-                season=default_season,
-                round=default_round,
-                phase=phase
-            )
-        )
-    # -------------------------
-    # 3. UI podaci (label-e)
-    # -------------------------
+    # UI podaci
     listseasons = get_seasons(COMPETITION_CODE)
-    seasons = [
-        {
-            "code": row.season_code,              # E2025
-            "label": row.season_info_alias        # 2025-26
-        }
-        for row in listseasons
-    ]
-
-
-    listphases = get_phases(season)
-    phases = [
-        {
-            "phase": row.phase
-        }
-        for row in listphases
-    ]
-
-
-    listteams = get_clubsbyseasoncode(season)
-    teams = [
-        {
-            "crest": row.crest_url,
-            "team_name": row.club_name,
-            "code": row.club_code
-        }
-        for row in listteams
-    ]
-
+    seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
+    phases = [{"phase": p.phase} for p in get_phases(season)]
+    teams = [{"crest": t.crest_url, "team_name": t.club_name, "code": t.club_code}
+             for t in get_clubsbyseasoncode(season)]
     teams_sidebar = get_clubsbyseasoncode(season)
-    # -------------------------
-    # 4. LEAGUE VIEW
-    # -------------------------
+
     if not team:
-        listrounds = get_rounds(season)
-        rounds= [
-            {
-                "season_code": row.season_code,
-                "round": row.round,
-                "round_name": row.round_name,
-                "phase": row.phase
-            }
-            for row in listrounds
-        ]
-        games = get_upcoming_games(selected_round, season)
+        # LEAGUE VIEW
+        rounds = [{"season_code": r.season_code, "round": r.round, "round_name": r.round_name, "phase": r.phase}
+                  for r in get_rounds(season)]
+        games_data = get_upcoming_games(selected_round, season)
+        return render_template("games.html",
+                               mode="LEAGUE",
+                               season=season,
+                               phase=phase,
+                               seasons=seasons,
+                               phases=phases,
+                               teams=teams,
+                               selected_team=None,
+                               rounds=rounds,
+                               selected_round=selected_round,
+                               games=games_data,
+                               teams_sidebar=teams_sidebar)
+    else:
+        # TEAM VIEW
+        games_data = get_team_games(season, team)
+        season_label = next((s["label"] for s in seasons if s["code"] == season), season)
+        selected_team_name = next((t["team_name"] for t in teams if t["code"] == team), team)
+        return render_template("games.html",
+                               mode="TEAM",
+                               season=season,
+                               phase=phase,
+                               seasons=seasons,
+                               phases=phases,
+                               teams=teams,
+                               selected_team=team,
+                               selected_round=selected_round,
+                               teams_sidebar=teams_sidebar,
+                               selected_team_name=selected_team_name,
+                               season_label=season_label,
+                               games=games_data)
 
-        return render_template(
-            "games.html",
-            mode="LEAGUE",
-            season=season,                 # E2025
-            phase=phase,
-            seasons=seasons,
-            phases=phases,
-            teams=teams,
-            selected_team=None,
-            rounds=rounds,
-            selected_round=selected_round,
-            games=games,
-            teams_sidebar=teams_sidebar
-        )
+@main_bp.route("/standings")
+def standings():
+    season_code = request.args.get("season", "E2025")
 
-    # -------------------------
-    # 5. TEAM VIEW (kasnije)
-    # -------------------------
+    last_round = get_last_round(season_code).round
+    round_ = int(request.args.get("round", last_round))
+
+    rounds = get_available_rounds( season_code)
+    standings = get_standings(season_code, round_)
+
     return render_template(
-        "games.html",
-        mode="TEAM",
-        season=season,
-        phase=phase,
-        seasons=seasons,
-        phases=phases,
-        teams=teams,
-
-        selected_team=team,
-        selected_round=selected_round,
-        teams_sidebar=teams_sidebar
+        "standings.html",
+        standings=standings,
+        rounds=rounds,
+        selected_round=round_,
+        selected_season=season_code
     )
 
 app.register_blueprint(main_bp)

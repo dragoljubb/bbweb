@@ -175,5 +175,72 @@ def get_current_season(compcode :str):
         ).first()
         return result
 
+def get_next_team_game(team_code :str, season_code:str) :
+    with SessionLocal() as session:
+        result = session.execute(
+            text("""SELECT * FROM dwh.vw_gamesinfo 
+                    WHERE season_code = :pseason_code 
+                          AND played 
+                          AND (home_code = :pteam_code 
+                            OR away_code = :pteam_code)
+                     ORDER BY game_date
+                    LIMIT 1
+                
+            """), {"pteam_code": team_code, "pseason_code": season_code}
+        ).fetchall()
+        return result
 
+
+def get_team_games(season_code, team_code):
+    with SessionLocal() as session:
+        result = session.execute(
+            text("SELECT * FROM dwh.get_team_games(:team, :season)"),
+            {"team": team_code, "season": season_code}
+        ).mappings().all()
+    return result
+
+# standings
+
+def get_available_rounds(season_code: str):
+    with SessionLocal() as session:
+        return session.execute(
+            text("""
+                SELECT DISTINCT round
+                FROM dwh.vw_standings
+                WHERE season_code = :pseason_code
+                ORDER BY round
+            """),
+            {
+                "pseason_code": season_code
+            }
+        ).fetchall()
+
+def get_last_round(season_code: str):
+    with SessionLocal() as session:
+        return session.execute(
+            text("""
+                SELECT MAX(round) AS round
+                FROM dwh.vw_standings
+                WHERE season_code = :pseason_code
+            """),
+            {
+                "pseason_code": season_code
+            }
+        ).fetchone()
+
+def get_standings( season_code: str, round_: int):
+    with SessionLocal() as session:
+        return session.execute(
+            text("""
+                SELECT *
+                FROM dwh.vw_standings
+                WHERE season_code = :pseason_code
+                  AND round = :pround
+                ORDER BY team_position
+            """),
+            {
+                "pseason_code": season_code,
+                "pround": round_
+            }
+        ).fetchall()
 

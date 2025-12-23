@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}Standings{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">Standings</h2>
+
+<form method="get" class="row g-2 mb-4">
+  <div class="col-auto">
+    <select name="season" class="form-select" onchange="this.form.submit()">
+      <option value="E2025" {% if selected_season=='E2025' %}selected{% endif %}>2025–26</option>
+      <option value="E2024" {% if selected_season=='E2024' %}selected{% endif %}>2024–25</option>
+    </select>
+  </div>
+
+  <div class="col-auto">
+    <select name="round" class="form-select" onchange="this.form.submit()">
+      {% for r in rounds %}
+        <option value="{{ r.round }}" {% if r.round==selected_round %}selected{% endif %}>
+          Round {{ r.round }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+</form>
+
+<table class="table table-sm table-striped align-middle">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th></th>
+      <th>Team</th>
+      <th>GP</th>
+      <th>L</th>
+      <th>PF</th>
+      <th>PA</th>
+      <th>+/-</th>
+      <th>Home</th>
+      <th>Away</th>
+      <th>OT</th>
+      <th>Last 5</th>
+      <th>Last 10</th>
+      <th>Win %</th>
+      <th>Δ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in standings %}
+    <tr>
+      <td>{{ s.team_position }}</td>
+      <td><img src="{{ s.crest_url }}" height="24"></td>
+      <td>{{ s.team_name }}</td>
+      <td>{{ s.games_played }}</td>
+      <td>{{ s.games_lost }}</td>
+      <td>{{ s.points_for }}</td>
+      <td>{{ s.points_against }}</td>
+      <td>{{ s.points_diff }}</td>
+      <td>{{ s.home_record }}</td>
+      <td>{{ s.away_record }}</td>
+      <td>{{ s.overtime_record }}</td>
+      <td>{{ s.last5_form }}</td>
+      <td>{{ s.last_ten_record }}</td>
+      <td>{{ s.win_percentage }}%</td>
+      <td>{{ s.position_change }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

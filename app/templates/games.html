@@ -73,36 +73,42 @@
 <!-- TEAM VIEW -->
 <!-- ========================= -->
 
-<section class="next-game">
-    <h2>Next Game</h2>
-    {% if next_game %}
-        {% include "components/game_card.html" with context %}
-    {% else %}
-        <p>No upcoming game for this team.</p>
-    {% endif %}
-</section>
-
-<section class="results">
-    <h2>Results</h2>
-    {% if results %}
-        {% for g in results %}
-            {% include "components/game_card.html" %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Home</th>
+            <th>Away</th>
+            <th>Status</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for g in games %}
+            {% set row_class = "" %}
+            {% if g.game_status == 'RESULT' %}
+                {% set row_class = "table-success" %}
+            {% elif g.game_status == 'NEXT' %}
+                {% set row_class = "table-warning" %}
+            {% elif g.game_status == 'UPCOMING' %}
+                {% set row_class = "table-info" %}
+            {% endif %}
+            <tr class="{{ row_class }}">
+                <td>{{ g.game_date.strftime('%d %b %Y') }}</td>
+                <td>{{ g.home_code }}</td>
+                <td>{{ g.away_code }}</td>
+                <td>{{ g.game_status }}</td>
+                <td>
+                    {% if g.played %}
+                        {{ g.home_score }} - {{ g.away_score }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
         {% endfor %}
-    {% else %}
-        <p>No results available.</p>
-    {% endif %}
-</section>
-
-<section class="upcoming">
-    <h2>Upcoming Games</h2>
-    {% if upcoming %}
-        {% for g in upcoming %}
-            {% include "components/game_card.html" %}
-        {% endfor %}
-    {% else %}
-        <p>No upcoming games.</p>
-    {% endif %}
-</section>
+    </tbody>
+</table>
 
 {% endif %}
 {% endblock %}
