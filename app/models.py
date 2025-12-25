@@ -244,3 +244,14 @@ def get_standings( season_code: str, round_: int):
             }
         ).fetchall()
 
+def get_clubbyseason_team_details(season_code: str, club_code: str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT season_code, club_code, city, address, country_name, website, president, phone, crest_url, club_tv_code, arena_code, arena_name, tickets_url, twitter_account, club_info 
+                    FROM   dwh.vw_clubsbyseason_team_details
+                 WHERE club_code = :pclub_code
+                   AND season_code = :pseason_code
+            """), {"pclub_code": club_code, "pseason_code": season_code}
+        ).mappings().fetchone()
+        return result
+

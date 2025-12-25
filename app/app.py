@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, request, redirect, url_for
+from flask import Flask, render_template, Blueprint, request, redirect, url_for, abort
 from models import *
 
 app = Flask(__name__)
@@ -95,17 +95,78 @@ def standings():
 
     last_round = get_last_round(season_code).round
     round_ = int(request.args.get("round", last_round))
-
+    season = request.args.get("season")
     rounds = get_available_rounds( season_code)
     standings = get_standings(season_code, round_)
-
+    teams_sidebar = get_clubsbyseasoncode(season_code)
     return render_template(
         "standings.html",
         standings=standings,
         rounds=rounds,
         selected_round=round_,
+        teams_sidebar=teams_sidebar,
         selected_season=season_code
     )
+
+@main_bp.route("/teams")
+def teams():
+    season_code = request.args.get("season", "E2025")
+    listseasons = get_seasons(COMPETITION_CODE)
+    seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
+    teams_sidebar = get_clubsbyseasoncode(season_code)
+    teams = [{"crest": t.crest_url, "team_name": t.club_name, "code": t.club_code}
+             for t in get_clubsbyseasoncode(season_code)]
+    return render_template(
+        "teams.html",
+        teams_sidebar=teams_sidebar,
+        teams = teams,
+        selected_season=season_code,
+        seasons=seasons
+    )
+
+
+@app.route("/teams/<team_code>")
+def team_details(team_code):
+    season = request.args.get("season", "E2025")  # default sezona
+    team = get_clubbyseason_team_details(season, team_code)
+    games = get_team_games(season, team_code)
+
+    if not team:
+        abort(404)
+
+        # # Roster - igrači i treneri iz view-a
+        # roster = session.execute(
+        #     text("""
+        #          SELECT *
+        #          FROM vw_team_roster
+        #          WHERE team_code = :team_code
+        #            AND season_code = :season_code
+        #          ORDER BY position
+        #          """),
+        #     {"team_code": team_code, "season_code": season_code}
+        # ).fetchall()
+        #
+        # # Games - utakmice tima iz view-a
+        # games = session.execute(
+        #     text("""
+        #          SELECT *
+        #          FROM vw_team_games
+        #          WHERE team_code = :team_code
+        #            AND season_code = :season_code
+        #          ORDER BY game_date
+        #          """),
+        #     {"team_code": team_code, "season_code": season_code}
+        # ).fetchall()
+
+    return render_template(
+        "team_details.html",
+        team=team,
+        # season={"code": season_code},
+        # roster=roster,
+        # coaches=[p for p in roster if p.role and 'Coach' in p.role],
+        games=games
+        )
+
 
 app.register_blueprint(main_bp)
 
