@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251223_2300">
-      <change afterPath="$PROJECT_DIR$/app/global.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/team_details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/teams.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/get_pic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/import_pics.py" afterDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251225_1210">
+      <change afterPath="$PROJECT_DIR$/app/static/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/components/game_card_full.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/global.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/games.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/components/game_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/game_card_compact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/games.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/games.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/standings.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/standings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/team_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/teams.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/teams.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/get_pic.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/images.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/import_pics.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/import_pics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,16 +27,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="252" />
+    <option name="cachedIndexableFilesCount" value="267" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -220,7 +224,7 @@
       <workItem from="1766608001712" duration="8025000" />
       <workItem from="1766652653578" duration="448000" />
       <workItem from="1766653139767" duration="7000" />
-      <workItem from="1766653913857" duration="1804000" />
+      <workItem from="1766653913857" duration="29798000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -366,7 +370,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766529414385</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="20251225_1210">
+      <option name="closed" value="true" />
+      <created>1766661182434</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1766661182434</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,32 +399,23 @@
     <MESSAGE value="20251220_0900" />
     <MESSAGE value="20251220_2045" />
     <MESSAGE value="20251223_2300" />
-    <option name="LAST_COMMIT_MESSAGE" value="20251223_2300" />
+    <MESSAGE value="20251225_1210" />
+    <option name="LAST_COMMIT_MESSAGE" value="20251225_1210" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/models.py</url>
           <line>247</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>130</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1765280788996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1766653067135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1766750295173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbWeb$run.coverage" NAME="run Coverage Results" MODIFIED="1765276490271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

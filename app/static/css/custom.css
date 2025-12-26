@@ -51,101 +51,101 @@
     font-size: 1.1rem;
 }
 
-/* =================== Slider utakmica =================== */
-.games-slider-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
+/*!* =================== Slider utakmica =================== *!*/
+/*.games-slider-wrapper {*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
-.games-slider {
-    display: flex;
-    overflow-x: hidden; /* sakriva scrollbar */
-    gap: 12px;
-    scroll-behavior: smooth;
-    padding: 12px 0;
-}
+/*.games-slider {*/
+/*    display: flex;*/
+/*    overflow-x: hidden; !* sakriva scrollbar *!*/
+/*    gap: 12px;*/
+/*    scroll-behavior: smooth;*/
+/*    padding: 12px 0;*/
+/*}*/
 
-/* Safari / Chrome / Edge / Opera */
-.games-slider::-webkit-scrollbar {
-    display: none;
-}
+/*!* Safari / Chrome / Edge / Opera *!*/
+/*.games-slider::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
 
-/* Firefox */
-.games-slider {
-    scrollbar-width: none; /* Firefox */
-}
+/*!* Firefox *!*/
+/*.games-slider {*/
+/*    scrollbar-width: none; !* Firefox *!*/
+/*}*/
 
-.game-card {
-    flex: 0 0 auto;
-    width: 160px;          /* širina kartice */
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 8px;
-    background: #fff;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
+/*.game-card {*/
+/*    flex: 0 0 auto;*/
+/*    width: 160px;          !* širina kartice *!*/
+/*    border: 1px solid #e5e7eb;*/
+/*    border-radius: 12px;*/
+/*    padding: 8px;*/
+/*    background: #fff;*/
+/*    cursor: pointer;*/
+/*    transition: transform 0.2s;*/
+/*}*/
 
-.game-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
+/*.game-card:hover {*/
+/*    transform: scale(1.05);*/
+/*    box-shadow: 0 2px 8px rgba(0,0,0,0.15);*/
+/*}*/
 
-.game-card .team img {
-    display: block;
-    margin: 0 auto 4px auto;
-}
+/*.game-card .team img {*/
+/*    display: block;*/
+/*    margin: 0 auto 4px auto;*/
+/*}*/
 
-/* Horizontalna organizacija */
-.teams-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+/*!* Horizontalna organizacija *!*/
+/*.teams-row {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*}*/
 
-.team img {
-    width: 36px;
-    margin-bottom: 2px;
-}
+/*.team img {*/
+/*    width: 36px;*/
+/*    margin-bottom: 2px;*/
+/*}*/
 
-.team-code {
-    font-weight: 600;
-    font-size: 0.75rem; /* manji font */
-    text-align: center;
-}
+/*.team-code {*/
+/*    font-weight: 600;*/
+/*    font-size: 0.75rem; !* manji font *!*/
+/*    text-align: center;*/
+/*}*/
 
-.team-code1 {
-    font-weight: 600;
-    font-size: 0.5rem; /* manji font */
-    text-align: center;
-}
+/*.team-code1 {*/
+/*    font-weight: 600;*/
+/*    font-size: 0.5rem; !* manji font *!*/
+/*    text-align: center;*/
+/*}*/
 
 
-.score {
-    font-weight: 700;
-    font-size: 0.85rem; /* malo manji */
-    text-align: center;
-    min-width: 30px;
-}
-/*
-.score {
-    font-weight: 700;
-    margin: 6px 0;
-    font-size: 0.9rem;
-}
-*/
-.slide-btn {
-    background: rgba(0,0,0,0.05);
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-}
+/*.score {*/
+/*    font-weight: 700;*/
+/*    font-size: 0.85rem; !* malo manji *!*/
+/*    text-align: center;*/
+/*    min-width: 30px;*/
+/*}*/
+/*!**/
+/*.score {*/
+/*    font-weight: 700;*/
+/*    margin: 6px 0;*/
+/*    font-size: 0.9rem;*/
+/*}*/
+/**!*/
+/*.slide-btn {*/
+/*    background: rgba(0,0,0,0.05);*/
+/*    border: none;*/
+/*    padding: 6px 12px;*/
+/*    cursor: pointer;*/
+/*    border-radius: 6px;*/
+/*    font-size: 1.2rem;*/
+/*    flex-shrink: 0;*/
+/*}*/
 
 /* NEWS*/
 /* Pozadina sekcije */

@@ -5,6 +5,8 @@
     <title href="/">EuroLeague Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/volt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/games.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 </head>
 <body>
     <!-- Sidebar -->
@@ -13,7 +15,7 @@
             {% for team in teams_sidebar %}
             <li class="nav-item mx-2">
                 <a class="nav-link d-flex align-items-center" href="#">
-                    <img src="{{ team.crest_url }}" width="28" class="me-2">
+                    <img src="{{ team_logo(team.club_code) }}" width="28" class="me-2">
                     {{ team.name }}
                 </a>
             </li>

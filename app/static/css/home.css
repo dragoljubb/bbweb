@@ -1,0 +1,84 @@
+/* =================== Slider utakmica =================== */
+
+.games-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.games-slider {
+    display: flex;
+    gap: 12px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 12px 0;
+
+    scrollbar-width: none; /* Firefox */
+}
+
+.games-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* =================== Compact game card =================== */
+
+.games-slider .game-card-compact {
+    flex: 0 0 auto;
+    width: 160px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.games-slider .game-card-compact:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* =================== Card content =================== */
+
+.games-slider .teams-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.games-slider .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.games-slider .team img {
+    width: 28px;
+    margin-bottom: 4px;
+}
+
+.games-slider .team-code {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.games-slider .score {
+    min-width: 32px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* =================== Slider buttons =================== */
+
+.games-slider .slide-btn {
+    background: rgba(0,0,0,0.05);
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}

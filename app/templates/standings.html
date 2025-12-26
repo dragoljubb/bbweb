@@ -30,6 +30,7 @@
       <th></th>
       <th>Team</th>
       <th>GP</th>
+      <th>W</th>
       <th>L</th>
       <th>PF</th>
       <th>PA</th>
@@ -47,9 +48,10 @@
     {% for s in standings %}
     <tr>
       <td>{{ s.team_position }}</td>
-      <td><img src="{{ s.crest_url }}" height="24"></td>
+      <td><img src="{{ team_logo(s.team_code) }}" height="24"></td>
       <td>{{ s.team_name }}</td>
       <td>{{ s.games_played }}</td>
+      <td>{{ s.games_won }}</td>
       <td>{{ s.games_lost }}</td>
       <td>{{ s.points_for }}</td>
       <td>{{ s.points_against }}</td>

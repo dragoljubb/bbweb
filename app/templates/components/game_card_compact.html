@@ -1,0 +1,23 @@
+<div class="game-card-compact">
+    <div class="teams-row">
+
+        <div class="team">
+            <img src="{{ team_logo(game.home_code) }}" alt="">
+            <div class="team-code">{{ game.home_code_tv }}</div>
+        </div>
+
+        <div class="score">
+            {% if game.home_score is not none and game.away_score is not none %}
+                {{ game.home_score }} - {{ game.away_score }}
+            {% else %}
+                - -
+            {% endif %}
+        </div>
+
+        <div class="team">
+            <img src="{{ team_logo(game.away_code) }}" alt="">
+            <div class="team-code">{{ game.away_code_tv }}</div>
+        </div>
+
+    </div>
+</div>

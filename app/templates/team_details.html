@@ -3,28 +3,32 @@
 {% block content %}
 
 <!-- Top header panel -->
-<div class="team-header position-relative text-white mb-4" style="height: 180px; background-color: #333; border-radius: 8px;">
-  
-  <!-- Grb poluprozirno -->
-  <img src="{{ team.crest_url }}"
-       alt="{{ team.club_name }}"
-       class="team-header-logo position-absolute" 
-       style="height: 100px; width: 100px; top: 40px; left: 30px; opacity: 0.3;">
-  
-  <!-- Info o timu -->
-  <div class="team-header-info position-absolute" style="top: 50px; left: 150px;">
-    <h2>{{ team.club_name }}</h2>
 
-    <p class="mb-1"><strong>President:</strong> {{ team.president }}</p>
-    <p class="mb-1"><strong>Phone:</strong> {{ team.phone }}</p>
-    <p class="mb-1"><strong>City:</strong> {{ team.city }}</p>
-    <p class="mb-1"><strong>Address:</strong> {{ team.address }}</p>
-    <p class="mb-0"><strong>Arena:</strong> {{ team.arena_name }}</p>
+<div class="team-header d-flex align-items-center mb-4">
+
+  <!-- Watermark grb -->
+  <img src="{{team_logo(team.club_code) }}"
+       alt="{{ team.club_name }}"
+       class="team-header-logo">
+
+  <!-- Info desno -->
+  <div class="team-header-info ms-auto text-end">
+    <h2 class="team-name">{{ team.club_name }}</h2>
+
+    <div class="team-meta">
+      <div>{{ team.city }}</div>
+      <div>{{ team.arena_name }}</div>
+      <div>{{ team.president }}</div>
+      <div>{{ team.phone }}</div>
+    </div>
   </div>
-  
+
   <!-- Back button -->
-  <a href="/teams" class="btn btn-light position-absolute" style="top: 10px; right: 30px;">Back</a>
+  <a href="/teams" class="btn btn-outline-secondary team-back-btn">
+    Back
+  </a>
 </div>
+
 
 <!-- Tabovi: Roster i Games -->
 <ul class="nav nav-tabs mb-3" id="teamTabs" role="tablist">
@@ -84,27 +88,114 @@
 
 <!-- CSS -->
 <style>
+/* ===============================
+   TEAM HEADER
+   =============================== */
 .team-header {
-  background-size: cover;
-  background-position: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  height: 200px;
+  padding: 30px 40px;
+  background: #f4f5f7; /* svetla, neutralna pozadina */
+  border-radius: 10px;
+  overflow: hidden;
 }
 
+/* Large transparent logo - centered, samo opacity */
 .team-header-logo {
-  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centriranje horizontalno i vertikalno */
+  height: 150px;                     /* prilagodjeno */
+  width: auto;
+  opacity: 0.5;                       /* diskretno */
+  pointer-events: none;
+  z-index: 1;
 }
 
+/* Right aligned info */
+.team-header-info {
+  margin-left: auto;
+  text-align: right;
+  z-index: 2;
+  max-width: 60%;
+}
+
+/* Team name */
 .team-header-info h2 {
-  margin-bottom: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
 }
 
+/* Meta info text */
 .team-header-info p {
-  margin-bottom: 0.1rem;
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+  color: #555;
+  line-height: 1.3;
 }
 
-.tab-pane img {
-  max-width: 100%;
+/* Back button */
+.team-header .btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 3;
 }
+
+/* ===============================
+   TABS
+   =============================== */
+.nav-tabs .nav-link {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+}
+
+.nav-tabs .nav-link.active {
+  font-weight: 600;
+}
+
+/* ===============================
+   ROSTER
+   =============================== */
+.tab-pane img {
+  height: 90px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.tab-pane p {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.tab-pane small {
+  font-size: 0.7rem;
+  color: #777;
+}
+
+/* ===============================
+   GAMES TABLE
+   =============================== */
+.table th, .table td {
+  vertical-align: middle;
+  font-size: 0.8rem;
+}
+
+/* ===============================
+   UTILITIES
+   =============================== */
+.text-muted-small {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+
 </style>
 
 {% endblock %}
