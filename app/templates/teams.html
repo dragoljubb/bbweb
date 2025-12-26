@@ -32,7 +32,7 @@
     {% for team in teams %}
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3 team-card-wrapper" data-name="{{ team.team_name | lower }}">
         <a href="/teams/{{ team.code }}" class="text-decoration-none text-dark">
-          <div class="team-card d-flex align-items-center p-2" style="height: 50px;">
+          <div class="team-card d-flex align-items-center p-2" >
             <img src="{{ team_logo(team.code) }}"
                  alt="{{ team.team_name }}"
                  class="team-logo me-2">
@@ -76,8 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
   cursor: pointer;
   display: flex;
   align-items: center;       /* vertikalno centrirano */
-  height: 50px;              /* fiksna visina */
-  padding: 0.3rem 0.5rem;
+  height: 70px;              /* fiksna visina */
+  padding: 2rem 0.6rem;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -90,15 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 .team-logo {
-  height: 35px;
-  width: 35px;
+  height: 42px;
+  width: 42px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
 .team-name {
   font-weight: 500;
-  font-size: 0.6rem;         /* sitni font */
+  font-size: 0.75rem;         /* sitni font */
   line-height: 1.1;
   white-space: nowrap;       /* jedna linija */
   overflow: hidden;

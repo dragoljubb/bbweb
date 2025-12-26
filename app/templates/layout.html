@@ -10,18 +10,19 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <nav class="navbar">
-        <ul class="navbar-nav flex-row justify-content-center w-100">
-            {% for team in teams_sidebar %}
-            <li class="nav-item mx-2">
-                <a class="nav-link d-flex align-items-center" href="#">
-                    <img src="{{ team_logo(team.club_code) }}" width="28" class="me-2">
-                    {{ team.name }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
+   <nav class="navbar">
+    <ul class="navbar-nav flex-row justify-content-center w-100">
+        {% for team in teams_sidebar %}
+        <li class="nav-item mx-2">
+            <a class="nav-link d-flex align-items-center"
+               href="/teams/{{ team.club_code }}">
+                <img src="{{ team_logo(team.club_code) }}" width="28" class="me-2">
+                {{ team.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
 
     <!-- Topbar -->
     {% include 'navbar.html' %}

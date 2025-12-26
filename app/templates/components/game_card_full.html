@@ -1,13 +1,17 @@
 <div class="game-card-full">
 
-    <!-- Date -->
-    <div class="game-datetime">
-        {{ g.game_date.strftime('%d %b %Y %H:%M') }}
+    <div class="game-info">
+        <div class="game-datetime">
+            {{ g.game_date.strftime('%d %b %Y %H:%M') }}
+        </div>
+        {% if g.arena_name %}
+        <div class="game-datetime">
+            {{ g.arena_name }}
+        </div>
+        {% endif %}
     </div>
 
-    <!-- Teams row -->
     <div class="teams-row">
-
         <!-- HOME -->
         <div class="team home">
             <span class="team-name">{{ g.home_name }}</span>
@@ -24,13 +28,10 @@
             <span class="team-name">{{ g.away_name }}</span>
         </div>
 
-    <!-- Details -->
-    <div class="game-actions">
-        <a href="/games/{{ g.id }}" class="btn btn-outline-secondary btn-details">
-            Details
-        </a>
-    </div>
-
+        <!-- Details -->
+        <div class="game-actions">
+            <a href="/games/{{ g.id }}" class="btn btn-outline-secondary btn-details">Details</a>
+        </div>
     </div>
 
 </div>

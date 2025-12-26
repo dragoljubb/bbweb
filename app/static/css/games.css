@@ -1,0 +1,163 @@
+.games-page {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* =========================
+   FULL GAME CARD
+   ========================= */
+.game-card-full {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto 12px auto;
+    padding: 20px 16px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    display: grid;
+    grid-template-columns: 300px 1fr; /* INFO | CONTENT */
+    align-items: center;
+    column-gap: 16px;
+
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card-full:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   LEFT INFO BLOCK
+   ========================= */
+.game-card-full .game-datetime {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.game-card-full .game-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* VERTIKALNO CENTRIRANO */
+    gap: 2px;
+    padding-left: 8px;
+}
+
+/* =========================
+   TEAMS ROW
+   HOME | VS | AWAY | DETAILS
+   ========================= */
+.game-card-full .teams-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    align-items: center;
+    column-gap: 16px;
+    width: 100%;
+}
+
+/* =========================
+   TEAM BASE
+   ========================= */
+.game-card-full .team {
+    min-width: 0;
+}
+
+/* =========================
+   HOME TEAM (LEFT)
+   ========================= */
+.game-card-full .team.home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    column-gap: 6px;
+    justify-items: end;
+}
+
+.game-card-full .team.home .team-name {
+    width: 100%;
+    text-align: right;
+    padding-left: 8px;
+}
+
+/* =========================
+   AWAY TEAM (RIGHT)
+   ========================= */
+.game-card-full .team.away {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 6px;
+    justify-items: start;
+}
+
+.game-card-full .team.away .team-name {
+    width: 100%;
+    text-align: left;
+    padding-right: 8px;
+}
+
+/* =========================
+   SHARED TEAM ELEMENTS
+   ========================= */
+.game-card-full .team-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-card-full .team-logo {
+    width: 32px;
+    height: auto;
+}
+
+.game-card-full .team-score {
+    width: 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* =========================
+   CENTER DASH
+   ========================= */
+.game-card-full .vs {
+    margin: 0 12px;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+
+/* =========================
+   DETAILS
+   ========================= */
+.game-card-full .game-actions {
+    justify-self: end;
+    white-space: nowrap;
+}
+
+.game-card-full .btn-details {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+.round-games {
+    padding-top: 20px;   /* 16–24px je idealno */
+
+}
+.round-slider {
+    padding-top: 16px;   /* 16–24px je idealno */
+    padding-left: 16px;
+    padding-right: 16px;
+
+}
+
+.game-filter {
+    padding-left: 16px;
+    display: flex;
+    gap: 12px;
+}

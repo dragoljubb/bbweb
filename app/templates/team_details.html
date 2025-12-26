@@ -6,6 +6,9 @@
 
 <div class="team-header d-flex align-items-center mb-4">
 
+  <div class="team-details-info">{{team.club_info}}  </div>
+
+
   <!-- Watermark grb -->
   <img src="{{team_logo(team.club_code) }}"
        alt="{{ team.club_name }}"
@@ -13,24 +16,20 @@
 
   <!-- Info desno -->
   <div class="team-header-info ms-auto text-end">
-    <h2 class="team-name">{{ team.club_name }}</h2>
-
-    <div class="team-meta">
-      <div>{{ team.city }}</div>
-      <div>{{ team.arena_name }}</div>
-      <div>{{ team.president }}</div>
-      <div>{{ team.phone }}</div>
-    </div>
+  <div class="team-meta">
+    <div class="meta-item"><span class="meta-label">Country:</span> {{ team.country_name }}</div>
+    <div class="meta-item"><span class="meta-label">City:</span> {{ team.city }}</div>
+    <div class="meta-item"><span class="meta-label">Arena:</span> {{ team.arena_name }}</div>
+    <div class="meta-item"><span class="meta-label">President:</span> {{ team.president }}</div>
+    <div class="meta-item"><span class="meta-label">Phone:</span> {{ team.phone }}</div>
   </div>
+</div>
 
-  <!-- Back button -->
-  <a href="/teams" class="btn btn-outline-secondary team-back-btn">
-    Back
-  </a>
 </div>
 
 
-<!-- Tabovi: Roster i Games -->
+ <h2 class="team-name">{{ team.club_name }}</h2>
+
 <ul class="nav nav-tabs mb-3" id="teamTabs" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="roster-tab" data-bs-toggle="tab" data-bs-target="#roster" type="button" role="tab">Roster</button>
@@ -41,6 +40,7 @@
 </ul>
 
 <div class="tab-content" id="teamTabsContent">
+
   <!-- Roster -->
   <div class="tab-pane fade show active" id="roster" role="tabpanel">
     <div class="row">
@@ -63,28 +63,53 @@
 
   <!-- Games -->
   <div class="tab-pane fade" id="games" role="tabpanel">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Opponent</th>
-          <th>Home/Away</th>
-          <th>Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for game in games %}
-        <tr>
-          <td>{{ game.date }}</td>
-          <td>{{ game.opponent }}</td>
-          <td>{{ game.home_away }}</td>
-          <td>{{ game.score }}</td>
-        </tr>
+
+    <!-- Seasons filter -->
+    <div class="games-filters mb-3">
+      <select id="seasonSelectGames" class="form-select w-auto">
+        {% for s in seasons %}
+          <option value="{{ s.code }}"
+            {% if s.code == selected_season %}selected{% endif %}>
+            {{ s.label }}
+          </option>
         {% endfor %}
-      </tbody>
-    </table>
+      </select>
+    </div>
+
+        {% if next_game %}
+          <h5 class="mt-3">Next Game</h5>
+          <div class="next-game">
+            {% set g = next_game %}
+            {% include "components/game_card_full.html" %}
+          </div>
+        {% endif %}
+
+        {% if results %}
+        <h5 class="mt-4">Results</h5>
+        <div class="results-games">
+          {% for g in results %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if upcoming %}
+        <h5 class="mt-4">Upcoming Games</h5>
+        <div class="upcoming-games">
+          {% for g in upcoming %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+
+
+
   </div>
 </div>
+
 
 <!-- CSS -->
 <style>
@@ -96,7 +121,7 @@
   display: flex;
   align-items: center;
   height: 200px;
-  padding: 30px 40px;
+  padding: 30px 150px;
   background: #f4f5f7; /* svetla, neutralna pozadina */
   border-radius: 10px;
   overflow: hidden;
@@ -108,9 +133,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* centriranje horizontalno i vertikalno */
-  height: 150px;                     /* prilagodjeno */
+  height: 180px;                     /* prilagodjeno */
   width: auto;
-  opacity: 0.5;                       /* diskretno */
+  opacity: 0.1;                       /* diskretno */
   pointer-events: none;
   z-index: 1;
 }
@@ -124,11 +149,14 @@
 }
 
 /* Team name */
-.team-header-info h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
+.team-name{
+  font-size: 1.8rem;
+  font-weight: 700;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
+  text-align: center;
+  padding-top: 5px;
+
 }
 
 /* Meta info text */
@@ -196,6 +224,74 @@
 }
 
 
+.team-details-info
+{
+  font-size: 0.58rem;
+  color: #555;
+  max-width: 35%;
+  padding-top: 25px;
+}
+
+.team-meta {
+  display: flex;
+  flex-direction: column; /* vertikalno */
+  gap: 4px;               /* razmak između redova */
+  text-align: left;
+}
+
+.team-meta .meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.team-meta .meta-label {
+  font-weight: 600;       /* bold labela */
+  width: 80px;            /* fiksna širina labela za poravnanje */
+  margin-right: 8px;      /* razmak između labela i vrednosti */
+  text-align: left;      /* labela desno, vrednost levo */
+  color: #333;
+}
+
+.team-meta .meta-item span {
+  /* vrednost */
+  color: #555;
+}
+
+
+.games-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.next-game, .results-games, .upcoming-games {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* razmak između panela */
+}
+
+/* Opcionalno: Next game panel može biti malo naglašen */
+.next-game .game-card-full {
+  border-color: #3b82f6; /* plava border za isticanje */
+  box-shadow: 0 4px 12px rgba(59,130,246,0.2);
+}
+
+
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Sezona dropdown
+  const seasonSelect = document.getElementById("seasonSelectGames");
+  seasonSelect.addEventListener("change", () => {
+    const season = seasonSelect.value;
+    const params = new URLSearchParams(window.location.search);
+    params.set('season', season);
+    window.location.search = params.toString();
+  });
+});
+</script>
 {% endblock %}

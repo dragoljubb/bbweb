@@ -134,6 +134,9 @@ def team_details(team_code):
     season = request.args.get("season", "E2025")  # default sezona
     team = get_clubbyseason_team_details(season, team_code)
     games = get_team_games(season, team_code)
+    next_game = next((g for g in games if g.game_status == "NEXT"), None)
+    results = [g for g in games if g.game_status == "RESULT"]
+    upcoming = [g for g in games if g.game_status == "UPCOMING"]
     teams_sidebar = get_clubsbyseasoncode(season)
 
     if not team:
@@ -170,6 +173,9 @@ def team_details(team_code):
         # season={"code": season_code},
         # roster=roster,
         # coaches=[p for p in roster if p.role and 'Coach' in p.role],
+        next_game = next_game,
+        results=results,
+        upcoming=upcoming,
         games=games
         )
 
