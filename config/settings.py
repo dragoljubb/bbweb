@@ -6,7 +6,7 @@ DB = {
     "password": "1111"
 }
 
-BASE_URL = "https://api.euroleague.net"
+BASE_URL = "https://api-live.euroleague.net"
 
 
 
