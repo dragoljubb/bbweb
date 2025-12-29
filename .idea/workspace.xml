@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251228_2200">
-      <change afterPath="$PROJECT_DIR$/load/load_person_careerhighs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/load/load_team_stats_pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pipelines/careerhighs_pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pipelines/team_stats_pipeline.py" afterDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251229_1545">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/people_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/people_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/load/load_person_bio.py" beforeDir="false" afterPath="$PROJECT_DIR$/load/load_person_bio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/load/load_person_stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/load/load_person_stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/players/placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/people/placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/team_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/images.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,11 +135,11 @@
       <recent name="C:\myPython\PythonLearning\bbWeb\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\myPython\PythonLearning\bbweb\app\static\people" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\static" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\static\" />
       <recent name="C:\myPython\PythonLearning\bbweb\load" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\templates" />
-      <recent name="C:\myPython\PythonLearning\bbWeb\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -235,7 +232,7 @@
       <workItem from="1766908800894" duration="8857000" />
       <workItem from="1766928617233" duration="14401000" />
       <workItem from="1766955484052" duration="523000" />
-      <workItem from="1766997918995" duration="16357000" />
+      <workItem from="1766997918995" duration="25700000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -429,7 +426,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766955504380</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="20251229_1545">
+      <option name="closed" value="true" />
+      <created>1767019557685</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1767019557685</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,19 +460,15 @@
     <MESSAGE value="20251226_2330" />
     <MESSAGE value="20251228_0900" />
     <MESSAGE value="20251228_2200" />
-    <option name="LAST_COMMIT_MESSAGE" value="20251228_2200" />
+    <MESSAGE value="20251229_1545" />
+    <option name="LAST_COMMIT_MESSAGE" value="20251229_1545" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>139</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>122</line>
+          <line>123</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -490,6 +491,16 @@
           <line>13</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/app.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/models.py</url>
+          <line>157</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -497,7 +508,7 @@
     <SUITE FILE_PATH="coverage/bbweb$load_person_careerhighs.coverage" NAME="load_person_careerhighs Coverage Results" MODIFIED="1767006217736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1765280788996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
-    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1767016374232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1767028481867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbWeb$run.coverage" NAME="run Coverage Results" MODIFIED="1765276490271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_stats.coverage" NAME="load_person_stats Coverage Results" MODIFIED="1767006158715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_bio.coverage" NAME="load_person_bio Coverage Results" MODIFIED="1767006280338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />

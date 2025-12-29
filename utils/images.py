@@ -33,6 +33,17 @@ def news_image(news_id: int):
 
 
 def person_img(team_code: str, person_code: str):
-    return url_for(
-        "static", filename=f"people/{team_code}/{person_code}.jpg"
-    )
+    if not team_code or not person_code:
+        return url_for("static", filename="people/placeholder.png")
+
+    # Lokalna putanja do foldera tima
+    players_dir = os.path.join(current_app.root_path, "static", "people", team_code)
+    filename = f"{person_code}.jpg"
+    filepath = os.path.join(players_dir, filename)
+
+    # Ako fajl postoji, vrati URL
+    if os.path.exists(filepath):
+        return url_for("static", filename=f"people/{team_code}/{filename}")
+
+    # fallback placeholder
+    return url_for("static", filename="people/placeholder.png")

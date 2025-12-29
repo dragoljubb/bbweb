@@ -45,18 +45,22 @@
   <div class="tab-pane fade show active" id="roster" role="tabpanel">
     <div class="row">
       {% for player in roster %}
-        <div class="col-md-3 mb-3 text-center">
-          <img src="{{ player.photo }}" alt="{{ player.name }}" class="img-fluid rounded mb-1" style="height: 100px; object-fit: cover;">
-          <p class="mb-0">{{ player.name }}</p>
-          <small>{{ player.position }}</small>
+        <div class="player-card">
+          <div class="player-img">
+            <img src="{{ person_img(player.club_code, player.person_code) }}"
+                 alt="{{ player.formatted_name }}">
+          </div>
+
+          <div class="player-name">
+            <div class="first-name">{{ player.first_name }}</div>
+            <div class="last-name">{{ player.last_name }}</div>
+          </div>
+
+          <div class="player-number">
+             <span class="jersey-prefix">#</span>{{ player.dorsal }}
+          </div>
         </div>
-      {% endfor %}
-      {% for coach in coaches %}
-        <div class="col-md-3 mb-3 text-center">
-          <img src="{{ coach.photo }}" alt="{{ coach.name }}" class="img-fluid rounded mb-1" style="height: 100px; object-fit: cover;">
-          <p class="mb-0">{{ coach.name }}</p>
-          <small>{{ coach.role }}</small>
-        </div>
+
       {% endfor %}
     </div>
   </div>
@@ -276,6 +280,71 @@
   border-color: #3b82f6; /* plava border za isticanje */
   box-shadow: 0 4px 12px rgba(59,130,246,0.2);
 }
+
+
+.player-card {
+  width: 322px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 0;
+}
+
+/* LEVA STRANA – SLIKA */
+.player-img {
+  width: 95px;
+  height: 75px;
+  overflow: hidden;           /* crop */
+  display: flex;
+  align-items: flex-start;    /* fokus na vrh */
+  justify-content: center;
+}
+
+.player-img img {
+  width: 95px;                /* PRVO skaliranje po širini */
+  height: auto;
+  object-fit: cover;
+}
+
+/* SREDINA – IME / PREZIME */
+.player-name {
+  width: 140px;
+  padding-left: 10px;
+  line-height: 1.1;
+}
+
+.player-name .first-name {
+  font-size: 14px;
+}
+
+.player-name .last-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* DESNO – BROJ DRESA */
+.player-number {
+  width: 42px;
+  height: 38px;
+  margin-left: auto;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.player-number .jersey-prefix {
+  color: #c7c7c7;            /* vrlo blaga siva */
+  font-weight: 400;          /* ne bold */
+  margin-right: 2px;
+  font-size: 0.9em
+}
+
 
 
 </style>

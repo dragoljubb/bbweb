@@ -5,6 +5,7 @@ from utils.images import  *
 
 app = Flask(__name__)
 app.jinja_env.globals["team_logo"] = team_logo
+app.jinja_env.globals["person_img"] = person_img
 app.jinja_env.globals["news_image"] = news_image
 main_bp = Blueprint('main_bp', __name__)
 COMPETITION_CODE = "E"
@@ -138,6 +139,7 @@ def team_details(team_code):
     results = [g for g in games if g.game_status == "RESULT"]
     upcoming = [g for g in games if g.game_status == "UPCOMING"]
     teams_sidebar = get_clubsbyseasoncode(season)
+    roster = get_roster(season, team_code)
 
     if not team:
         abort(404)
@@ -171,7 +173,7 @@ def team_details(team_code):
         team=team,
         teams_sidebar=teams_sidebar,
         # season={"code": season_code},
-        # roster=roster,
+         roster=roster,
         # coaches=[p for p in roster if p.role and 'Coach' in p.role],
         next_game = next_game,
         results=results,
