@@ -30,3 +30,9 @@ def news_image(news_id: int):
         return url_for("static", filename=f"news/{filename}")
     else:
         return url_for("static", filename="news/news_placeholder.png")
+
+
+def person_img(team_code: str, person_code: str):
+    return url_for(
+        "static", filename=f"people/{team_code}/{person_code}.jpg"
+    )
