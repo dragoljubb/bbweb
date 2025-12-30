@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251229_1830">
-      <change afterPath="$PROJECT_DIR$/app/templates/player.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/team_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/load/load_person_images.py" beforeDir="false" afterPath="$PROJECT_DIR$/load/load_person_images.py" afterDir="false" />
-    </list>
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251230_1500" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,7 +228,7 @@
       <workItem from="1766955484052" duration="523000" />
       <workItem from="1766997918995" duration="29987000" />
       <workItem from="1767091251260" duration="16000" />
-      <workItem from="1767091533722" duration="9626000" />
+      <workItem from="1767091533722" duration="9942000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -446,7 +438,23 @@
       <option name="project" value="LOCAL" />
       <updated>1767029356959</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="20251229_1830">
+      <option name="closed" value="true" />
+      <created>1767101620035</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1767101620035</updated>
+    </task>
+    <task id="LOCAL-00028" summary="20251230_1500">
+      <option name="closed" value="true" />
+      <created>1767101644683</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1767101644683</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +482,8 @@
     <MESSAGE value="20251228_2200" />
     <MESSAGE value="20251229_1545" />
     <MESSAGE value="20251229_1830" />
-    <option name="LAST_COMMIT_MESSAGE" value="20251229_1830" />
+    <MESSAGE value="20251230_1500" />
+    <option name="LAST_COMMIT_MESSAGE" value="20251230_1500" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
