@@ -269,3 +269,18 @@ def get_roster(season_code: str, club_code: str):
         ).fetchall()
         return result
 
+def get_coaches(season_code: str, club_code: str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code,  person_type_name, club_code, season_code, person_type, active, position_name, dorsal,  first_name, last_name,  height, 
+                        weight, birth_date, formatted_date,  country_code, country_name, twitter_account, facebook_account, 
+                        instagram_account,  last_team
+                    FROM dwh.vw_person
+                    WHERE club_code = :pclub_code
+                   AND season_code = :pseason_code
+                    AND active = true AND person_type IN ('A','E' )
+                ORDER BY person_type DESC, last_name
+            """), {"pclub_code": club_code, "pseason_code": season_code}
+        ).fetchall()
+        return result
+

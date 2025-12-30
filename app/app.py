@@ -1,6 +1,7 @@
 from flask import Flask, render_template, Blueprint, request, redirect, url_for, abort
 from models import *
 from utils.images import  *
+from collections import defaultdict
 
 
 app = Flask(__name__)
@@ -140,6 +141,20 @@ def team_details(team_code):
     upcoming = [g for g in games if g.game_status == "UPCOMING"]
     teams_sidebar = get_clubsbyseasoncode(season)
     roster = get_roster(season, team_code)
+    coaches = get_coaches(season, team_code)
+
+    grouped_roster = defaultdict(list)
+
+    for player in roster:
+        grouped_roster[player.position_name].append(player)
+
+    # SORT po broju dresa
+    for pos in grouped_roster:
+        grouped_roster[pos].sort(
+            key=lambda p: (p.dorsal is None, p.dorsal)
+        )
+
+    position_order = ["Guard", "Forward", "Center"]
 
     if not team:
         abort(404)
@@ -173,7 +188,10 @@ def team_details(team_code):
         team=team,
         teams_sidebar=teams_sidebar,
         # season={"code": season_code},
-         roster=roster,
+        roster=roster,
+        coaches = coaches,
+        grouped_roster=grouped_roster,
+        position_order=position_order,
         # coaches=[p for p in roster if p.role and 'Coach' in p.role],
         next_game = next_game,
         results=results,
@@ -181,7 +199,9 @@ def team_details(team_code):
         games=games
         )
 
-
+@app.route("/person/<person_code>")
+def person_profile(person_code):
+    return render_template("player.html")
 app.register_blueprint(main_bp)
 
 if __name__ == "__main__":

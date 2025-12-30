@@ -37,33 +37,71 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="games-tab" data-bs-toggle="tab" data-bs-target="#games" type="button" role="tab">Games</button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats" type="button" role="tab">Stats</button>
+  </li>
 </ul>
 
 <div class="tab-content" id="teamTabsContent">
 
   <!-- Roster -->
-  <div class="tab-pane fade show active" id="roster" role="tabpanel">
-    <div class="row">
-      {% for player in roster %}
-        <div class="player-card">
-          <div class="player-img">
-            <img src="{{ person_img(player.club_code, player.person_code) }}"
-                 alt="{{ player.formatted_name }}">
+<div class="tab-pane fade show active" id="roster" role="tabpanel">
+
+  {% for pos in position_order %}
+    {% if grouped_roster[pos] %}
+
+      <h5 class="position-title">{{ pos }}</h5>
+
+      <div class="persons-grid">
+        {% for player in grouped_roster[pos] %}
+        <a href="{{ url_for('person_profile', person_code=player.person_code) }}" class="player-card-link">
+          <div class="person-card">
+            <div class="person-img">
+              <img src="{{ person_img(player.club_code, player.person_code) }}"
+                   alt="{{ player.formatted_name }}">
+            </div>
+
+            <div class="person-name">
+              <div class="first-name">{{ player.first_name }}</div>
+              <div class="last-name">{{ player.last_name }}</div>
+            </div>
+
+            <div class="player-number">
+              <span class="jersey-prefix">#</span>{{ player.dorsal }}
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+  {% endfor %}
+   {% if coaches %}
+   <h5 class="position-title">Coaches</h5>
+
+    <div class="persons-grid">
+      {% for coach in coaches %}
+        <a href="{{ url_for('person_profile', person_code=coach.person_code) }}"
+           class="person-card coach">
+
+          <div class="person-img">
+            <img src="{{ person_img(coach.club_code, coach.person_code) }}"
+                 alt="{{ coach.formatted_name }}">
           </div>
 
-          <div class="player-name">
-            <div class="first-name">{{ player.first_name }}</div>
-            <div class="last-name">{{ player.last_name }}</div>
+          <div class="person-name">
+            <div class="coach-title">{{ coach.person_type_name }}</div>
+            <div class="first-name">{{ coach.first_name }}</div>
+            <div class="last-name">{{ coach.last_name }}</div>
           </div>
 
-          <div class="player-number">
-             <span class="jersey-prefix">#</span>{{ player.dorsal }}
-          </div>
-        </div>
-
+        </a>
       {% endfor %}
     </div>
-  </div>
+  {% endif %}
+
+</div>
+
 
   <!-- Games -->
   <div class="tab-pane fade" id="games" role="tabpanel">
@@ -106,12 +144,10 @@
         </div>
         {% endif %}
 
-
-
-
-
-
   </div>
+    <div class="tab-pane fade" id="stats" role="tabpanel">
+   </div>
+
 </div>
 
 
@@ -124,8 +160,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 200px;
-  padding: 30px 150px;
+  height: 210px;
+  padding: 10px 10px;
   background: #f4f5f7; /* svetla, neutralna pozadina */
   border-radius: 10px;
   overflow: hidden;
@@ -284,14 +320,36 @@
 
 .player-card {
   width: 322px;
-  height: 75px;
+  height: 76px;
+  background: #fff;
+  border: 1px solid #e6e6e6;     /* blagi okvir */
+  border-radius: 6px;           /* blago zaobljenje */
   display: flex;
   align-items: center;
-  background: #fff;
-  color: #000;
-  border-radius: 8px;
-  padding: 0;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
+
+.player-card:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.person-card {
+  width: 322px;
+  height: 76px;
+  background: #fff;
+  border: 1px solid #e6e6e6;     /* blagi okvir */
+  border-radius: 6px;           /* blago zaobljenje */
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.person-card:hover {
+  border-color: #cfcfcf;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
 
 /* LEVA STRANA – SLIKA */
 .player-img {
@@ -309,20 +367,47 @@
   object-fit: cover;
 }
 
+
+.person-img {
+  width: 95px;
+  height: 75px;
+  overflow: hidden;           /* crop */
+  display: flex;
+  align-items: flex-start;    /* fokus na vrh */
+  justify-content: center;
+}
+
+.person-img img {
+  width: 95px;                /* PRVO skaliranje po širini */
+  height: auto;
+  object-fit: cover;
+}
+
 /* SREDINA – IME / PREZIME */
-.player-name {
+.person-name {
   width: 140px;
   padding-left: 10px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
-.player-name .first-name {
+.person-name .first-name {
   font-size: 14px;
 }
 
-.player-name .last-name {
+.person-name .coach-title {
+  font-size: 12px;
+  font-weight: 600;
+  padding-bottom: 6px;
+}
+
+.person-name .last-name {
   font-size: 14px;
   font-weight: 700;
+}
+
+
+.person-card.coach .person-name .last-name {
+  font-weight: 400;
 }
 
 /* DESNO – BROJ DRESA */
@@ -345,7 +430,35 @@
   font-size: 0.9em
 }
 
+.position-title {
+  margin: 32px 0 16px 0;
+  padding-left: 4px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 
+.persons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 u redu */
+  gap: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.persons-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.persons-card-link:hover .persons-card {
+  border-color: #cfcfcf;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.person-card.coach {
+  height: 100px;   /* npr malo viša */
+}
 
 </style>
 
