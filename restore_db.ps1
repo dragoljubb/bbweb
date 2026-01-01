@@ -13,7 +13,7 @@ $PGUSER = "postgres"
 $DBNAME = "bb_test"
 
 # Putanja do backup fajla (.backup) ili foldera
-$BACKUP_PATH = "C:\myPython\PythonLearning\bbWeb\database_backup\bck_bb_test_20251229_1600.backup"
+$BACKUP_PATH = "C:\myPython\PythonLearning\bbWeb\database_backup\bck_bb_test_20251230_1500.backup"
 
 Write-Host "1️⃣ Prekid konekcija ka bazi..."
 psql -U $PGUSER -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='$DBNAME';"
