@@ -27,7 +27,6 @@
 
 </div>
 
-
  <h2 class="team-name">{{ team.club_name }}</h2>
 
 <ul class="nav nav-tabs mb-3" id="teamTabs" role="tablist">
@@ -145,10 +144,207 @@
         {% endif %}
 
   </div>
+
+   <!-- STATS -->
     <div class="tab-pane fade" id="stats" role="tabpanel">
+
+  <div class="row g-3 mb-4">
+
+    <div class="col-md-2">
+      <div class="stat-card">
+  <div class="stat-label">Points</div>
+
+  <div class="stat-body">
+    <div class="stat-row">
+      <span class="stat-prefix">TOT</span>
+      <span class="stat-value">{{ team_stats.acc_points }}</span>
+    </div>
+
+    <div class="stat-row">
+      <span class="stat-prefix">AVG</span>
+      <span class="stat-value">{{ "%.1f"|format(team_stats.avg_points) }}</span>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="col-md-2">
+       <div class="stat-card">
+  <div class="stat-label">Rebounds</div>
+
+  <div class="stat-body">
+    <div class="stat-row">
+      <span class="stat-prefix">TOT</span>
+      <span class="stat-value">{{ team_stats.acc_total_rebounds }}</span>
+    </div>
+
+    <div class="stat-row">
+      <span class="stat-prefix">AVG</span>
+       <span class="stat-value">{{ "%.1f"|format(team_stats.avg_total_rebounds) }}</span>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="col-md-2">  <div class="stat-card">
+  <div class="stat-label">Asissts</div>
+
+  <div class="stat-body">
+    <div class="stat-row">
+      <span class="stat-prefix">TOT</span>
+      <span class="stat-value">{{ team_stats.acc_assistances }}</span>
+    </div>
+
+    <div class="stat-row">
+      <span class="stat-prefix">AVG</span>
+       <span class="stat-value">{{ "%.1f"|format(team_stats.avg_assistances) }}</span>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="stat-card">
+  <div class="stat-label">Steals</div>
+
+  <div class="stat-body">
+    <div class="stat-row">
+      <span class="stat-prefix">TOT</span>
+      <span class="stat-value">{{ team_stats.acc_steals }}</span>
+    </div>
+
+    <div class="stat-row">
+      <span class="stat-prefix">AVG</span>
+          <span class="stat-value">{{ "%.1f"|format(team_stats.avg_steals) }}</span>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <div class="col-md-2">
+      <div class="stat-card">
+      <div class="stat-label">Blocks</div>
+
+      <div class="stat-body">
+      <div class="stat-row">
+       <span class="stat-prefix">TOT</span>
+       <span class="stat-value">{{ team_stats.acc_blocks_favour }}</span>
+
+      </div>
+
+      <div class="stat-row">
+        <span class="stat-prefix">AVG</span>
+         <span class="stat-value">{{ "%.1f"|format(team_stats.avg_blocks_favour) }}</span>
+      </div>
+    </div>
+    </div>
+     </div>
+
+    <div class="col-md-2">
+      <div class="stat-card stat-highlight">
+       <div class="stat-label">PIR</div>
+
+      <div class="stat-body">
+      <div class="stat-row">
+       <span class="stat-prefix">TOT</span>
+       <span class="stat-value">{{ team_stats.acc_valuation }}</span>
+      </div>
+
+      <div class="stat-row">
+        <span class="stat-prefix">AVG</span>
+         <span class="stat-value">{{ "%.1f"|format(team_stats.avg_valuation) }}</span>
+      </div>
+    </div>
+      </div>
+    </div>
+
+  </div>
+
+
+      <div class="table-responsive mt-4">
+  <table class="table table-hover align-middle player-stats-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Player</th>
+        <th>Played</th>
+        <th>Time</th>
+        <th>PTS</th>
+        <th>PTS_A</th>
+        <th>RB</th>
+        <th>AS</th>
+        <th>ST</th>
+        <th>BL</th>
+        <th>FG2</th>
+        <th>FG2%</th>
+        <th>FG3</th>
+        <th>FG3%</th>
+        <th>FT</th>
+        <th>FT%</th>
+        <th>PIR</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in player_acc_stats %}
+      <tr>
+
+        <td>{{ p.dorsal }}</td>
+        <td>{{ p.person_name }}</td>
+        <td>{{ p.acc_games_played }}</td>
+        <td>{{ (p.acc_time_played_sec // 60) }}:{{ '%02d' % (p.acc_time_played_sec % 60) }}</td>
+        <td>{{ p.acc_points }}</td>
+        <td>{{ p.acc_points }}</td>
+        <td>{{ p.acc_rebounds_total }}</td>
+        <td>{{ p.acc_assists }}</td>
+        <td>{{ p.acc_steals }}</td>
+        <td>{{ p.acc_blocks_favour }}</td>
+        <td>{{ p.acc_fg2_made }}/{{ p.acc_fg2_attempted }}</td>
+        <td>{{ "%.1f"|format(p.acc_fg2_num * 100) }}%</td>
+        <td>{{ p.acc_fg3_made }}/{{ p.acc_fg3_attempted }}</td>
+        <td>{{ "%.1f"|format(p.acc_fg3_num * 100) }}%</td>
+        <td>{{ p.acc_ft_made }}/{{ p.acc_ft_attempted }}</td>
+        <td>{{ "%.1f"|format(p.acc_ft_num * 100) }}%</td>
+        <td>{{ p.acc_valuation }}</td>
+      </tr>
+      {% endfor %}
+
+     <!-- TEAM TOTAL -->
+  <tr>
+    <td></td>
+    <td>TOTALS</td>
+    <td>{{ team_stats.acc_games_played }}</td>
+    <td>{{ (team_stats.acc_time_played // 60) }}:{{ '%02d' % (team_stats.acc_time_played % 60) }}</td>
+    <td>{{ team_stats.acc_points }}</td>
+    <td>{{ team_stats.avg_points }}</td>
+    <td>{{ team_stats.acc_total_rebounds }}</td>
+    <td>{{ team_stats.acc_assistances  }}</td>
+    <td>{{ team_stats.acc_steals }}</td>
+    <td>{{ team_stats.acc_blocks_favour }}</td>
+    <td>{{ team_stats.acc_fg2_txt }}</td>
+    <td>{{ "%.1f"|format(team_stats.acc_fg2_num * 100) }}%</td>
+    <td>{{ team_stats.acc_fg3_txt}}</td>
+    <td>{{ "%.1f"|format(team_stats.acc_fg3_num * 100) }}%</td>
+    <td>{{ team_stats.acc_ft_txt }}</td>
+    <td>{{ "%.1f"|format(team_stats.acc_ft_num * 100) }}%</td>
+    <td>{{ team_stats.acc_valuation }}</td>
+  </tr>
+
+
+
+
+    </tbody>
+  </table>
+</div>
+
+
    </div>
 
 </div>
+
+
+
 
 
 <!-- CSS -->
@@ -318,21 +514,6 @@
 }
 
 
-.player-card {
-  width: 322px;
-  height: 76px;
-  background: #fff;
-  border: 1px solid #e6e6e6;     /* blagi okvir */
-  border-radius: 6px;           /* blago zaobljenje */
-  display: flex;
-  align-items: center;
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.player-card:hover {
-  border-color: #d0d0d0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
 
 .person-card {
   width: 322px;
@@ -459,6 +640,116 @@
 .person-card.coach {
   height: 100px;   /* npr malo viša */
 }
+
+
+.stat-card {
+  height: 160px;            /* ili 200px */
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;        /* centriranje label i ostalog horiz */
+}
+
+stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;      /* spušta POINTS */
+  margin-bottom: 4px;    /* smanjuje razmak do TOT+AVG */
+  height: auto;
+}
+
+.stat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* sada TOT+AVG idu malo više */
+  gap: 4px;                     /* razmak između TOT i AVG */
+  margin-top: 20px;             /* dodatno “dizanje” TOT+AVG */
+}
+
+
+
+.stat-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+}
+
+.stat-prefix {
+  position: absolute;
+  left: 6px;
+  font-size: 0.7rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+
+.stat-highlight {
+  background: #ddd;
+}
+
+
+.player-stats-table {
+  background: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.player-stats-table thead {
+  background-color: #f8f9fa; /* svetlosiva ili može #e7f1ff za diskretno plavo */
+  color: #212529;
+  font-weight: 600;
+}
+
+.player-stats-table th,
+.player-stats-table td {
+  border-bottom: 1px solid #dee2e6; /* diskretna siva linija */
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px 8px;
+}
+
+.player-stats-table tbody tr:hover {
+  background-color: #e7f1ff; /* diskretno plavi hover */
+}
+
+.player-stats-table td:first-child,
+.player-stats-table th:first-child {
+  width: 40px; /* broj dresa */
+}
+
+.player-stats-table td:nth-child(2),
+.player-stats-table th:nth-child(2) {
+  text-align: left; /* ime igrača */
+  padding-left: 12px;
+}
+
+.team-total {
+  background: #E5E7EB;
+}
+
+
+
+
 
 </style>
 

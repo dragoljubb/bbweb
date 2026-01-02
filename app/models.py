@@ -284,3 +284,37 @@ def get_coaches(season_code: str, club_code: str):
         ).fetchall()
         return result
 
+def get_team_stats(season_code: str, club_code: str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, club_code, season_code,
+                            acc_games_played,
+	                        avg_games_played,
+	                        acc_time_played,
+ 	                        avg_time_played,
+                            avg_points, acc_points,
+                            acc_fg2_num, acc_fg2_txt, acc_fg3_num, acc_fg3_txt, acc_ft_num, acc_ft_txt, 
+                            avg_fg2_num, avg_fg2_txt, avg_fg3_num, avg_fg3_txt, avg_ft_num, avg_ft_txt,
+                            avg_offensive_rebounds, acc_offensive_rebounds, avg_defensive_rebounds, acc_defensive_rebounds, 
+                            avg_total_rebounds, acc_total_rebounds, avg_assistances, acc_assistances, avg_steals, 
+                            acc_steals, avg_blocks_favour, acc_blocks_favour, avg_blocks_against, 
+                            acc_blocks_against, avg_fouls_commited, acc_fouls_commited, avg_fouls_received, 
+                            acc_fouls_received, avg_valuation, acc_valuation
+                     FROM dwh.vw_team_stats
+                     WHERE club_code = :pclub_code
+                       AND season_code = :pseason_code
+                 """), {"pclub_code": club_code, "pseason_code": season_code}
+        ).mappings().first()
+        return result
+
+def get_player_acc_stats(season_code: str, club_code: str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, dorsal, season_code, club_code, acc_points, acc_assists, acc_rebounds_total, acc_rebounds_defensive, acc_rebounds_offensive, acc_steals, acc_blocks_favour, acc_blocks_against, acc_turnovers, acc_fouls_commited, acc_fouls_received, acc_plus_minus, acc_valuation, acc_time_played_sec, acc_games_played, acc_games_started, acc_total_games_started, acc_fg2_made, acc_fg3_made, acc_fg2_attempted, acc_fg3_attempted, acc_fg_made_total, acc_fg_attempted_total, acc_ft_made, acc_ft_attempted, acc_accuracy_made, acc_accuracy_attempted, acc_pct_2p, acc_pct_3p, acc_pct_ft, acc_fg2_num, acc_fg2_txt, acc_fg3_num, acc_fg3_txt, acc_ft_num, acc_ft_txt, person_name
+	                FROM dwh.vw_person_acc_stats
+                    WHERE club_code = :pclub_code
+                    AND season_code = :pseason_code
+                    ORDER BY CAST (dorsal as int)
+            """), {"pclub_code": club_code, "pseason_code": season_code}
+        ).fetchall()
+        return result
