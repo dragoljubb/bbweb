@@ -264,28 +264,92 @@
 
       <div class="table-responsive mt-4">
   <table class="table table-hover align-middle player-stats-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Player</th>
-        <th>Played</th>
-        <th>Time</th>
-        <th>PTS</th>
-        <th>PTS_A</th>
-        <th>RB</th>
-        <th>AS</th>
-        <th>ST</th>
-        <th>BL</th>
-        <th>FG2</th>
-        <th>FG2%</th>
-        <th>FG3</th>
-        <th>FG3%</th>
-        <th>FT</th>
-        <th>FT%</th>
-        <th>PIR</th>
+   <thead>
+  <tr>
+    <!-- bez grupisanja -->
+   <th class="group-start">#</th>
+    <th class="group-start">Player</th>
+    <th class="group-start">Played</th>
 
-      </tr>
-    </thead>
+    <!-- TIME (grupa od 2) -->
+    <th colspan="2" class="group-start">Time</th>
+
+    <!-- POINTS -->
+    <th colspan="2" class="group-start">Points</th>
+
+    <!-- REBOUNDS -->
+    <th colspan="2" class="group-start">Rebounds</th>
+
+    <!-- ASSISTS -->
+    <th colspan="2" class="group-start">ASSISTS</th>
+
+    <!-- STEALS -->
+    <th colspan="2" class="group-start">STEALS</th>
+
+    <!-- BLOCKS -->
+    <th colspan="2" class="group-start">BLOCKS</th>
+
+    <!-- FG2 -->
+    <th colspan="2" class="group-start">FG2</th>
+
+    <!-- FG3 -->
+    <th colspan="2" class="group-start">FG3</th>
+
+    <!-- FT -->
+    <th colspan="2" class="group-start">FT</th>
+
+    <!-- PIR -->
+    <th colspan="2" class="group-start">PIR</th>
+  </tr>
+
+  <tr>
+
+     <th class="group-start"></th>
+    <th class="group-start"></th>
+    <th class="group-start"></th>
+
+    <!-- TIME -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- POINTS -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- RB -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- AS -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- ST -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- BL -->
+    <th class="group-start">T</th>
+    <th>A</th>
+
+    <!-- FG2 -->
+    <th class="group-start">M/A</th>
+    <th>%</th>
+
+    <!-- FG3 -->
+    <th class="group-start">M/A</th>
+    <th>%</th>
+
+    <!-- FT -->
+    <th class="group-start">M/A</th>
+    <th>%</th>
+
+    <!-- PIR -->
+    <th class="group-start">TOT</th>
+    <th>AVG</th>
+  </tr>
+</thead>
+
     <tbody>
       {% for p in player_acc_stats %}
       <tr>
@@ -295,11 +359,15 @@
         <td>{{ p.acc_games_played }}</td>
         <td>{{ (p.acc_time_played_sec // 60) }}:{{ '%02d' % (p.acc_time_played_sec % 60) }}</td>
         <td>{{ p.acc_points }}</td>
-        <td>{{ p.acc_points }}</td>
+        <td>{{ p.avg_points }}</td>
         <td>{{ p.acc_rebounds_total }}</td>
+         <td>{{ p.avg_rebounds_total }}</td>
         <td>{{ p.acc_assists }}</td>
+        <td>{{ p.avg_assists }}</td>
         <td>{{ p.acc_steals }}</td>
+        <td>{{ p.avg_steals }}</td>
         <td>{{ p.acc_blocks_favour }}</td>
+        <td>{{ p.avg_blocks_favour }}</td>
         <td>{{ p.acc_fg2_made }}/{{ p.acc_fg2_attempted }}</td>
         <td>{{ "%.1f"|format(p.acc_fg2_num * 100) }}%</td>
         <td>{{ p.acc_fg3_made }}/{{ p.acc_fg3_attempted }}</td>
@@ -741,12 +809,59 @@ stat-label {
 .player-stats-table th:nth-child(2) {
   text-align: left; /* ime igrača */
   padding-left: 12px;
+}.player-stats-table {
+  background: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.85rem;
 }
 
-.team-total {
-  background: #E5E7EB;
+.player-stats-table thead th {
+  font-weight: normal;       /* ne bold */
+  color: #6b747c;            /* diskretna siva, bledija */
+  background-color: #f8f9fa; /* ili ostavi diskretno plavo #e7f1ff */
+  text-align: center;
+  vertical-align: middle;
+  padding: 6px 8px;
 }
 
+.player-stats-table tbody tr:hover {
+  background-color: #e7f1ff;
+}
+
+.player-stats-table td:first-child,
+.player-stats-table th:first-child {
+  width: 40px;
+}
+
+.player-stats-table td:nth-child(2),
+.player-stats-table th:nth-child(2) {
+  text-align: left;
+  padding-left: 12px;
+}
+
+
+.player-stats-table thead th {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* BODY – zadržava linije */
+.player-stats-table tbody td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* HEADER – bez ikakvih linija */
+.player-stats-table thead th {
+  border-bottom: none;
+  border-top: none;
+}
+
+.player-stats-table th.group-start,
+.player-stats-table td.group-start {
+  border-left: 1px solid rgba(0,0,0,0.05);
+}
 
 
 

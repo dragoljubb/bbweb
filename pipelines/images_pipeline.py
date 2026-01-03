@@ -7,7 +7,7 @@ def save_person_image(person_code, club_code, image_url):
     Čuva sliku igrača u app/static/people/{club_code}/{person_code}.jpg
     """
     import os
-
+    print(f"Saving person image...{person_code}")
     # ide do project_root, jer run_images.py je u load/
     base_dir = os.path.dirname(os.path.dirname(__file__))
     path = os.path.join(base_dir, "app", "static", "people", club_code)
