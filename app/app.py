@@ -143,7 +143,7 @@ def team_details(team_code):
     roster = get_roster(season, team_code)
     coaches = get_coaches(season, team_code)
     team_stats = get_team_stats(season, team_code)
-    player_acc_stats = get_player_acc_stats(season, team_code)
+    players_stats = get_players_stats(season, team_code)
 
     grouped_roster = defaultdict(list)
 
@@ -200,7 +200,7 @@ def team_details(team_code):
         upcoming=upcoming,
         games=games,
         team_stats = team_stats,
-        player_acc_stats = player_acc_stats
+        players_stats = players_stats
         )
 
 @app.route("/person/<person_code>")
