@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2 class="mb-3">Games</h2>
+<h2 class="mt-4 mb-3">Games</h2>
 
 <!-- ========================= -->
 <!-- Filter bar -->
@@ -73,42 +73,33 @@
 <!-- TEAM VIEW -->
 <!-- ========================= -->
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Home</th>
-            <th>Away</th>
-            <th>Status</th>
-            <th>Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for g in games %}
-            {% set row_class = "" %}
-            {% if g.game_status == 'RESULT' %}
-                {% set row_class = "table-success" %}
-            {% elif g.game_status == 'NEXT' %}
-                {% set row_class = "table-warning" %}
-            {% elif g.game_status == 'UPCOMING' %}
-                {% set row_class = "table-info" %}
-            {% endif %}
-            <tr class="{{ row_class }}">
-                <td>{{ g.game_date.strftime('%d %b %Y') }}</td>
-                <td>{{ g.home_code }}</td>
-                <td>{{ g.away_code }}</td>
-                <td>{{ g.game_status }}</td>
-                <td>
-                    {% if g.played %}
-                        {{ g.home_score }} - {{ g.away_score }}
-                    {% else %}
-                        -
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% if next_game %}
+          <h5 class="mt-3">Next Game</h5>
+          <div class="next-game">
+            {% set g = next_game %}
+            {% include "components/game_card_full.html" %}
+          </div>
+        {% endif %}
+
+        {% if results %}
+        <h5 class="mt-4">Results</h5>
+        <div class="results-games">
+          {% for g in results %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if upcoming %}
+        <h5 class="mt-4">Upcoming Games</h5>
+        <div class="upcoming-games">
+          {% for g in upcoming %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+
 
 {% endif %}
 {% endblock %}

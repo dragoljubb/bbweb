@@ -64,6 +64,7 @@ def games():
         rounds = [{"season_code": r.season_code, "round": r.round, "round_name": r.round_name, "phase": r.phase}
                   for r in get_rounds(season)]
         games_data = get_upcoming_games(selected_round, season)
+
         return render_template("games.html",
                                mode="LEAGUE",
                                season=season,
@@ -78,7 +79,10 @@ def games():
                                teams_sidebar=teams_sidebar)
     else:
         # TEAM VIEW
-        games_data = get_team_games(season, team)
+        games = get_team_games(season, team)
+        next_game = next((g for g in games if g.game_status == "NEXT"), None)
+        results = [g for g in games if g.game_status == "RESULT"]
+        upcoming = [g for g in games if g.game_status == "UPCOMING"]
         season_label = next((s["label"] for s in seasons if s["code"] == season), season)
         selected_team_name = next((t["team_name"] for t in teams if t["code"] == team), team)
         return render_template("games.html",
@@ -93,7 +97,11 @@ def games():
                                teams_sidebar=teams_sidebar,
                                selected_team_name=selected_team_name,
                                season_label=season_label,
-                               games=games_data)
+                               games=games,
+                               next_game=next_game,
+                               results=results,
+                               upcoming=upcoming
+                               )
 
 @main_bp.route("/standings")
 def standings():
@@ -206,6 +214,28 @@ def team_details(team_code):
 @app.route("/person/<person_code>")
 def person_profile(person_code):
     return render_template("player.html")
+
+
+@main_bp.route("/players")
+def players():
+    # default sezona ili iz query parametra
+    season_code = request.args.get("season", "E2025")
+
+    # sve dostupne sezone za dropdown
+    listseasons = get_seasons(COMPETITION_CODE)
+    seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
+
+    # igrači za sezonu
+    players_list = get_players_by_season(season_code)  # vraca listu objekata
+    # sortiramo po prezimenu (azbučno)
+    teams_sidebar = get_clubsbyseasoncode(season_code)
+    return render_template(
+        "players.html",
+        teams_sidebar=teams_sidebar,
+        players=players_list,
+        selected_season=season_code,
+        seasons=seasons
+    )
 app.register_blueprint(main_bp)
 
 if __name__ == "__main__":

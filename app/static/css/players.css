@@ -1,0 +1,84 @@
+.players-page .player-card {
+  width: 300px; /* malo uža kartica */
+  height: 76px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  padding-left: 5px; /* pomeramo sve malo levo */
+}
+
+.players-page .player-card:hover {
+  border-color: #cfcfcf;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.players-page .person-img {
+  width: 95px; /* smanjeno sa 95px */
+  height: 75px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.players-page .person-img img {
+  width: 95px;
+  height: auto;
+  object-fit: cover;
+}
+
+.players-page .person-name {
+  width: 140px;
+  padding-left: 10px;
+  line-height: 1.2;
+}
+
+.players-page .person-name .first-name {
+  font-size: 14px;
+}
+
+.players-page .person-name .last-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.players-page .player-logo {
+  width: 42px;
+  height: 38px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.players-page .player-logo img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.players-page .players-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.players-page .player-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.players-page .player-card-link:hover .player-card {
+  border-color: #cfcfcf;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.players-page #loadMorePlayers {
+  min-width: 180px;
+}

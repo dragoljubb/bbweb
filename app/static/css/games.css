@@ -161,3 +161,76 @@
     display: flex;
     gap: 12px;
 }
+
+.standings-table th,
+.standings-table td {
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+
+}
+.logo-col {
+    width: 32px;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.team-logo {
+    height: 26px;
+    width: auto;          /* ❗ sprečava izobličenje */
+    max-width: 100%;
+    object-fit: contain; /* sigurnost */
+    display: block;
+    margin: 0 auto;
+    margin-left: 5px;
+}
+/* STANDING
+/* posle 6. mesta – Play-off cutoff */
+.standings-table tbody tr:nth-child(6) {
+    border-bottom: 2px dashed #495057;
+}
+
+/* posle 10. mesta – Play-in cutoff */
+.standings-table tbody tr:nth-child(10) {
+    border-bottom: 2px solid #495057;
+}
+
+
+.delta-up {
+    color: #198754;   /* bootstrap green */
+    font-weight: 600;
+}
+
+.delta-down {
+    color: #dc3545;   /* bootstrap red */
+    font-weight: 600;
+}
+
+.delta-equal {
+    color: #6c757d;   /* muted */
+}
+
+.form {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 2px;
+}
+
+.form-win {
+    background-color: #28a74580; /* blaža zelena (opacity 50%) */
+}
+
+.form-loss {
+   background-color: #dc354580; /* blaža crvena (opacity 50%) */
+}
+
+.last5 {
+    white-space: nowrap; /* sprečava “prelamanje” */
+}
+

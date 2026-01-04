@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/games.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/players.css') }}">
 </head>
 <body>
     <!-- Sidebar -->
@@ -33,6 +34,9 @@
     </main>
 
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}
+{% endblock %}
+
 </body>
 </html>
 

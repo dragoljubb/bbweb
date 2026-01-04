@@ -343,3 +343,18 @@ def get_players_stats(season_code: str, club_code: str):
             """), {"pclub_code": club_code, "pseason_code": season_code}
         ).fetchall()
         return result
+
+
+def get_players_by_season(season_code: str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, club_code,person_type, active, position_name, dorsal, first_name, last_name,
+                            formatted_name, height, weight, formatted_date, country_code, country_name,
+                            twitter_account, facebook_account, instagram_account, season_code, last_team, person_type_name
+	                FROM dwh.vw_players_by_season
+                    WHERE active = true AND  season_code = :pseason_code
+                    ORDER BY last_name;
+            """), {"pseason_code": season_code}
+        ).fetchall()
+        return result
+
