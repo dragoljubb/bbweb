@@ -319,6 +319,7 @@ def get_player_acc_stats(season_code: str, club_code: str):
         ).fetchall()
         return result
 
+## stats for the players in the club
 def get_players_stats(season_code: str, club_code: str):
     with SessionLocal() as session:
         result = session.execute(
@@ -356,5 +357,34 @@ def get_players_by_season(season_code: str):
                     ORDER BY last_name;
             """), {"pseason_code": season_code}
         ).fetchall()
+        return result
+
+## stats for the players in the club
+def get_player_stats(season_code: str, person_code : str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, season_code, club_code, acc_points, acc_assists as acc_assistances, 
+                            acc_rebounds_total as acc_total_rebounds, 
+                            acc_rebounds_defensive, acc_rebounds_offensive, acc_steals, acc_blocks_favour, 
+                            acc_blocks_against, acc_turnovers, acc_fouls_commited, acc_fouls_received, acc_plus_minus, 
+                            acc_valuation, acc_time_played_sec, acc_games_played, acc_games_started,
+                            acc_total_games_started,
+                            acc_fg2_made, acc_fg3_made, acc_fg2_attempted, acc_fg3_attempted, acc_fg_made_total, acc_fg_attempted_total,
+                            acc_ft_made, acc_ft_attempted, acc_accuracy_made, acc_accuracy_attempted, acc_pct_2p, acc_pct_3p, acc_pct_ft, 
+                            acc_fg2_num, acc_fg2_txt, acc_fg3_num, acc_fg3_txt, acc_ft_num, acc_ft_txt, 
+                            avg_points, avg_assists as avg_assistances, avg_rebounds_total as avg_total_rebounds, 
+                            avg_rebounds_defensive, avg_rebounds_offensive,
+                            avg_steals, avg_blocks_favour, avg_blocks_against, avg_turnovers,
+                            avg_fouls_commited, avg_fouls_received, avg_plus_minus, avg_valuation, avg_time_played_sec,
+                            avg_games_played, avg_games_started, avg_total_games_started, avg_fg2_made, avg_fg3_made, avg_fg2_attempted, 
+                            avg_fg3_attempted, avg_fg_made_total, avg_fg_attempted_total, avg_ft_made, avg_ft_attempted, avg_accuracy_made,
+                            avg_accuracy_attempted, avg_pct_2p, avg_pct_3p, avg_pct_ft, avg_fg2_num, avg_fg2_txt, avg_fg3_num, avg_fg3_txt, 
+                            avg_ft_num, avg_ft_txt, person_name, dorsal
+	                FROM dwh.vw_person_stats_v2
+                    WHERE person_code = :pperson_code
+                    AND season_code = :pseason_code
+                    ORDER BY CAST (dorsal as int)
+            """), {"pperson_code": person_code, "pseason_code": season_code}
+        ).mappings().fetchone()
         return result
 

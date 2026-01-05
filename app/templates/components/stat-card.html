@@ -1,0 +1,15 @@
+{# templates/components/stat-card.html #}
+{% macro stat_card(label, avg, tot, highlight=False) %}
+<div class="stat-card {% if highlight %}stat-highlight{% endif %}">
+    <div class="stat-label">{{ label }}</div>
+    <div class="stat-body">
+        <div class="stat-row avg">
+            <span class="stat-value">{{ avg }}</span>
+        </div>
+        <div class="stat-row tot">
+            <span class="stat-prefix">TOT</span>
+            <span class="stat-value">{{ tot }}</span>
+        </div>
+    </div>
+</div>
+{% endmacro %}

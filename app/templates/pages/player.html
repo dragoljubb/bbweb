@@ -1,0 +1,45 @@
+{% from "components/stat-card.html" import stat_card %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/stat-card.css') }}">
+<div class="container mt-4">
+
+  <!-- Player Header -->
+  <div class="row align-items-center mb-4">
+
+    <!-- Player Image -->
+    <div class="col-md-3 text-center text-md-start">
+      <img src="{{ person_img(player.club_code, player.person_code)}}"
+           alt="{{ player.person_name }}"
+           class="img-fluid rounded" style="max-height: 220px;">
+    </div>
+
+    <!-- Player Info -->
+    <div class="col-md-9">
+      <h1 class="mb-1">{{ player.person_name }}</h1>
+      <p class="text-muted mb-1">{{ player.position }} | #{{ player.dorsal }}</p>
+      <p>
+        <img src="{{ player.club_logo_url }}" alt="{{ player.club_name }}" width="28" class="me-1">
+        {{ player.club_name }}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Player Stats -->
+ <!-- Player Stats -->
+
+  <div class="row g-3">
+    {% for stat in player_stats_list %}
+    <div class="col-6 col-md-2">
+      {{ stat_card(stat.label, "%.1f"|format(stat.avg), stat.tot, stat.highlight) }}
+    </div>
+    {% endfor %}
+
+    <!-- TEST: mora da se pojavi kartica -->
+    <div class="col-6 col-md-2">
+      {{ stat_card("TEST", "12.3", 123, True) }}
+    </div>
+
+  </div>
+
+
+</div>

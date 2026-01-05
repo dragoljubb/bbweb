@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand navbar-top bg-white shadow-sm">
+    <div class="container-fluid">
+        <!-- Levo: logo / title -->
+        <a class="navbar-brand fw-bold" href="{{ url_for('main_bp.home') }}">
+                    BBStatistics
+        </a>
+
+        <!-- Centar: meni -->
+        <ul class="navbar-nav flex-row gap-3 navbar-menu">
+            <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+            <li class="nav-item"><a class="nav-link" href="/stats">Stats</a></li>
+            <li class="nav-item"><a class="nav-link" href="/games">Games</a></li>
+            <li class="nav-item"><a class="nav-link" href="/players">Players</a></li>
+            <li class="nav-item"><a class="nav-link" href="/teams">Teams</a></li>
+            <li class="nav-item"><a class="nav-link" href="/standings">Standings</a></li>
+            <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
+        </ul>
+
+        <!-- Desno: settings/user -->
+        <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-gear"></i>
+            <i class="bi bi-person-circle"></i>
+        </div>
+    </div>
+</nav>

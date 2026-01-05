@@ -1,0 +1,105 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<h2 class="mt-4 mb-3">Games</h2>
+
+<!-- ========================= -->
+<!-- Filter bar -->
+<!-- ========================= -->
+<form method="get" class="game-filter">
+    <!-- Season -->
+    <select name="season" onchange="this.form.submit()">
+        {% for s in seasons %}
+            <option value="{{ s.code }}"
+                {% if s.code == season %}selected{% endif %}>
+                {{ s.label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- Phase -->
+    <select name="phase" onchange="this.form.submit()">
+        {% for p in phases %}
+            <option value="{{ p.phase }}"
+                {% if p == phase %}selected{% endif %}>
+                {{ p.phase }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- Team -->
+    <select name="team" onchange="this.form.submit()">
+        <option value="">All teams</option>
+        {% for t in teams %}
+            <option value="{{ t.code }}"
+                {% if t.code == selected_team %}selected{% endif %}>
+                {{ t.team_name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <!-- zadrži round -->
+    <input type="hidden" name="round" value="{{ selected_round }}">
+</form>
+
+<!-- ========================= -->
+<!-- LEAGUE VIEW -->
+<!-- ========================= -->
+{% if mode == "LEAGUE" %}
+
+<div class="round-slider">
+    {% for r in rounds %}
+        <a href="?season={{ season }}&round_type={{ phase }}&round={{ r.round }}">
+            Round {{ r.round }}
+        </a>
+    {% endfor %}
+</div>
+
+
+<div class="round-games">
+    {% if games %}
+       {% for g in games %}
+             {% include "components/game_card_full.html" %}
+        {% endfor %}
+    {% else %}
+        <p>No games in this round.</p>
+    {% endif %}
+</div>
+
+{% else %}
+
+<!-- ========================= -->
+<!-- TEAM VIEW -->
+<!-- ========================= -->
+
+{% if next_game %}
+          <h5 class="mt-3">Next Game</h5>
+          <div class="next-game">
+            {% set g = next_game %}
+            {% include "components/game_card_full.html" %}
+          </div>
+        {% endif %}
+
+        {% if results %}
+        <h5 class="mt-4">Results</h5>
+        <div class="results-games">
+          {% for g in results %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if upcoming %}
+        <h5 class="mt-4">Upcoming Games</h5>
+        <div class="upcoming-games">
+          {% for g in upcoming %}
+            {% include "components/game_card_full.html" %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+<div class="container-fluid pt-4">
+
+    {% if current_round %}
+    <div class="card bg-primary text-white mb-4 p-3">
+        <h2>{{ current_round.round_name }}</h2>
+        <p>{{ current_round.min_game_start.strftime('%b %d, %Y') }} - {{ current_round.max_game_start.strftime('%b %d, %Y') }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Slider utakmica aktivnog kola -->
+
+    <div class="games-slider-wrapper mb-4">
+    <button class="slide-btn left">&lt;</button>
+
+    <div class="games-slider">
+        {% for game in games %}
+            {% include "components/game_card_compact.html" %}
+        {% endfor %}
+    </div>
+
+    <button class="slide-btn right">&gt;</button>
+    </div>
+
+
+   <!-- =========================
+     NEWS SECTION
+     ========================= -->
+   <section class="news-section">
+    <div class="container-fluid px-2">
+
+        <!-- MAIN VEST -->
+        {% if main_news %}
+        <div class="main-news-card d-flex align-items-center">
+            <div class="main-news-img flex-shrink-0">
+                <img src="{{news_image(main_news.id) }}" alt="{{ main_news.newstitle }}">
+            </div>
+            <div class="main-news-text ms-4">
+                <h2 class="main-news-title">{{ main_news.newstitle }}</h2>
+                <p class="main-news-lead">{{ main_news.newslead }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- TRI MALE VESTI -->
+        <div class="small-news-row mt-3"> <!-- dodajemo malu marginu-top ako je potrebno -->
+            {% for n in slider_news[:3] %}
+            <div class="small-news-card d-flex align-items-center">
+                <div class="small-news-img flex-shrink-0">
+                    <img src="{{news_image(n.id)}}" alt="{{ n.newstitle }}">
+                </div>
+                <div class="small-news-text ms-3">
+                    <h5 class="small-news-title">{{ n.newstitle }}</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

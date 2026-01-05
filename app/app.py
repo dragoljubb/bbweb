@@ -19,7 +19,7 @@ def home():
     main_news, slider_news = get_home_news()
 
     teams_sidebar = get_clubsbyseasoncode(def_season_code)
-    return render_template('home.html',
+    return render_template('pages/home.html',
                            current_round=current_round,
                            games=games,
                            main_news=main_news,
@@ -65,7 +65,7 @@ def games():
                   for r in get_rounds(season)]
         games_data = get_upcoming_games(selected_round, season)
 
-        return render_template("games.html",
+        return render_template("pages/games.html",
                                mode="LEAGUE",
                                season=season,
                                phase=phase,
@@ -85,7 +85,7 @@ def games():
         upcoming = [g for g in games if g.game_status == "UPCOMING"]
         season_label = next((s["label"] for s in seasons if s["code"] == season), season)
         selected_team_name = next((t["team_name"] for t in teams if t["code"] == team), team)
-        return render_template("games.html",
+        return render_template("pages/games.html",
                                mode="TEAM",
                                season=season,
                                phase=phase,
@@ -114,7 +114,7 @@ def standings():
     standings = get_standings(season_code, round_)
     teams_sidebar = get_clubsbyseasoncode(season_code)
     return render_template(
-        "standings.html",
+        "pages/standings.html",
         standings=standings,
         rounds=rounds,
         selected_round=round_,
@@ -131,7 +131,7 @@ def teams():
     teams = [{"crest": t.crest_url, "team_name": t.club_name, "code": t.club_code}
              for t in get_clubsbyseasoncode(season_code)]
     return render_template(
-        "teams.html",
+        "pages/teams.html",
         teams_sidebar=teams_sidebar,
         teams = teams,
         selected_season=season_code,
@@ -166,6 +166,18 @@ def team_details(team_code):
 
     position_order = ["Guard", "Forward", "Center"]
 
+    team_stats_list = [
+        {"label": "Points", "avg": team_stats.avg_points, "tot": team_stats.acc_points, "highlight": False},
+
+        {"label": "Rebounds", "avg": team_stats.avg_total_rebounds, "tot": team_stats.acc_total_rebounds,
+         "highlight": False},
+        {"label": "Assists", "avg": team_stats.avg_assistances, "tot": team_stats.acc_assistances, "highlight": False},
+        {"label": "Steals", "avg": team_stats.avg_steals, "tot": team_stats.acc_steals, "highlight": False},
+        {"label": "Blocks", "avg": team_stats.avg_blocks_favour, "tot": team_stats.acc_blocks_favour,
+         "highlight": False},
+        {"label": "PIR", "avg": team_stats.avg_valuation, "tot": team_stats.acc_valuation, "highlight": True},
+    ]
+
     if not team:
         abort(404)
 
@@ -194,7 +206,7 @@ def team_details(team_code):
         # ).fetchall()
 
     return render_template(
-        "team_details.html",
+        "pages/team_details.html",
         team=team,
         teams_sidebar=teams_sidebar,
         # season={"code": season_code},
@@ -208,12 +220,30 @@ def team_details(team_code):
         upcoming=upcoming,
         games=games,
         team_stats = team_stats,
-        players_stats = players_stats
+        players_stats = players_stats,
+        team_stats_list=team_stats_list
         )
 
-@app.route("/person/<person_code>")
-def person_profile(person_code):
-    return render_template("player.html")
+@app.route("/player/<person_code>")
+def player_profile(person_code):
+
+    season = request.args.get("season", "E2025")  # default sezona
+    player_stats = get_player_stats(season, person_code)
+    player_stats_list = [
+        {"label": "Points", "avg": player_stats.avg_points, "tot": player_stats.acc_points, "highlight": False},
+        {"label": "Rebounds", "avg": player_stats.avg_total_rebounds, "tot": player_stats.acc_total_rebounds,
+         "highlight": False},
+        {"label": "Assists", "avg": player_stats.avg_assistances, "tot": player_stats.acc_assistances,
+         "highlight": False},
+        {"label": "Steals", "avg": player_stats.avg_steals, "tot": player_stats.acc_steals, "highlight": False},
+        {"label": "Blocks", "avg": player_stats.avg_blocks_favour, "tot": player_stats.acc_blocks_favour,
+         "highlight": False},
+        {"label": "PIR", "avg": player_stats.avg_valuation, "tot": player_stats.acc_valuation, "highlight": True},
+    ]
+    return render_template("pages/player.html",
+                           player = player_stats,
+                           player_stats_list = player_stats_list,
+                           season=season)
 
 
 @main_bp.route("/players")
@@ -230,7 +260,7 @@ def players():
     # sortiramo po prezimenu (azbučno)
     teams_sidebar = get_clubsbyseasoncode(season_code)
     return render_template(
-        "players.html",
+        "pages/players.html",
         teams_sidebar=teams_sidebar,
         players=players_list,
         selected_season=season_code,

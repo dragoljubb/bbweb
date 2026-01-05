@@ -1,0 +1,109 @@
+{% extends "pages/layout.html" %}
+
+{% block content %}
+
+<h2 class="mt-4 mb-3">Teams</h2>
+
+<div class="container mt-4">
+
+  <!-- Filters -->
+  <div class="row mb-4 align-items-center">
+    <div class="col-md-4 mb-2 mb-md-0">
+      <input type="text"
+             id="teamSearch"
+             class="form-control"
+             placeholder="Search teams..." />
+    </div>
+
+    <div class="col-md-4">
+      <select id="seasonSelect" class="form-select">
+        {% for s in seasons %}
+          <option value="{{ s.code }}"
+            {% if s.code == season %}selected{% endif %}>
+            {{ s.label }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- Teams grid -->
+  <div class="row" id="teamsGrid">
+    {% for team in teams %}
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-3 team-card-wrapper" data-name="{{ team.team_name | lower }}">
+        <a href="/teams/{{ team.code }}" class="text-decoration-none text-dark">
+          <div class="team-card d-flex align-items-center p-2" >
+            <img src="{{ team_logo(team.code) }}"
+                 alt="{{ team.team_name }}"
+                 class="team-logo me-2">
+            <span class="team-name text-truncate">{{ team.team_name }}</span>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- JS: live search + season change -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("teamSearch");
+  const grid = document.getElementById("teamsGrid");
+  const cards = Array.from(grid.querySelectorAll(".team-card-wrapper"));
+
+  // Live search
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    cards.forEach(card => {
+      const name = card.dataset.name;
+      card.style.display = name.includes(query) ? "" : "none";
+    });
+  });
+
+  // Season change
+  const seasonSelect = document.getElementById("seasonSelect");
+  seasonSelect.addEventListener("change", () => {
+    const season = seasonSelect.value;
+    window.location.href = `/teams?season=${season}`;
+  });
+});
+</script>
+
+<!-- CSS -->
+<style>
+.team-card {
+  cursor: pointer;
+  display: flex;
+  align-items: center;       /* vertikalno centrirano */
+  height: 70px;              /* fiksna visina */
+  padding: 2rem 0.6rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+.team-logo {
+  height: 42px;
+  width: 42px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-weight: 500;
+  font-size: 0.75rem;         /* sitni font */
+  line-height: 1.1;
+  white-space: nowrap;       /* jedna linija */
+  overflow: hidden;
+  text-overflow: ellipsis;   /* skraćuje predugi tekst sa ... */
+}
+</style>
+
+{% endblock %}
