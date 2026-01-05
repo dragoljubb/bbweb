@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20251230_1500_1">
-      <change afterPath="$PROJECT_DIR$/app/static/css/components/stat-card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/components/stat-card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bbWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/people_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/people_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/games.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/games.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/player.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/player.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/players.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/players.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/standings.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/standings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/team_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/teams.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/teams.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipelines/stats_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipelines/stats_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restore_db.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/restore_db.ps1" afterDir="false" />
-    </list>
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260105_1615" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -259,7 +239,7 @@
       <workItem from="1767446385823" duration="762000" />
       <workItem from="1767447923117" duration="173000" />
       <workItem from="1767449169679" duration="27482000" />
-      <workItem from="1767603010960" duration="19474000" />
+      <workItem from="1767603010960" duration="19623000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -525,7 +505,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767456734008</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="20260105_1615">
+      <option name="closed" value="true" />
+      <created>1767626100497</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1767626100497</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +531,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251209_1300" />
     <MESSAGE value="20251210_1545" />
     <MESSAGE value="20251212_1815" />
     <MESSAGE value="20251213_1015" />
@@ -568,7 +555,8 @@
     <MESSAGE value="20260102_1800_1" />
     <MESSAGE value="20260103_1400" />
     <MESSAGE value="20260103_1700" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260103_1700" />
+    <MESSAGE value="20260105_1615" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260105_1615" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
