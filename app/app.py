@@ -228,6 +228,7 @@ def team_details(team_code):
 def player_profile(person_code):
 
     season = request.args.get("season", "E2025")  # default sezona
+    teams_sidebar = get_clubsbyseasoncode(season)
     player_stats = get_player_stats(season, person_code)
     player_stats_list = [
         {"label": "Points", "avg": player_stats.avg_points, "tot": player_stats.acc_points, "highlight": False},
@@ -243,7 +244,8 @@ def player_profile(person_code):
     return render_template("pages/player.html",
                            player = player_stats,
                            player_stats_list = player_stats_list,
-                           season=season)
+                           season=season,
+                           teams_sidebar = teams_sidebar)
 
 
 @main_bp.route("/players")

@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260105_1615" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260105_1615">
+      <change afterPath="$PROJECT_DIR$/app/static/css/player.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/bbWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/player.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restore_db.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/restore_db.ps1" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,11 +141,11 @@
       <recent name="C:\myPython\PythonLearning\bbWeb\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\myPython\PythonLearning\bbWeb\app\templates\components" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\templates\pages" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\templates" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\static\people" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\static" />
-      <recent name="C:\myPython\PythonLearning\bbweb\app\static\" />
     </key>
   </component>
   <component name="RunManager">
@@ -588,7 +598,7 @@
     <SUITE FILE_PATH="coverage/bbweb$load_person_careerhighs.coverage" NAME="load_person_careerhighs Coverage Results" MODIFIED="1767006217736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_standings.coverage" NAME="load_standings Coverage Results" MODIFIED="1767450053104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1767519791023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1767519801553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1767695989089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/bbWeb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1767475542743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1767622851986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

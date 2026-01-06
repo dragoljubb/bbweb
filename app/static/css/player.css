@@ -1,0 +1,131 @@
+/* ================= HEADER ================= */
+.player-header-fullwidth {
+    width: 100%;                 /* cela širina ekrana */
+    height: 316px;
+    background-color: #d1d5db;  /* svetlo-siva */
+    position: relative;
+}
+
+.player-header-inner {
+    max-width: 1408px;           /* centrirani sadržaj */
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+/* ================= PLAYER IMAGE ================= */
+.player-image-clip {
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.player-image-wrapper {
+    position: absolute;
+    bottom: -200px;    /* pomeranje slike naniže */
+    left: 0;
+}
+
+.player-image-wrapper img {
+    width: auto;             /* proporcionalna širina */
+    height: 500px;           /* visina slike */
+    object-fit: cover;       /* crop da popuni okvir */
+    object-position: bottom; /* fokus na dnu slike */
+    display: block;
+}
+
+/* ================= PLAYER INFO BOX ================= */
+.player-info-box {
+    width: 1040px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* TOP BLOCK */
+.player-top {
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-name {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 54px;
+}
+
+.player-sub {
+    height: 24.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.player-dot {
+    width: 6px;
+    text-align: center;
+}
+
+.player-club-logo img {
+    width: 96px;
+    height: 96px;
+}
+
+/* DIVIDER */
+.player-divider {
+    height: 1px;
+    background: #d1d5db;
+}
+
+/* META */
+.player-meta {
+    height: 48.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.player-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.player-socials a {
+    color: #111;
+    font-size: 16px;
+}
+
+/* ================= PLAYER MENU FULL WIDTH ================= */
+.player-menu {
+    width: 100%;
+    height: 71.6px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+}
+
+/* Unutrašnji wrapper poravnava stavke sa leve strane */
+.player-menu-inner {
+    max-width: 1408px;    /* isto kao header inner */
+    margin: 0;             /* uklonjeno auto centriranje */
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding-left: 300px;   /* pomeranje od leve ivice ekrana do leve ivice slike igrača */
+}
+
+.player-menu-inner a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
