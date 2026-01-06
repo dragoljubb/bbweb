@@ -59,3 +59,25 @@
   background: #f5f5f5;         /* vrlo blago sivlje od #f9fafb */
 }
 
+
+/* ================= PLAYER STATS GRID ================= */
+
+.player-stats {
+  margin-top: 32px;
+}
+
+.player-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .player-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+
+/* ================================================= */

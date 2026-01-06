@@ -245,7 +245,7 @@ def player_profile(person_code):
                            player = player_stats,
                            player_stats_list = player_stats_list,
                            season=season,
-                           teams_sidebar = teams_sidebar)
+                           teams_sidebar = teams_sidebar )
 
 
 @main_bp.route("/players")

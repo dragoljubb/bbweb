@@ -379,7 +379,8 @@ def get_player_stats(season_code: str, person_code : str):
                             avg_games_played, avg_games_started, avg_total_games_started, avg_fg2_made, avg_fg3_made, avg_fg2_attempted, 
                             avg_fg3_attempted, avg_fg_made_total, avg_fg_attempted_total, avg_ft_made, avg_ft_attempted, avg_accuracy_made,
                             avg_accuracy_attempted, avg_pct_2p, avg_pct_3p, avg_pct_ft, avg_fg2_num, avg_fg2_txt, avg_fg3_num, avg_fg3_txt, 
-                            avg_ft_num, avg_ft_txt, person_name, dorsal
+                            avg_ft_num, avg_ft_txt, person_name, dorsal,
+                            position_name, twitter_account,	facebook_account,instagram_account, country_name, formatted_date, height
 	                FROM dwh.vw_person_stats_v2
                     WHERE person_code = :pperson_code
                     AND season_code = :pseason_code

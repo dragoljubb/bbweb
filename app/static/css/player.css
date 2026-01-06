@@ -1,131 +1,203 @@
+/* ================= SHARED GRID ================= */
+
+.player-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 300px 1fr 120px;
+  column-gap: 24px;
+  align-items: center;
+}
+
+.player-col {
+  display: flex;
+  align-items: center;
+}
+
 /* ================= HEADER ================= */
-.player-header-fullwidth {
-    width: 100%;                 /* cela širina ekrana */
-    height: 316px;
-    background-color: #d1d5db;  /* svetlo-siva */
-    position: relative;
+
+
+.player-header-full {
+  width: 100%;
+  height: 316px;
+  background: #f3f4f6;
+
+  /*background: #e5e7eb;*/
+  overflow: hidden;          /* ⬅️ SEČEMO SLIKU */
+  position: relative;
 }
 
-.player-header-inner {
-    max-width: 1408px;           /* centrirani sadržaj */
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
+
+.player-image {
+  width: 280px;
+  height: 300px;
+  background: #22d3ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ================= PLAYER IMAGE ================= */
-.player-image-clip {
-    width: 400px;
-    height: 300px;
-    overflow: hidden;
-    position: relative;
+.info-col {
+  align-self: flex-start;
+  padding-top: 60px;   /* ovo je tvoja referenca */
 }
 
-.player-image-wrapper {
-    position: absolute;
-    bottom: -200px;    /* pomeranje slike naniže */
-    left: 0;
-}
-
-.player-image-wrapper img {
-    width: auto;             /* proporcionalna širina */
-    height: 500px;           /* visina slike */
-    object-fit: cover;       /* crop da popuni okvir */
-    object-position: bottom; /* fokus na dnu slike */
-    display: block;
-}
-
-/* ================= PLAYER INFO BOX ================= */
-.player-info-box {
-    width: 1040px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* TOP BLOCK */
-.player-top {
-    height: 96px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.player-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .player-name {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0;
-    line-height: 54px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.05;   /* ⬅️ bitno: “ime i meta kao jedan red” */
 }
 
-.player-sub {
-    height: 24.3px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-}
-
-.player-dot {
-    width: 6px;
-    text-align: center;
-}
-
-.player-club-logo img {
-    width: 96px;
-    height: 96px;
-}
-
-/* DIVIDER */
-.player-divider {
-    height: 1px;
-    background: #d1d5db;
-}
-
-/* META */
 .player-meta {
-    height: 48.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 520;
+  color: #4a5461;
 }
 
-.player-socials {
-    display: flex;
-    gap: 12px;
+
+
+.club-col {
+  align-self: flex-start;
+  padding-top: 88px;   /* 70px + ~8px korekcije za visinu očiju */
 }
 
-.player-socials a {
-    color: #111;
-    font-size: 16px;
+.club-logo {
+  width: 96px;
+  height: 96px;
+   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ================= PLAYER MENU FULL WIDTH ================= */
+
+/* ================= PLAYER MENU ================= */
+
+
+
+.player-menu-full {
+  width: 100%;
+  height: 56px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
 .player-menu {
-    width: 100%;
-    height: 71.6px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
+  display: flex;
+  gap: 36px;
+  height: 100%;
+   align-items: flex-end;
+  padding-bottom: 24px;
+  padding-left: 24px;
 }
 
-/* Unutrašnji wrapper poravnava stavke sa leve strane */
-.player-menu-inner {
-    max-width: 1408px;    /* isto kao header inner */
-    margin: 0;             /* uklonjeno auto centriranje */
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    padding-left: 300px;   /* pomeranje od leve ivice ekrana do leve ivice slike igrača */
+/* linkovi */
+.player-menu a {
+  position: relative;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  padding: 6px 0;
 }
 
-.player-menu-inner a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 500;
+/* active underline */
+.player-menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 2px;
+  background: #111827;
 }
+
+.player-menu a {
+  opacity: 0.75;
+}
+
+.player-menu a:hover {
+  opacity: 1;
+}
+
+
+/* ================= Player Image ================= */
+.player-image-wrapper {
+  position: relative;
+  height: 500px;             /* prava visina slike */
+}
+
+.player-image-wrapper img {
+  height: 500px;
+  width: auto;
+  display: block;
+
+  object-fit: cover;
+  object-position: bottom;
+
+  position: relative;
+  top: 20px;               /* ⬅️ SPUŠTA SLIKU KA MENIJU */
+}
+
+/* VIDLJIVI OKVIR (CROP LEVO/DESNO) */
+.player-header-full {
+  height: 316px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* SIVA LINIJA */
+.player-divider {
+  width: 100%;
+  height: 1px;
+  background: #d1d5db;
+  margin: 24px 0 10px;
+}
+
+/* WRAPPER */
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* OBA REDA IMAJU ISTI GRID */
+.player-details-labels,
+.player-details-values {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 24px;
+}
+
+/* LABELI */
+.player-details-labels div {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* VREDNOSTI */
+.player-details-values div {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* SOCIAL ICONS */
+.player-socials a {
+  margin-right: 12px;
+  font-size: 18px;
+  color: #111827;
+}
+
+.player-socials a:last-child {
+  margin-right: 0;
+}
+

@@ -1,82 +1,87 @@
 {% extends "pages/layout.html" %}
-{% from "components/stat-card.html" import stat_card %}
 
 {% block header %}
-<!-- ================= PLAYER HEADER (FULL WIDTH) ================= -->
-<div class="player-header-fullwidth">
+<div class="player-header-full">
+  <div class="player-grid">
 
-  <div class="player-header-inner">
+    <!-- COL 1: PLAYER IMAGE -->
+    <!-- COL 1: PLAYER IMAGE -->
+    <div class="player-col image-col">
+  <div class="player-image-clip">
+    <div class="player-image-wrapper">
+      <img src="{{ person_img(player.club_code, player.person_code) }}"
+                   alt="{{ player.formatted_name }}">
+    </div>
+  </div>
+</div>
 
-    <!-- PLAYER IMAGE -->
-    <div class="player-image-clip">
-      <div class="player-image-wrapper">
-        <img src="{{ person_img(player.club_code, player.person_code) }}"
-             alt="{{ player.person_name }}">
-      </div>
+    <!-- COL 2: PLAYER INFO -->
+   <div class="player-col info-col">
+  <div class="player-info">
+    <div class="player-name">{{player.person_name}}</div>
+    <div class="player-meta">#{{player.dorsal}} • {{player.position_name}}</div>
+    <div class="player-divider"></div>
+
+<div class="player-details">
+
+  <!-- LABEL ROW -->
+  <div class="player-details-labels">
+    <div>Nationality</div>
+    <div>Height</div>
+    <div>Born</div>
+    <div>Social Networks</div>
+  </div>
+
+  <!-- VALUES ROW -->
+  <div class="player-details-values">
+    <div>{{ player.country_name}}</div>
+    <div>{{ player.height }}</div>
+    <div>{{ player.formatted_date }}</div>
+    <div class="player-socials">
+      {% if player.instagram_account %}<a href="https://www.instagram.com/{{ player.instagram_account}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>{% endif %}
+      {% if player.twitter_account %}<a href="https://www.x.com/{{ player.twitter_account }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x"></i></a>{% endif %}
+      {% if player.facebook_account %}<a href="https://www.facebook.com/{{ player.facebook_account }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>{% endif %}
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+</div>
+
+    <!-- COL 3: CLUB LOGO -->
+    <div class="player-col club-col">
+      <div class="club-logo">
+       <img src="{{team_logo(player.club_code) }}">
+       </div>
     </div>
 
-    <!-- PLAYER INFO -->
-    <div class="player-info-box">
-
-      <!-- TOP BLOCK -->
-      <div class="player-top">
-        <div class="player-name-block">
-          <h1 class="player-name">{{ player.person_name }}</h1>
-
-          <div class="player-sub">
-            <span class="player-number">#{{ player.dorsal }}</span>
-            <span class="player-dot">•</span>
-            <span class="player-position">{{ player.position }}</span>
-          </div>
-        </div>
-
-        <div class="player-club-logo">
-          <img src="{{ team_logo(player.club_code) }}" alt="{{ player.club_name }}">
-        </div>
-      </div>
-
-      <!-- DIVIDER -->
-      <div class="player-divider"></div>
-
-      <!-- META -->
-      <div class="player-meta">
-        <div>{{ player.nationality }}</div>
-        <div>{{ player.height }}</div>
-        <div>{{ player.birthdate }}</div>
-        <div class="player-socials">
-          {% if player.instagram %}<a href="{{ player.instagram }}"><i class="fab fa-instagram"></i></a>{% endif %}
-          {% if player.twitter %}<a href="{{ player.twitter }}"><i class="fab fa-twitter"></i></a>{% endif %}
-          {% if player.facebook %}<a href="{{ player.facebook }}"><i class="fab fa-facebook"></i></a>{% endif %}
-        </div>
-      </div>
-
-    </div> <!-- end player-info-box -->
-
-  </div> <!-- end player-header-inner -->
-
-</div> <!-- end player-header-fullwidth -->
+  </div>
+</div>
 {% endblock %}
 
 {% block player_menu %}
-<!-- ================= PLAYER MENU (FULL WIDTH) ================= -->
-<div class="player-menu">
-  <div class="player-menu-inner">
-    <a href="#stats">Stats</a>
-    <a href="#profile">Profile</a>
-    <a href="#records">Records</a>
+<div class="player-menu-full">
+  <div class="player-grid">
+
+    <!-- COL 1: MENU IS UNDER IMAGE -->
+    <div class="player-col image-col">
+      <nav class="player-menu">
+        <a class="active" href="#">Stats</a>
+        <a href="#">Profile</a>
+        <a href="#">Records</a>
+      </nav>
+    </div>
+
+    <!-- COL 2: EMPTY -->
+    <div class="player-col info-col"></div>
+
+    <!-- COL 3: EMPTY -->
+    <div class="player-col club-col"></div>
+
   </div>
 </div>
 {% endblock %}
 
-{% block content %}
-<!-- ================= PLAYER STATS GRID ================= -->
-<div class="container mt-4" id="stats">
-  <div class="row g-3">
-    {% for stat in player_stats_list %}
-      <div class="col-6 col-md-2">
-        {{ stat_card(stat.label, "%.1f"|format(stat.avg), stat.tot, stat.highlight) }}
-      </div>
-    {% endfor %}
-  </div>
-</div>
-{% endblock %}
+{% block content %}{% endblock %}
