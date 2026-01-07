@@ -2,6 +2,7 @@ from flask import Flask, render_template, Blueprint, request, redirect, url_for,
 from models import *
 from utils.images import  *
 from collections import defaultdict
+from utils.text import format_bio_text
 
 
 app = Flask(__name__)
@@ -230,6 +231,15 @@ def player_profile(person_code):
     season = request.args.get("season", "E2025")  # default sezona
     teams_sidebar = get_clubsbyseasoncode(season)
     player_stats = get_player_stats(season, person_code)
+    person_row =  get_person_bio(person_code)
+    person_bio = dict(person_row) if person_row else None
+
+    if person_bio:
+        person_bio["bio"] = format_bio_text(person_bio.get("bio"))
+        person_bio["career"] = format_bio_text(person_bio.get("career"))
+        person_bio["achievements"] = format_bio_text(person_bio.get("achievements"))
+        person_bio["misc"] = format_bio_text(person_bio.get("misc"))
+
     player_stats_list = [
         {"label": "Points", "avg": player_stats.avg_points, "tot": player_stats.acc_points, "highlight": False},
         {"label": "Rebounds", "avg": player_stats.avg_total_rebounds, "tot": player_stats.acc_total_rebounds,
@@ -245,6 +255,7 @@ def player_profile(person_code):
                            player = player_stats,
                            player_stats_list = player_stats_list,
                            season=season,
+                           person_bio = person_bio,
                            teams_sidebar = teams_sidebar )
 
 

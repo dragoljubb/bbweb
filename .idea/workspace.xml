@@ -4,20 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260106_1220">
-      <change afterPath="$PROJECT_DIR$/app/static/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2025_8_40_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_29_2025_8_40_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-Dec-25_14_38_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-Dec-25_14_38__Changes_.xml" beforeDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260106_2330">
+      <change afterPath="$PROJECT_DIR$/app/static/css/components/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/team_details.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/js/tabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/components/stats_table.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/components/stats_table_header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/components/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/ToDoList.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/components/stat-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/components/stat-card.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/css/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/player.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/people/DUB/003983 - Copy.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pages/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pages/player.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/player.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/team_details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +33,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -90,6 +92,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.games.html.executor": "Debug",
     "JavaScript Debug.layout.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "PowerShell.restore_db.ps1.executor": "Run",
@@ -121,7 +124,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "database.query.execution",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -145,14 +148,17 @@
       <recent name="C:\myPython\PythonLearning\bbWeb\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\myPython\PythonLearning\bbWeb\app\static\css\components" />
       <recent name="C:\myPython\PythonLearning\bbWeb\app\templates\components" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\templates\pages" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\templates" />
       <recent name="C:\myPython\PythonLearning\bbweb\app\static\people" />
-      <recent name="C:\myPython\PythonLearning\bbweb\app\static" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="games.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/bbWeb/app/templates/pages/games.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="bbWeb" />
       <option name="ENV_FILES" value="" />
@@ -177,6 +183,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.games.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -254,6 +265,7 @@
       <workItem from="1767447923117" duration="173000" />
       <workItem from="1767449169679" duration="27482000" />
       <workItem from="1767603010960" duration="19623000" />
+      <workItem from="1767790391909" duration="9282000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -535,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767698639564</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="20260106_2330">
+      <option name="closed" value="true" />
+      <created>1767738331388</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1767738331388</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251212_1815" />
     <MESSAGE value="20251213_1015" />
     <MESSAGE value="20251213_1130" />
     <MESSAGE value="20251215_1800" />
@@ -578,7 +597,8 @@
     <MESSAGE value="20260103_1700" />
     <MESSAGE value="20260105_1615" />
     <MESSAGE value="20260106_1220" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260106_1220" />
+    <MESSAGE value="20260106_2330" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260106_2330" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -603,6 +623,16 @@
           <line>13</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/app.py</url>
+          <line>234</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/app.py</url>
+          <line>237</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -610,7 +640,7 @@
     <SUITE FILE_PATH="coverage/bbweb$load_person_careerhighs.coverage" NAME="load_person_careerhighs Coverage Results" MODIFIED="1767006217736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_standings.coverage" NAME="load_standings Coverage Results" MODIFIED="1767450053104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1767519791023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1767734244560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1767802130003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/bbWeb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1767475542743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1767622851986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

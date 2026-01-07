@@ -1,0 +1,6 @@
+Kada je radjeno teams_details i tabovi:
+--------------------------------------
+URL hash (#games)
+pamćenje taba na refresh
+izbacivanje Bootstrap tab CSS-a skroz
+Jinja macro za bb-tabs

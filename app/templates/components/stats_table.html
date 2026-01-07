@@ -1,0 +1,16 @@
+<div class="table-responsive mt-4">
+  <table class="table table-hover align-middle player-stats-table">
+
+    {% include "components/stats_table_header.html" %}
+
+    <tbody>
+
+      {% block stats_rows %}{% endblock %}
+
+      {% if totals %}
+        {% block stats_totals %}{% endblock %}
+      {% endif %}
+
+    </tbody>
+  </table>
+</div>

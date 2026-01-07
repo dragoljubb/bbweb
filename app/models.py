@@ -389,3 +389,13 @@ def get_player_stats(season_code: str, person_code : str):
         ).mappings().fetchone()
         return result
 
+
+def get_person_bio( person_code : str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, bio, misc, career, achievements 
+	                FROM dwh.vw_person_bio
+                    WHERE person_code = :pperson_code
+            """), {"pperson_code": person_code}
+        ).mappings().fetchone()
+        return result

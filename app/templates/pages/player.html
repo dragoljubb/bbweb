@@ -1,87 +1,207 @@
 {% extends "pages/layout.html" %}
-
+{% from "components/stat-card.html" import stat_card %}
+{# =========================================================
+   PLAYER HEADER
+   ========================================================= #}
 {% block header %}
 <div class="player-header-full">
   <div class="player-grid">
 
     <!-- COL 1: PLAYER IMAGE -->
-    <!-- COL 1: PLAYER IMAGE -->
     <div class="player-col image-col">
-  <div class="player-image-clip">
-    <div class="player-image-wrapper">
-      <img src="{{ person_img(player.club_code, player.person_code) }}"
-                   alt="{{ player.formatted_name }}">
+      <div class="player-image-clip">
+        <div class="player-image-wrapper">
+          <img src="{{ person_img(player.club_code, player.person_code) }}"
+               alt="{{ player.formatted_name }}">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <!-- COL 2: PLAYER INFO -->
-   <div class="player-col info-col">
-  <div class="player-info">
-    <div class="player-name">{{player.person_name}}</div>
-    <div class="player-meta">#{{player.dorsal}} • {{player.position_name}}</div>
-    <div class="player-divider"></div>
+    <div class="player-col info-col">
+      <div class="player-info">
 
-<div class="player-details">
+        <div class="player-name">{{ player.person_name }}</div>
+        <div class="player-meta">
+          #{{ player.dorsal }} • {{ player.position_name }}
+        </div>
 
-  <!-- LABEL ROW -->
-  <div class="player-details-labels">
-    <div>Nationality</div>
-    <div>Height</div>
-    <div>Born</div>
-    <div>Social Networks</div>
-  </div>
+        <div class="player-divider"></div>
 
-  <!-- VALUES ROW -->
-  <div class="player-details-values">
-    <div>{{ player.country_name}}</div>
-    <div>{{ player.height }}</div>
-    <div>{{ player.formatted_date }}</div>
-    <div class="player-socials">
-      {% if player.instagram_account %}<a href="https://www.instagram.com/{{ player.instagram_account}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>{% endif %}
-      {% if player.twitter_account %}<a href="https://www.x.com/{{ player.twitter_account }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-x"></i></a>{% endif %}
-      {% if player.facebook_account %}<a href="https://www.facebook.com/{{ player.facebook_account }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>{% endif %}
+        <div class="player-details">
+
+          <!-- LABELS -->
+          <div class="player-details-labels">
+            <div>Nationality</div>
+            <div>Height</div>
+            <div>Born</div>
+            <div>Social Networks</div>
+          </div>
+
+          <!-- VALUES -->
+          <div class="player-details-values">
+            <div>{{ player.country_name }}</div>
+            <div>{{ player.height }}</div>
+            <div>{{ player.formatted_date }}</div>
+
+            <div class="player-socials">
+              {% if player.instagram_account %}
+                <a href="https://www.instagram.com/{{ player.instagram_account }}"
+                   target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              {% endif %}
+              {% if player.twitter_account %}
+                <a href="https://www.x.com/{{ player.twitter_account }}"
+                   target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-x"></i>
+                </a>
+              {% endif %}
+              {% if player.facebook_account %}
+                <a href="https://www.facebook.com/{{ player.facebook_account }}"
+                   target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
-
-</div>
-
-
-  </div>
-</div>
 
     <!-- COL 3: CLUB LOGO -->
     <div class="player-col club-col">
       <div class="club-logo">
-       <img src="{{team_logo(player.club_code) }}">
-       </div>
+        <img src="{{ team_logo(player.club_code) }}" alt="">
+      </div>
     </div>
 
   </div>
 </div>
 {% endblock %}
 
+{# =========================================================
+   PLAYER TABS (CONTROLS)
+   ========================================================= #}
 {% block player_menu %}
 <div class="player-menu-full">
   <div class="player-grid">
 
-    <!-- COL 1: MENU IS UNDER IMAGE -->
+    <!-- TABOVI ISPOD SLIKE -->
     <div class="player-col image-col">
-      <nav class="player-menu">
-        <a class="active" href="#">Stats</a>
-        <a href="#">Profile</a>
-        <a href="#">Records</a>
-      </nav>
+      <ul class="bb-tabs"
+          data-tabs
+          data-tabs-content="#player-tabs">
+
+        <li>
+          <button class="bb-tab active"
+                  data-tab-target="#player-stats">
+            Stats
+          </button>
+        </li>
+
+        <li>
+          <button class="bb-tab"
+                  data-tab-target="#player-profile">
+            Profile
+          </button>
+        </li>
+
+        <li>
+          <button class="bb-tab"
+                  data-tab-target="#player-advanced">
+            Advanced
+          </button>
+        </li>
+
+      </ul>
     </div>
 
-    <!-- COL 2: EMPTY -->
     <div class="player-col info-col"></div>
-
-    <!-- COL 3: EMPTY -->
     <div class="player-col club-col"></div>
 
   </div>
 </div>
 {% endblock %}
 
-{% block content %}{% endblock %}
+{# =========================================================
+   PLAYER TAB CONTENT
+   ========================================================= #}
+{% block content %}
+
+<div class="bb-tabs-content" id="player-tabs">
+
+  <!-- STATS -->
+  <div class="bb-tab-panel active" id="player-stats">
+       <div class="row g-3 mb-4">
+    {% for stat in player_stats_list %}
+    <div class="col-md-2">
+        {{ stat_card(stat.label, "%.1f"|format(stat.avg), stat.tot, stat.highlight) }}
+    </div>
+    {% endfor %}
+    </div>
+
+  </div>
+
+  <!-- PROFILE -->
+  <div class="bb-tab-panel" id="player-profile">
+    <div class="profile-tab profile-grid">
+
+  <!-- LEFT COLUMN -->
+  <div class="profile-col-left">
+
+    {% if person_bio.bio %}
+    <div class="profile-section">
+      <h4 class="profile-title">Biography</h4>
+      <div class="profile-content">
+        {{ person_bio.bio }}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="profile-col-right">
+
+    {% if person_bio.career %}
+    <div class="profile-section">
+      <h4 class="profile-title">Career</h4>
+      <div class="profile-content">
+        {{ person_bio.career }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if person_bio.achievements %}
+    <div class="profile-section">
+      <h4 class="profile-title">Achievements</h4>
+      <div class="profile-content">
+        {{ person_bio.achievements }}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if person_bio.misc %}
+    <div class="profile-section">
+      <h4 class="profile-title">Misc</h4>
+      <div class="profile-content">
+        {{ person_bio.misc }}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+  </div>
+
+  <!-- ADVANCED -->
+  <div class="bb-tab-panel" id="player-advanced">
+    Advanced stats content
+  </div>
+
+</div>
+
+{% endblock %}

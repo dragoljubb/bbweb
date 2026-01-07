@@ -1,0 +1,49 @@
+.bb-tabs {
+  display: flex;
+  gap: 36px;
+  margin: 0;
+  padding-left: 24px;
+  padding-bottom: 40px;
+  list-style: none;
+}
+
+.bb-tabs .bb-tab {
+  background: none;
+  border: none;
+  padding: 6px 0;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+
+  opacity: 0.75;
+  position: relative;
+  cursor: pointer;
+}
+
+.bb-tabs .bb-tab:hover {
+  opacity: 1;
+}
+
+.bb-tabs .bb-tab.active {
+  opacity: 1;
+}
+
+.bb-tabs .bb-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: #111827;
+}
+
+.bb-tab-panel {
+  display: none;
+}
+
+.bb-tab-panel.active {
+  display: block;
+}
+
