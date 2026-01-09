@@ -12,6 +12,7 @@ app.jinja_env.globals["news_image"] = news_image
 main_bp = Blueprint('main_bp', __name__)
 COMPETITION_CODE = "E"
 
+
 @main_bp.route('/')
 def home():
     current_round = get_current_round_phase(COMPETITION_CODE)
@@ -231,6 +232,7 @@ def player_profile(person_code):
     season = request.args.get("season", "E2025")  # default sezona
     teams_sidebar = get_clubsbyseasoncode(season)
     player_stats = get_player_stats(season, person_code)
+    player_rounds = get_player_stats_by_round(season, person_code)
     person_row =  get_person_bio(person_code)
     person_bio = dict(person_row) if person_row else None
 
@@ -251,8 +253,10 @@ def player_profile(person_code):
          "highlight": False},
         {"label": "PIR", "avg": player_stats.avg_valuation, "tot": player_stats.acc_valuation, "highlight": True},
     ]
-    return render_template("pages/player.html",
+
+    return render_template("pages/player_details.html",
                            player = player_stats,
+                           player_rounds=player_rounds,
                            player_stats_list = player_stats_list,
                            season=season,
                            person_bio = person_bio,

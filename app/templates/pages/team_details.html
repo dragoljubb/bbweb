@@ -257,27 +257,32 @@
       <tr>
 
         <td>{{ p.dorsal }}</td>
-        <td>{{ p.person_name }}</td>
+        <td class="player-name-cell">
+  <a href="{{ url_for('player_profile', person_code=p.person_code) }}"
+     class="player-link">
+    {{ p.person_name }}
+  </a>
+</td>
         <td>{{ p.acc_games_played }}</td>
-        <td>{{ (p.acc_time_played_sec // 60) }}:{{ '%02d' % (p.acc_time_played_sec % 60) }}</td>
+        <td class="group-start team-cell">{{ (p.acc_time_played_sec // 60) }}:{{ '%02d' % (p.acc_time_played_sec % 60) }}</td>
          <td>{{ (p.avg_time_played_sec // 60) }}:{{ '%02d' % (p.avg_time_played_sec % 60) }}</td>
-        <td>{{ p.acc_points }}</td>
+        <td class="group-start team-cell">{{ p.acc_points }}</td>
         <td>{{ "%.1f"|format(p.avg_points ) }}</td>
-        <td>{{ p.acc_rebounds_total }}</td>
+        <td class="group-start team-cell">{{ p.acc_rebounds_total }}</td>
         <td>{{ "%.1f"|format(p.avg_rebounds_total ) }}</td>
-        <td>{{ p.acc_assists }}</td>
+        <td class="group-start team-cell">{{ p.acc_assists }}</td>
         <td>{{ "%.1f"|format(p.avg_assists) }}</td>
-        <td>{{ p.acc_steals }}</td>
+        <td class="group-start team-cell">{{ p.acc_steals }}</td>
         <td>{{ "%.1f"|format(p.avg_steals) }}</td>
-        <td>{{ p.acc_blocks_favour }}</td>
+        <td class="group-start team-cell">{{ p.acc_blocks_favour }}</td>
         <td>{{ "%.1f"|format(p.avg_blocks_favour) }}</td>
-        <td>{{ p.acc_fg2_made }}/{{ p.acc_fg2_attempted }}</td>
+        <td class="group-start team-cell">{{ p.acc_fg2_made }}/{{ p.acc_fg2_attempted }}</td>
         <td>{{ "%.1f"|format(p.acc_fg2_num * 100) }}%</td>
-        <td>{{ p.acc_fg3_made }}/{{ p.acc_fg3_attempted }}</td>
+        <td class="group-start team-cell">{{ p.acc_fg3_made }}/{{ p.acc_fg3_attempted }}</td>
         <td>{{ "%.1f"|format(p.acc_fg3_num * 100) }}%</td>
-        <td>{{ p.acc_ft_made }}/{{ p.acc_ft_attempted }}</td>
+        <td class="group-start team-cell">{{ p.acc_ft_made }}/{{ p.acc_ft_attempted }}</td>
         <td>{{ "%.1f"|format(p.acc_ft_num * 100) }}%</td>
-        <td>{{ p.acc_valuation }}</td>
+        <td class="group-start team-cell">{{ p.acc_valuation }}</td>
         <td>{{ "%.1f"|format(p.avg_valuation) }}</td>
       </tr>
       {% endfor %}

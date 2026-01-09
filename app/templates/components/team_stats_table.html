@@ -1,0 +1,86 @@
+{% extends "components/stats_table_wrapper.html" %}
+
+{% block table_content %}
+
+  {% include "components/team_stats_thead.html" %}
+
+  <tbody>
+
+    {% for p in players_stats %}
+    <tr>
+      <td>{{ p.dorsal }}</td>
+      <td>{{ p.person_name }}</td>
+      <td>{{ p.acc_games_played }}</td>
+
+      <td class="group-start">{{ (p.acc_time_played_sec // 60) }}:{{ '%02d' % (p.acc_time_played_sec % 60) }}</td>
+      <td>{{ (p.avg_time_played_sec // 60) }}:{{ '%02d' % (p.avg_time_played_sec % 60) }}</td>
+
+      <td class="group-start">{{ p.acc_points }}</td>
+      <td>{{ "%.1f"|format(p.avg_points ) }}</td>
+
+      <td class="group-start">{{ p.acc_rebounds_total }}</td>
+      <td>{{ "%.1f"|format(p.avg_rebounds_total ) }}</td>
+
+      <td class="group-start">{{ p.acc_assists }}</td>
+      <td>{{ "%.1f"|format(p.avg_assists) }}</td>
+
+      <td class="group-start">{{ p.acc_steals }}</td>
+      <td>{{ "%.1f"|format(p.avg_steals) }}</td>
+
+      <td class="group-start">{{ p.acc_blocks_favour }}</td>
+      <td>{{ "%.1f"|format(p.avg_blocks_favour) }}</td>
+
+      <td class="group-start">{{ p.acc_fg2_made }}/{{ p.acc_fg2_attempted }}</td>
+      <td>{{ "%.1f"|format(p.acc_fg2_num * 100) }}%</td>
+
+      <td class="group-start">{{ p.acc_fg3_made }}/{{ p.acc_fg3_attempted }}</td>
+      <td>{{ "%.1f"|format(p.acc_fg3_num * 100) }}%</td>
+
+      <td class="group-start">{{ p.acc_ft_made }}/{{ p.acc_ft_attempted }}</td>
+      <td>{{ "%.1f"|format(p.acc_ft_num * 100) }}%</td>
+
+      <td class="group-start">{{ p.acc_valuation }}</td>
+      <td>{{ "%.1f"|format(p.avg_valuation) }}</td>
+    </tr>
+    {% endfor %}
+
+    <!-- TOTALS -->
+    <tr class="stats-total-row">
+      <td></td>
+      <td>TOTALS</td>
+      <td>{{ team_stats.acc_games_played }}</td>
+
+      <td class="group-start">{{ (5*team_stats.acc_time_played // 60) }}:{{ '%02d' % (team_stats.acc_time_played % 60) }}</td>
+      <td>{{ (5*team_stats.avg_time_played // 60) }}:{{ '%02d' % (team_stats.avg_time_played % 60) }}</td>
+
+      <td class="group-start">{{ team_stats.acc_points }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_points) }}</td>
+
+      <td class="group-start">{{ team_stats.acc_total_rebounds }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_total_rebounds)}}</td>
+
+      <td class="group-start">{{ team_stats.acc_assistances  }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_assistances)}}</td>
+
+      <td class="group-start">{{ team_stats.acc_steals }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_steals)}}</td>
+
+      <td class="group-start">{{ team_stats.acc_blocks_favour }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_blocks_favour)}}</td>
+
+      <td class="group-start">{{ team_stats.acc_fg2_txt }}</td>
+      <td>{{ "%.1f"|format(team_stats.acc_fg2_num * 100) }}%</td>
+
+      <td class="group-start">{{ team_stats.acc_fg3_txt}}</td>
+      <td>{{ "%.1f"|format(team_stats.acc_fg3_num * 100) }}%</td>
+
+      <td class="group-start">{{ team_stats.acc_ft_txt }}</td>
+      <td>{{ "%.1f"|format(team_stats.acc_ft_num * 100) }}%</td>
+
+      <td class="group-start">{{ team_stats.acc_valuation }}</td>
+      <td>{{ "%.1f"|format(team_stats.avg_valuation)}}</td>
+    </tr>
+
+  </tbody>
+
+{% endblock %}

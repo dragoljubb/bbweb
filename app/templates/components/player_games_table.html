@@ -1,0 +1,58 @@
+{% extends "components/stats_table_wrapper.html" %}
+
+{% block table_content %}
+
+  {% include "components/player_games_thead.html" %}
+
+  <tbody>
+    {% for g in player_rounds %}
+    <tr class="game-row {{ 'win' if g.win else 'loss' }}">
+
+      <!-- W/L -->
+      <td class="group-start">
+        <span class="wl-dot"></span>
+      </td>
+
+      <!-- ROUND -->
+      <td class="group-start">{{ g.round }}</td>
+
+      <!-- HOME -->
+      <td class="group-start team-cell">
+          <img src="{{ team_logo(g.home_code) }}">
+          <span class="{{ 'main-team' if g.home_code == g.club_code else '' }}">
+           {{ g.home_code }}
+               </span>
+      </td>
+
+      <!-- SCORE -->
+      <td class="score-cell">{{ g.home_score }}–{{ g.away_score }}</td>
+
+      <!-- AWAY -->
+      <td class="team-cell">
+        <img src="{{ team_logo(g.away_code) }}">
+        <span class="{{ 'main-team' if g.away_code == g.club_code else '' }}">
+          {{ g.away_code }}
+        </span>
+      </td>
+
+      <!-- STATS -->
+      <td class="group-start">
+        {{ (g.time_played_sec // 60) }}:{{ '%02d' % (g.time_played_sec % 60) }}
+      </td>
+      <td>{{ g.points }}</td>
+      <td>{{ g.rebounds_total }}</td>
+      <td>{{ g.assists }}</td>
+      <td>{{ g.steals }}</td>
+      <td>{{ g.blocks_favour }}</td>
+
+      <td class="group-start">{{ g.fg2_made }}/{{ g.fg2_attempted }}</td>
+      <td>{{ g.fg3_made }}/{{ g.fg3_attempted }}</td>
+      <td>{{ g.ft_made }}/{{ g.ft_attempted }}</td>
+
+      <td class="group-start">{{ g.valuation }}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+
+{% endblock %}

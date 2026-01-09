@@ -329,7 +329,7 @@ def get_players_stats(season_code: str, club_code: str):
                             acc_valuation, acc_time_played_sec, acc_games_played, acc_games_started, acc_total_games_started,
                             acc_fg2_made, acc_fg3_made, acc_fg2_attempted, acc_fg3_attempted, acc_fg_made_total, acc_fg_attempted_total,
                             acc_ft_made, acc_ft_attempted, acc_accuracy_made, acc_accuracy_attempted, acc_pct_2p, acc_pct_3p, acc_pct_ft, 
-                            acc_fg2_num, acc_fg2_txt, acc_fg3_num, acc_fg3_txt, acc_ft_num, acc_ft_txt, 
+                            acc_fg2_num, acc_fg2_txt, acc_fg3_num, acc_fg3_txt, acc_ft_num, acc_ft_txt,
                             avg_points, avg_assists, avg_rebounds_total, avg_rebounds_defensive, avg_rebounds_offensive,
                             avg_steals, avg_blocks_favour, avg_blocks_against, avg_turnovers,
                             avg_fouls_commited, avg_fouls_received, avg_plus_minus, avg_valuation, avg_time_played_sec,
@@ -359,7 +359,6 @@ def get_players_by_season(season_code: str):
         ).fetchall()
         return result
 
-## stats for the players in the club
 def get_player_stats(season_code: str, person_code : str):
     with SessionLocal() as session:
         result = session.execute(
@@ -387,6 +386,30 @@ def get_player_stats(season_code: str, person_code : str):
                     ORDER BY CAST (dorsal as int)
             """), {"pperson_code": person_code, "pseason_code": season_code}
         ).mappings().fetchone()
+        return result
+
+## stats for the players in the club
+def get_player_stats_by_round(season_code: str, person_code : str):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT person_code, season_code, game_code, club_code, 
+                            game_date, round, phase_code, points, assists, rebounds_total, 
+                            rebounds_defensive, rebounds_offensive, steals, blocks_favour, 
+                            blocks_against, turnovers, fouls_commited, fouls_received, plus_minus, 
+                            valuation, time_played_sec, fg2_made, fg2_attempted, fg3_made, fg3_attempted, 
+                            ft_made, ft_attempted, created, updated, dorsal, start_five, start_five2, 
+                            accuracy_made, accuracy_attempted, field_goals_made_total, field_goals_attempted_total,
+                            local_score as home_score, road_score as away_score, game_played, is_neutral_venue, round_name, round_alias, 
+                            game_status, confirmed_date, confirmed_hour, local_time_zone, utc_date, local_date, 
+                            phase_name, phase_alias, is_group_phase, local_club_code as home_code, road_club_code
+                             as away_code, win,
+                            local_standings_score
+                    FROM dwh.vw_person_stats_by_round
+                    WHERE person_code = :pperson_code
+                    AND season_code = :pseason_code
+                    ORDER BY CAST (dorsal as int)
+            """), {"pperson_code": person_code, "pseason_code": season_code}
+        ).fetchall()
         return result
 
 
