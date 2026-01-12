@@ -28,7 +28,10 @@
   overflow: hidden;          /* ⬅️ SEČEMO SLIKU */
   position: relative;
 }
-
+.player-menu-full {
+  background: #ffffff;
+  max-height: 64px;
+}
 
 .player-image {
   width: 280px;

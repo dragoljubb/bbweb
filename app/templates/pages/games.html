@@ -1,5 +1,5 @@
 {% extends "pages/layout.html" %}
-
+{% from "components/select.html" import filter_select %}
 {% block content %}
 
 <h2 class="mt-4 mb-3">Games</h2>
@@ -9,38 +9,37 @@
 <!-- ========================= -->
 <form method="get" class="game-filter">
     <!-- Season -->
-    <select name="season" onchange="this.form.submit()">
-        {% for s in seasons %}
-            <option value="{{ s.code }}"
-                {% if s.code == season %}selected{% endif %}>
-                {{ s.label }}
-            </option>
-        {% endfor %}
-    </select>
 
+{{ filter_select(
+    name="season",
+    items=seasons,
+    value_attr="code",
+    label_attr="label",
+    selected_value=season,
+    id="seasonSelect"
+) }}
     <!-- Phase -->
-    <select name="phase" onchange="this.form.submit()">
-        {% for p in phases %}
-            <option value="{{ p.phase }}"
-                {% if p == phase %}selected{% endif %}>
-                {{ p.phase }}
-            </option>
-        {% endfor %}
-    </select>
+{{ filter_select(
+    name="phase",
+    items=phases,
+    value_attr="code",
+    label_attr="label",
+    selected_value=phase
+) }}
 
     <!-- Team -->
-    <select name="team" onchange="this.form.submit()">
-        <option value="">All teams</option>
-        {% for t in teams %}
-            <option value="{{ t.code }}"
-                {% if t.code == selected_team %}selected{% endif %}>
-                {{ t.team_name }}
-            </option>
-        {% endfor %}
-    </select>
+    {{ filter_select(
+      name="team",
+      items=sel_teams,
+      value_attr="code",
+      label_attr="label",
+      selected_value=code,
+      empty_label="All teams"
+  ) }}
 
-    <!-- zadrži round -->
-    <input type="hidden" name="round" value="{{ selected_round }}">
+  <!-- zadrži round -->
+  <input type="hidden" name="round" value="{{ selected_round }}">
+
 </form>
 
 <!-- ========================= -->

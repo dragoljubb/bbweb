@@ -46,7 +46,7 @@ def games():
     if not season or not selected_round:
         default_season_raw = get_current_season(COMPETITION_CODE)
     #   default_season = default_season_raw[0]["season_code"]
-        default_season = 'E2025'
+        default_season = default_season_raw['season_code']
         default_round = get_current_round_phase(COMPETITION_CODE).round
         return redirect(url_for("main_bp.games",
                                 season=default_season,
@@ -56,8 +56,10 @@ def games():
     # UI podaci
     listseasons = get_seasons(COMPETITION_CODE)
     seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
-    phases = [{"phase": p.phase} for p in get_phases(season)]
+    phases = [{"code": p.phase,"label": p.alias_name } for p in get_phases(season)]
     teams = [{"crest": t.crest_url, "team_name": t.club_name, "code": t.club_code}
+             for t in get_clubsbyseasoncode(season)]
+    sel_teams = [{"code": t.club_code, "label": t.club_name}
              for t in get_clubsbyseasoncode(season)]
     teams_sidebar = get_clubsbyseasoncode(season)
 
@@ -72,6 +74,7 @@ def games():
                                season=season,
                                phase=phase,
                                seasons=seasons,
+                               sel_teams=sel_teams,
                                phases=phases,
                                teams=teams,
                                selected_team=None,
@@ -96,6 +99,8 @@ def games():
                                teams=teams,
                                selected_team=team,
                                selected_round=selected_round,
+                               sel_teams=sel_teams,  # ✅ DODATO
+                               code=team,
                                teams_sidebar=teams_sidebar,
                                selected_team_name=selected_team_name,
                                season_label=season_label,
@@ -283,6 +288,17 @@ def players():
         selected_season=season_code,
         seasons=seasons
     )
+@main_bp.route("/games/<season>/<int:game_code>")
+def game_details(season, game_code):
+    game = get_game_details(season, game_code)
+
+    return render_template(
+        "pages/game_details.html",
+        season=season,
+        game_code=game_code,
+        game=game
+    )
+
 app.register_blueprint(main_bp)
 
 if __name__ == "__main__":

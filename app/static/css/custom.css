@@ -230,6 +230,9 @@
         flex: 0 0 calc(50% - 10px);
     }
 }
+body {
+    background-color: #f3f4f6;
+}
 
 @media (max-width: 576px) {
     .small-news-card {

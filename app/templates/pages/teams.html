@@ -1,5 +1,5 @@
 {% extends "pages/layout.html" %}
-
+{% from "components/select.html" import filter_select %}
 {% block content %}
 
 <h2 class="mt-4 mb-3">Teams</h2>
@@ -15,16 +15,14 @@
              placeholder="Search teams..." />
     </div>
 
-    <div class="col-md-4">
-      <select id="seasonSelect" class="form-select">
-        {% for s in seasons %}
-          <option value="{{ s.code }}"
-            {% if s.code == season %}selected{% endif %}>
-            {{ s.label }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
+{{ filter_select(
+    name="season",
+    items=seasons,
+    value_attr="code",
+    label_attr="label",
+    selected_value=season,
+    id="seasonSelect"
+) }}
   </div>
 
   <!-- Teams grid -->

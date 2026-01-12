@@ -1,0 +1,31 @@
+{% macro filter_select(
+    name,
+    items,
+    value_attr,
+    label_attr,
+    selected_value,
+    id=None,
+    col_class="col-md-2",
+    empty_label=None,
+    auto_submit=True
+) %}
+<div class="{{ col_class }}">
+  <select
+    name="{{ name }}"
+    {% if id %}id="{{ id }}"{% endif %}
+    class="form-select"
+    {% if auto_submit %}onchange="this.form.submit()"{% endif %}
+  >
+    {% if empty_label %}
+      <option value="">{{ empty_label }}</option>
+    {% endif %}
+
+    {% for item in items %}
+      <option value="{{ item[value_attr] }}"
+        {% if item[value_attr] == selected_value %}selected{% endif %}>
+        {{ item[label_attr] }}
+      </option>
+    {% endfor %}
+  </select>
+</div>
+{% endmacro %}
