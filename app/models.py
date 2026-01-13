@@ -422,3 +422,48 @@ def get_person_bio( person_code : str):
             """), {"pperson_code": person_code}
         ).mappings().fetchone()
         return result
+
+
+def get_game_details(season :str, game_code :int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT game_code, season_code, home_code, home_name, away_code, round, 
+                    away_name, home_score, away_score, arena, attendance, game_date, played
+                    FROM dwh.vw_gamedetails_header
+                     WHERE season_code = :pseason_code AND game_code = :pgame_code
+                 """), {"pseason_code":season, "pgame_code" :game_code }
+        ).mappings().fetchone()
+        return result
+
+def get_game_quarters(season: str, game_code: int):
+        with SessionLocal() as session:
+            result = session.execute(
+                text(""" SELECT season_code, gamecode, q1h, q2h, q3h, q4h, q1h_eq, q2h_eq, q3h_eq, q4h_eq, q1a, q2a, q3a, q4a, q1a_eq, q2a_eq, q3a_eq, q4a_eq
+                        FROM dwh.vw_bs_game_quarters
+                         WHERE season_code = :pseason_code AND gamecode = :pgame_code
+                       """), {"pseason_code": season, "pgame_code": game_code}
+            ).mappings().fetchone()
+            return result
+
+
+def get_game_article(season: str, game_code: int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT *
+                     FROM dwh.vw_articles
+                     WHERE season_code = :pseason_code
+                       AND gamecode = :pgame_code
+                 """), {"pseason_code": season, "pgame_code": game_code}
+        ).mappings().fetchone()
+        return result
+
+def get_home_players(season: str, game_code: int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT *
+                     FROM dwh.vw_articles
+                     WHERE season_code = :pseason_code
+                       AND gamecode = :pgame_code
+                 """), {"pseason_code": season, "pgame_code": game_code}
+        ).mappings().fetchone()
+        return result

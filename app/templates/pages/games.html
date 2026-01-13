@@ -59,8 +59,11 @@
 <div class="round-games">
     {% if games %}
        {% for g in games %}
-             {% include "components/game_card_full.html" %}
+        <a href="{{ url_for('main_bp.game_details', season=season, game_code=g.game_code) }}" class="game-card-link">
+        {% include "components/game_card_full.html" %}
+        </a>
         {% endfor %}
+
     {% else %}
         <p>No games in this round.</p>
     {% endif %}

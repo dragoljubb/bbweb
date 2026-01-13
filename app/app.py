@@ -288,17 +288,61 @@ def players():
         selected_season=season_code,
         seasons=seasons
     )
-@main_bp.route("/games/<season>/<int:game_code>")
-def game_details(season, game_code):
+
+
+@main_bp.route("/gamesold/<season>/<int:game_code>")
+def game_details_old(season, game_code):
+    teams_sidebar = get_clubsbyseasoncode(season)
     game = get_game_details(season, game_code)
+    row = get_game_quarters(season, game_code)
+    line_score = {
+        "home": [row.q1h, row.q2h, row.q3h, row.q4h],
+        "away": [row.q1a, row.q2a, row.q3a, row.q4a]
+    }
+    quarters = ["Q1", "Q2", "Q3", "Q4"]
 
     return render_template(
         "pages/game_details.html",
-        season=season,
-        game_code=game_code,
-        game=game
+
+        game=game,
+       #home_players=home_players,
+      #  away_players=away_players,
+        line_score=line_score,
+        quarters=quarters,
+        teams_sidebar = teams_sidebar
+
+      # team_stats=team_stats
     )
 
+@main_bp.route("/games/<season>/<int:game_code>")
+def game_details(season, game_code):
+
+    game = get_game_details(season, game_code)  # info o meču (played, arena, referees…)
+    article = get_game_article(season, game_code)  # report / preview (može None)
+
+    if game["played"]:
+        home_players = get_home_players(season, game_code)
+        away_players = get_away_players(season, game_code)
+        team_stats   = get_team_totals(season, game_code)
+        row = get_game_quarters(season, game_code)
+        line_score = {
+            "home": [row.q1h, row.q2h, row.q3h, row.q4h],
+            "away": [row.q1a, row.q2a, row.q3a, row.q4a]
+        }
+        quarters = ["Q1", "Q2", "Q3", "Q4"]
+    else:
+        team_stats_season = get_season_team_compare(game["home_code"], game["away_code"], season)
+
+    return render_template(
+        "pages/game_details.html",
+        game=game,
+        article=article,
+        home_players=home_players if game["played"] else None,
+        away_players=away_players if game["played"] else None,
+        team_stats=team_stats,
+        line_score=line_score if game["played"] else None,
+        quarters=quarters if game["played"] else None
+    )
 app.register_blueprint(main_bp)
 
 if __name__ == "__main__":

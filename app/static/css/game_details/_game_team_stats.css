@@ -1,0 +1,45 @@
+.game-team-stats {
+  margin-top: 24px;
+}
+
+.team-stats-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.team-stats-title {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.team-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.team-stats-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.stat-home {
+  text-align: right;
+  font-weight: 600;
+  width: 25%;
+}
+
+.stat-away {
+  text-align: left;
+  font-weight: 600;
+  width: 25%;
+}
+
+.stat-name {
+  text-align: center;
+  color: #666;
+  width: 50%;
+}

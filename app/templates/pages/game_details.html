@@ -1,3 +1,17 @@
 {% extends "pages/layout.html" %}
-
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game_details/game_details.css') }}">
+{% endblock %}
 {% block content %}
+
+<div class="page-wrapper">
+
+  {# 1. GAME HEADER #}
+  {% include "pages/game_details/_game_header.html" %}
+
+  {# 2. LINE SCORE #}
+  {% include "pages/game_details/_game_linescore.html" %}
+
+</div>
+
+{% endblock %}

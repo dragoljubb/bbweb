@@ -77,7 +77,7 @@
 /*    scrollbar-width: none; !* Firefox *!*/
 /*}*/
 
-/*.game-card {*/
+/*.game_details-card {*/
 /*    flex: 0 0 auto;*/
 /*    width: 160px;          !* širina kartice *!*/
 /*    border: 1px solid #e5e7eb;*/
@@ -88,12 +88,12 @@
 /*    transition: transform 0.2s;*/
 /*}*/
 
-/*.game-card:hover {*/
+/*.game_details-card:hover {*/
 /*    transform: scale(1.05);*/
 /*    box-shadow: 0 2px 8px rgba(0,0,0,0.15);*/
 /*}*/
 
-/*.game-card .team img {*/
+/*.game_details-card .team img {*/
 /*    display: block;*/
 /*    margin: 0 auto 4px auto;*/
 /*}*/

@@ -17,7 +17,7 @@
     border-radius: 12px;
 
     display: grid;
-    grid-template-columns: 300px 1fr; /* INFO | CONTENT */
+    grid-template-columns: 250px 1fr; /* INFO | CONTENT */
     align-items: center;
     column-gap: 16px;
 
@@ -72,7 +72,7 @@
     grid-template-columns: minmax(0, 1fr) auto auto;
     align-items: center;
     column-gap: 6px;
-    justify-items: end;
+    justify-items: start;
 }
 
 .game-card-full .team.home .team-name {

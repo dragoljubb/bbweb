@@ -1,0 +1,40 @@
+.game-linescore {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.linescore-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.linescore-table th {
+  color: #666;
+  font-weight: 600;
+  padding-bottom: 6px;
+}
+
+.linescore-table td {
+  padding: 8px 4px;
+  border-top: 1px solid #eee;
+}
+
+.team-cell {
+  text-align: left;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.team-cell img {
+  height: 22px;
+}
+
+.total-cell {
+  font-weight: 700;
+}

@@ -1,0 +1,36 @@
+<div class="game-header">
+{{game.home_code}}
+  <div class="game-header-main">
+
+    <!-- HOME TEAM -->
+    <div class="team-side home">
+      <img src="{{ team_logo(game.home_code) }}" class="team-logo">
+      <div class="team-name">{{ game.home_name }}</div>
+    </div>
+
+    <!-- SCORE / VS -->
+    <div class="game-center">
+      {% if game.played %}
+        <div class="game-score">
+          <span class="home-score">{{ game.home_score }}</span>
+          <span class="dash">-</span>
+          <span class="away-score">{{ game.away_score }}</span>
+        </div>
+      {% else %}
+        <div class="game-vs">VS</div>
+      {% endif %}
+
+      <div class="game-meta">
+        {{ game.game_date }} • {{ game.round_name }} • {{ game.arena }}
+      </div>
+    </div>
+
+    <!-- AWAY TEAM -->
+    <div class="team-side away">
+      <img src="{{ team_logo(game.away_code) }}" class="team-logo">
+      <div class="team-name">{{ game.away_name }}</div>
+    </div>
+
+  </div>
+
+</div>
