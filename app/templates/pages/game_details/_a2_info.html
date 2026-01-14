@@ -1,0 +1,40 @@
+<div class="game-info-card">
+
+  <div class="info-row">
+    <span class="label">Date</span>
+    <span class="value">
+      {{ game['game_date'].strftime('%d %b %Y • %H:%M') if game['game_date'] }}
+    </span>
+  </div>
+
+  {% if game['arena'] %}
+  <div class="info-row">
+    <span class="label">Arena</span>
+    <span class="value">{{ game['arena'] }}</span>
+  </div>
+  {% endif %}
+
+  {% if game['attendance'] %}
+  <div class="info-row">
+    <span class="label">Attendance</span>
+    <span class="value">{{ "{:,}".format(game['attendance']) }}</span>
+  </div>
+  {% endif %}
+
+  {% if game['referee1'] %}
+  <div class="info-row">
+    <span class="label">Referees</span>
+    <span class="value">
+      {{ game['referee1'] }}
+      {% if game['referee2'] %}, {{ game['referee2'] }}{% endif %}
+      {% if game['referee3'] %}, {{ game['referee3'] }}{% endif %}
+    </span>
+  </div>
+  {% endif %}
+
+  {% if game['played'] %}
+    <div class="info-divider"></div>
+    {% include "pages/game_details/_game_linescore.html" %}
+  {% endif %}
+
+</div>

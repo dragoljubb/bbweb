@@ -1,0 +1,37 @@
+{# =========================
+   TOP SECTION (A1 + A2)
+========================= #}
+
+<div class="game-top-grid">
+
+  <!-- A1: PREVIEW / ARTICLE -->
+  <div class="game-a1 card">
+    {% include "pages/game_details/_a1_article.html" %}
+  </div>
+
+  <!-- A2: INFO CARD (bez linescore-a) -->
+  <div class="game-a2 card">
+    {% include "pages/game_details/_a2_info.html" %}
+  </div>
+
+</div>
+
+
+{# =========================
+   BOTTOM SECTION (B1)
+========================= #}
+
+<div class="game-bottom card">
+
+  {# Samo jedan tab za sada #}
+  <ul class="bb-tabs">
+    <li class="bb-tab active" data-tab="preview-stats">
+      Team comparison
+    </li>
+  </ul>
+
+  <div class="bb-tab-panel active" id="preview-stats">
+    {% include "pages/game_details/_team_stats.html" %}
+  </div>
+
+</div>

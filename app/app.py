@@ -316,14 +316,14 @@ def game_details_old(season, game_code):
 
 @main_bp.route("/games/<season>/<int:game_code>")
 def game_details(season, game_code):
-
+    teams_sidebar = get_clubsbyseasoncode(season)
     game = get_game_details(season, game_code)  # info o meču (played, arena, referees…)
     article = get_game_article(season, game_code)  # report / preview (može None)
 
-    if game["played"]:
-        home_players = get_home_players(season, game_code)
-        away_players = get_away_players(season, game_code)
-        team_stats   = get_team_totals(season, game_code)
+    if game.played:
+        home_players = get_bs_players(season, game_code, is_home =True)
+        away_players = get_bs_players(season, game_code, is_home =False)
+        team_stats   = get_bs_teams(season, game_code)
         row = get_game_quarters(season, game_code)
         line_score = {
             "home": [row.q1h, row.q2h, row.q3h, row.q4h],
@@ -331,15 +331,19 @@ def game_details(season, game_code):
         }
         quarters = ["Q1", "Q2", "Q3", "Q4"]
     else:
-        team_stats_season = get_season_team_compare(game["home_code"], game["away_code"], season)
+        home_team_season_stats = get_team_stats(season, game.home_code)
+        away_team_season_stats = get_team_stats(season, game.away_code)
 
     return render_template(
         "pages/game_details.html",
+        teams_sidebar=teams_sidebar,
         game=game,
         article=article,
         home_players=home_players if game["played"] else None,
         away_players=away_players if game["played"] else None,
-        team_stats=team_stats,
+        team_stats=team_stats if game["played"] else None,
+        home_team_season_stats=home_team_season_stats if not game["played"] else None,
+        away_team_season_stats=away_team_season_stats if not game["played"] else None,
         line_score=line_score if game["played"] else None,
         quarters=quarters if game["played"] else None
     )

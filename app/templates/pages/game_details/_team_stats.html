@@ -1,0 +1,67 @@
+<table class="stat-table team-stats-table">
+
+  <thead>
+    <tr>
+      <th class="col-name"></th>
+      <th>{{ game['home_code'] }}</th>
+      <th>{{ game['away_code'] }}</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td class="col-name">Points</td>
+      <td class="strong">{{ team_stats.home_points }}</td>
+      <td class="strong">{{ team_stats.away_points }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">Rebounds</td>
+      <td>{{ team_stats.home_total_rebounds }}</td>
+      <td>{{ team_stats.away_total_rebounds }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">Assists</td>
+      <td>{{ team_stats.home_assistances }}</td>
+      <td>{{ team_stats.away_assistances }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">Turnovers</td>
+      <td>{{ team_stats.home_turnovers }}</td>
+      <td>{{ team_stats.away_turnovers }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">Steals</td>
+      <td>{{ team_stats.home_steals }}</td>
+      <td>{{ team_stats.away_steals }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">Blocks</td>
+      <td>{{ team_stats.home_blocks_favour }}</td>
+      <td>{{ team_stats.away_blocks_favour }}</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">FG %</td>
+      <td>{{ "%.1f"|format(team_stats.home_fg2_per * 100) }}%</td>
+      <td>{{ "%.1f"|format(team_stats.away_fg2_per * 100) }}%</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">3PT %</td>
+      <td>{{ "%.1f"|format(team_stats.home_fg3_per * 100) }}%</td>
+      <td>{{ "%.1f"|format(team_stats.away_fg3_per * 100) }}%</td>
+    </tr>
+
+    <tr>
+      <td class="col-name">FT %</td>
+      <td>{{ "%.1f"|format(team_stats.home_ft_per * 100) }}%</td>
+      <td>{{ "%.1f"|format(team_stats.away_ft_per * 100) }}%</td>
+    </tr>
+  </tbody>
+
+</table>

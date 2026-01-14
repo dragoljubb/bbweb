@@ -1,0 +1,27 @@
+{% if article %}
+  <div class="game-article">
+
+    <h2 class="game-article-title">
+      {{ article.article_title }}
+    </h2>
+
+    {% if article.article_lead %}
+      <div class="game-article-lead">
+        {{ article.article_lead }}
+      </div>
+    {% endif %}
+
+    <div class="game-article-content">
+      {{ article.article_content | safe }}
+    </div>
+
+  </div>
+{% else %}
+  <div class="game-article game-article-empty">
+    {% if game['played'] %}
+      Match report will be available soon.
+    {% else %}
+      Match preview will be available soon.
+    {% endif %}
+  </div>
+{% endif %}

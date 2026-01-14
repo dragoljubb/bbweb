@@ -46,4 +46,12 @@
 .bb-tab-panel.active {
   display: block;
 }
+bb-subtabs {
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+.bb-subtabs .bb-tab {
+  font-size: 13px;
+}
 

@@ -1,0 +1,75 @@
+{# =========================
+   TOP SECTION (A1 + A2)
+========================= #}
+
+<div class="game-top-grid">
+
+  <div class="game-a1 card">
+    {% include "pages/game_details/_a1_article.html" %}
+  </div>
+
+  <div class="game-a2 card">
+    {% include "pages/game_details/_a2_info.html" %}
+  </div>
+
+</div>
+
+
+{# =========================
+   BOTTOM SECTION (B1)
+========================= #}
+
+<div class="game-bottom card"
+     data-tabs
+     data-tabs-content="#main-tabs-content">
+
+  {# ===== MAIN TABS ===== #}
+  <ul class="bb-tabs">
+    <li class="bb-tab active" data-tab-target="#boxscore">Boxscore</li>
+    <li class="bb-tab" data-tab-target="#teamstats">Team stats</li>
+  </ul>
+
+  {# ===== MAIN PANELS ===== #}
+  <div id="main-tabs-content">
+
+    {# ===== BOXSCORE PANEL ===== #}
+    <div class="bb-tab-panel active" id="boxscore">
+
+      {# --- SUBTABS ROOT (HOME / AWAY) --- #}
+     <div data-tabs>
+
+  <ul class="bb-tabs bb-subtabs">
+    <li class="bb-tab active" data-tab-target="#home">
+      {{ game['home_code'] }}
+    </li>
+    <li class="bb-tab" data-tab-target="#away">
+      {{ game['away_code'] }}
+    </li>
+  </ul>
+
+  <div data-tabs-content>
+
+    <div class="bb-tab-panel active" id="home">
+      {% include "pages/game_details/_boxscore_home.html" %}
+    </div>
+
+    <div class="bb-tab-panel" id="away">
+      {% include "pages/game_details/_boxscore_away.html" %}
+    </div>
+
+  </div>
+
+</div>
+
+      {# --- END SUBTABS --- #}
+
+    </div>
+
+    {# ===== TEAM STATS PANEL ===== #}
+    <div class="bb-tab-panel" id="teamstats">
+      {% include "pages/game_details/_team_stats.html" %}
+    </div>
+
+  </div>
+
+</div>

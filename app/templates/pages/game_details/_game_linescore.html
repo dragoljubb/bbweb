@@ -1,41 +1,41 @@
 <div class="game-linescore">
 
-  <table class="linescore-table">
+  <table class="stat-table linescore-table">
     <thead>
       <tr>
-        <th></th>
+        <th class="col-name"></th>
         {% for q in quarters %}
           <th>{{ q }}</th>
         {% endfor %}
-        <th>T</th>
+        <th class="strong">T</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
-        <td class="team-cell">
-          <img src="{{ team_logo(game.home_code) }}">
-          {{ game.home_name }}
+        <td class="col-name team-cell">
+          <img src="{{ team_logo(game['home_code']) }}" class="team-logo-sm">
+          {{ game['home_code'] }}
         </td>
 
         {% for p in line_score.home %}
           <td>{{ p }}</td>
         {% endfor %}
 
-        <td class="total-cell">{{ game.home_score }}</td>
+        <td class="strong">{{ game['home_score'] }}</td>
       </tr>
 
       <tr>
-        <td class="team-cell">
-          <img src="{{ team_logo(game.away_code) }}">
-          {{ game.away_name }}
+        <td class="col-name team-cell">
+          <img src="{{ team_logo(game['away_code']) }}" class="team-logo-sm">
+          {{ game['away_code'] }}
         </td>
 
         {% for p in line_score.away %}
           <td>{{ p }}</td>
         {% endfor %}
 
-        <td class="total-cell">{{ game.away_score }}</td>
+        <td class="strong">{{ game['away_score'] }}</td>
       </tr>
     </tbody>
   </table>

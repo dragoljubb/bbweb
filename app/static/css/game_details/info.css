@@ -1,0 +1,33 @@
+/* =========================
+   GAME INFO CARD (A2)
+========================= */
+
+.game-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.9rem;
+}
+
+.info-row .label {
+  color: #6b7280;
+}
+
+.info-row .value {
+  font-weight: 600;
+  color: #111827;
+  text-align: right;
+  max-width: 65%;
+}
+
+.info-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 6px 0;
+}

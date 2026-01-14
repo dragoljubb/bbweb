@@ -1,0 +1,26 @@
+/* =========================
+   LINE SCORE
+========================= */
+
+.game-linescore {
+  margin-top: 10px;
+}
+
+.linescore-table {
+  font-size: 0.8rem;
+}
+
+.linescore-table th,
+.linescore-table td {
+  padding: 6px 4px;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.team-logo-sm {
+  height: 18px;
+}

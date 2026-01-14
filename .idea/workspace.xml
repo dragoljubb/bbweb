@@ -4,31 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260111_0800">
-      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/_game_boxscore.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/_game_header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/_game_linescore.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/_game_team_stats.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/game_details.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_boxscore.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_linescore.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_team_stats.html" afterDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260112_1145">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12-Jan-26_10_19_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12-Jan-26_10_19__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/article.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/game_details/info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_a1_article.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_a2_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_away.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_team_stats.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/not_played.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/pages/game_details/played.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/bbWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_5_2026_5_46_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_1_5_2026_5_46_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/games.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/games.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/team_details.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/team_details.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/components/game_card_full.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/game_card_full.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/components/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/components/tabs.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/components/tabs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/_game_boxscore.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/boxscore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/_game_linescore.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/linescore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/_game_team_stats.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/team_stats.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/game_details.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/game_details.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/pages/games.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/games.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_game_boxscore.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_game_linescore.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_linescore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_game_team_stats.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restore_db.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/restore_db.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/lonks_swagger.txt" beforeDir="false" afterPath="$PROJECT_DIR$/utils/links_swagger.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +46,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Python Script" />
-        <option value="HTML File" />
+        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -178,7 +182,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.13 (bbWeb)" />
+      <option name="SDK_NAME" value="Python 3.14 (bbweb)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -678,6 +682,16 @@
           <line>13</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/app.py</url>
+          <line>323</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/app.py</url>
+          <line>324</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -688,7 +702,7 @@
     <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1768304251064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/bbWeb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1768078644757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1767622851986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1768397293809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_stats.coverage" NAME="load_person_stats Coverage Results" MODIFIED="1767006158715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$load_player_images.coverage" NAME="load_player_images Coverage Results" MODIFIED="1766928653136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$stats_pipeline.coverage" NAME="stats_pipeline Coverage Results" MODIFIED="1766946241991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />

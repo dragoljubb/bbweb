@@ -1,0 +1,17 @@
+/* =========================
+   BOXSCORE TABLE
+========================= */
+
+.boxscore-table {
+  margin-top: 10px;
+}
+
+.boxscore-table td,
+.boxscore-table th {
+  vertical-align: middle;
+}
+
+/* player name column */
+.boxscore-table .col-name {
+  min-width: 160px;
+}

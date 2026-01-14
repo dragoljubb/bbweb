@@ -1,0 +1,21 @@
+/* =========================
+   TEAM STATS
+========================= */
+
+.team-stats-table {
+  margin-top: 10px;
+  min-width: 500px;
+}
+
+.team-stats-table th {
+  text-align: center;
+}
+
+.team-stats-table td {
+  text-align: center;
+}
+
+.team-stats-table .col-name {
+  text-align: left;
+  font-weight: 500;
+}

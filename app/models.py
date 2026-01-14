@@ -428,7 +428,8 @@ def get_game_details(season :str, game_code :int):
     with SessionLocal() as session:
         result = session.execute(
             text(""" SELECT game_code, season_code, home_code, home_name, away_code, round, 
-                    away_name, home_score, away_score, arena, attendance, game_date, played
+                    away_name, home_score, away_score, arena, attendance, game_date, played,
+                referee1, referee2, referee3
                     FROM dwh.vw_gamedetails_header
                      WHERE season_code = :pseason_code AND game_code = :pgame_code
                  """), {"pseason_code":season, "pgame_code" :game_code }
@@ -452,18 +453,48 @@ def get_game_article(season: str, game_code: int):
             text(""" SELECT *
                      FROM dwh.vw_articles
                      WHERE season_code = :pseason_code
-                       AND gamecode = :pgame_code
+                       AND game_code = :pgame_code
                  """), {"pseason_code": season, "pgame_code": game_code}
         ).mappings().fetchone()
         return result
 
-def get_home_players(season: str, game_code: int):
+def get_bs_players(season: str, game_code: int , is_home: bool):
     with SessionLocal() as session:
         result = session.execute(
-            text(""" SELECT *
-                     FROM dwh.vw_articles
+            text(""" SELECT season_code, gamecode, team_code, player_code, player_name, 
+                            dorsal, minutes, is_playing, is_starter, points, steals, 
+                            turnovers, valuation, assistances, plusminus, blocks_favour, 
+                            blocks_against, fouls_commited, fouls_received, total_rebounds, 
+                            def_rebounds, off_rebounds, ft_made, ft_att, ft_per, fg2_made, 
+                            fg2_att, fg2_per, fg3_made, fg3_att, fg3_per, is_home
+	                 FROM dwh.vw_bs_players
                      WHERE season_code = :pseason_code
-                       AND gamecode = :pgame_code
+                       AND gamecode = :pgame_code AND is_home = :ishome
+                 """), {"pseason_code": season, "pgame_code": game_code, "ishome": is_home}
+        ).mappings().all()
+        return result
+
+def get_bs_teams(season: str, game_code: int):
+    with SessionLocal() as session:
+        result = session.execute(
+            text(""" SELECT gamecode, season_code, 
+                            home_team_code, home_team_name, home_coach, home_tmr_points, home_tmr_steals, 
+                            home_tmr_turnovers, home_tmr_valuation, home_tmr_assistances, home_tmr_blocks_favour, 
+                            home_tmr_blocks_against, home_tmr_fouls_commited, home_tmr_fouls_received, home_tmr_total_rebounds, 
+                            home_tmr_def_rebounds, home_tmr_off_rebounds, home_points, home_steals, home_turnovers, home_valuation, 
+                            home_assistances, home_blocks_favour, home_blocks_against, home_fouls_commited, home_fouls_received, 
+                            home_total_rebounds, home_def_rebounds, home_off_rebounds, home_ft_made, home_ft_att, home_ft_per, 
+                            home_fg2_made, home_fg2_att, home_fg2_per, home_fg3_made, home_fg3_att, home_fg3_per, away_team_code, 
+                            away_team_name, away_coach, away_tmr_points, away_tmr_steals, away_tmr_turnovers, away_tmr_valuation, 
+                            away_tmr_assistances, away_tmr_blocks_favour, away_tmr_blocks_against, away_tmr_fouls_commited, 
+                            away_tmr_fouls_received, away_tmr_total_rebounds, away_tmr_def_rebounds, away_tmr_off_rebounds, 
+                            away_points, away_steals, away_turnovers, away_valuation, away_assistances, away_blocks_favour, 
+                            away_blocks_against, away_fouls_commited, away_fouls_received, away_total_rebounds, away_def_rebounds, 
+                            away_off_rebounds, away_ft_made, away_ft_att, away_ft_per, away_fg2_made, away_fg2_att, away_fg2_per, 
+                            away_fg3_made, away_fg3_att, away_fg3_per
+	                 FROM dwh.vw_bs_teams_stat
+                     WHERE season_code = :pseason_code
+                       AND gamecode = :pgame_code 
                  """), {"pseason_code": season, "pgame_code": game_code}
         ).mappings().fetchone()
         return result

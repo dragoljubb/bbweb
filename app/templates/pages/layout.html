@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/players.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/player.css') }}">
      <link rel="stylesheet" href="{{ url_for('static', filename='css/team_details.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/game_details/game_details.css') }}">
 
 
      <!-- Components -->
@@ -30,6 +31,8 @@
   referrerpolicy="no-referrer"
 />
 </head>
+{% block extra_js %}
+{% endblock %}
 
 <body>
 

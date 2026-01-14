@@ -1,0 +1,40 @@
+<table class="stat-table boxscore-table">
+
+  <thead>
+    <tr>
+      <th class="col-small">#</th>
+      <th class="col-name">Player</th>
+      <th class="col-small">MIN</th>
+      <th>PTS</th>
+      <th>REB</th>
+      <th>AST</th>
+      <th>STL</th>
+      <th>BLK</th>
+      <th class="col-small">+/-</th>
+      <th class="strong">VAL</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  Home count: {{ home_players|length }}
+    {% for p in home_players %}
+    <tr>
+      <td class="col-small">{{ p.dorsal }}</td>
+
+      <td class="col-name">
+        {{ p.player_name}}
+      </td>
+
+      <td class="col-small">{{ p.minutes }}</td>
+      <td>{{ p.points }}</td>
+      <td>{{ p.rebounds_total }}</td>
+      <td>{{ p.assists }}</td>
+      <td>{{ p.steals }}</td>
+      <td>{{ p.blocks_favour }}</td>
+      <td class="col-small">{{ p.plus_minus }}</td>
+      <td class="strong">{{ p.valuation }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+</table>
