@@ -1,21 +1,72 @@
 /* =========================
-   TEAM STATS
+   TEAM STATS – GAME DETAILS
 ========================= */
 
 .team-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: 0.85rem;
   margin-top: 10px;
-  min-width: 500px;
 }
 
-.team-stats-table th {
+/* ========== HEADER ========== */
+.team-stats-table thead th {
+  background: #f8f9fa;
+  color: #6b747c;
+  font-weight: 500;
   text-align: center;
+  padding: 7px 10px;
+  border: none;
 }
 
-.team-stats-table td {
-  text-align: center;
+.team-stats-table thead {
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.10);
 }
+
+/* ========== BODY ========== */
+.team-stats-table tbody td {
+  padding: 7px 10px;
+  text-align: center;
+  border: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.team-stats-table tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.team-stats-table tbody tr:hover {
+  background: #f4f8ff;
+}
+
+/* ========== COLUMNS ========== */
 
 .team-stats-table .col-name {
   text-align: left;
   font-weight: 500;
+  width: 42%;
+}
+
+/* naglasi rezultat */
+.team-stats-table td.strong {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ========== VERTICAL LINES ========== */
+
+.team-stats-table th:not(:last-child),
+.team-stats-table td:not(:last-child) {
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ========== VOLT FIX ========== */
+
+.team-stats-table > :not(:first-child) {
+  border-top: none !important;
+}
+.team-stats-table .better {
+  color: #0d6efd;
+  font-weight: 700;
 }

@@ -31,3 +31,13 @@
   background: #e5e7eb;
   margin: 6px 0;
 }
+
+
+/* =========================
+   INFO BLOCK (NON-FLEX)
+========================= */
+
+.info-block {
+  display: block;      /* ⬅️ IZLAZI IZ FLEX LOGIKE */
+  width: 100%;
+}

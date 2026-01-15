@@ -17,6 +17,7 @@ COMPETITION_CODE = "E"
 def home():
     current_round = get_current_round_phase(COMPETITION_CODE)
     def_season_code = 'E2025'
+    season = request.args.get("season", "E2025")
     games = get_upcoming_games(current_round.round, def_season_code) if current_round else []
     main_news, slider_news = get_home_news()
 
@@ -26,7 +27,8 @@ def home():
                            games=games,
                            main_news=main_news,
                            slider_news=slider_news,
-                           teams_sidebar=teams_sidebar)
+                           teams_sidebar=teams_sidebar,
+                           selected_season = season)
 
 # ===========================
 # Games page
@@ -37,7 +39,7 @@ from flask import request, redirect, url_for
 
 @main_bp.route('/games')
 def games():
-    season = request.args.get("season")
+    season = request.args.get("season", "E2025")
     phase = request.args.get("phase", "RS")
     team = request.args.get("team")
     selected_round = request.args.get("round", type=int)
@@ -81,7 +83,8 @@ def games():
                                rounds=rounds,
                                selected_round=selected_round,
                                games=games_data,
-                               teams_sidebar=teams_sidebar)
+                               teams_sidebar=teams_sidebar,
+                               selected_season = season)
     else:
         # TEAM VIEW
         games = get_team_games(season, team)
@@ -102,6 +105,7 @@ def games():
                                sel_teams=sel_teams,  # ✅ DODATO
                                code=team,
                                teams_sidebar=teams_sidebar,
+                               selected_season = season,
                                selected_team_name=selected_team_name,
                                season_label=season_label,
                                games=games,
@@ -113,40 +117,44 @@ def games():
 @main_bp.route("/standings")
 def standings():
     season_code = request.args.get("season", "E2025")
+    season = request.args.get("season", "E2025")
 
     last_round = get_last_round(season_code).round
     round_ = int(request.args.get("round", last_round))
-    season = request.args.get("season")
-    rounds = get_available_rounds( season_code)
+    raw_rounds = get_available_rounds( season_code)
+    rounds = [{"round": r[0], "label": f"Round {r[0]}"} for r in raw_rounds]
     standings = get_standings(season_code, round_)
+    listseasons = get_seasons(COMPETITION_CODE)
+    seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
     teams_sidebar = get_clubsbyseasoncode(season_code)
     return render_template(
         "pages/standings.html",
         standings=standings,
         rounds=rounds,
         selected_round=round_,
+        seasons = seasons,
         teams_sidebar=teams_sidebar,
         selected_season=season_code
     )
 
 @main_bp.route("/teams")
 def teams():
-    season_code = request.args.get("season", "E2025")
+    season = request.args.get("season", "E2025")
     listseasons = get_seasons(COMPETITION_CODE)
     seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
-    teams_sidebar = get_clubsbyseasoncode(season_code)
+    teams_sidebar = get_clubsbyseasoncode(season)
     teams = [{"crest": t.crest_url, "team_name": t.club_name, "code": t.club_code}
-             for t in get_clubsbyseasoncode(season_code)]
+             for t in get_clubsbyseasoncode(season)]
     return render_template(
         "pages/teams.html",
         teams_sidebar=teams_sidebar,
         teams = teams,
-        selected_season=season_code,
+        selected_season=season,
         seasons=seasons
     )
 
 
-@app.route("/teams/<team_code>")
+@main_bp.route("/team/<team_code>")
 def team_details(team_code):
     season = request.args.get("season", "E2025")  # default sezona
     team = get_clubbyseason_team_details(season, team_code)
@@ -216,6 +224,7 @@ def team_details(team_code):
         "pages/team_details.html",
         team=team,
         teams_sidebar=teams_sidebar,
+        selected_season = season,
         # season={"code": season_code},
         roster=roster,
         coaches = coaches,
@@ -265,57 +274,37 @@ def player_profile(person_code):
                            player_stats_list = player_stats_list,
                            season=season,
                            person_bio = person_bio,
-                           teams_sidebar = teams_sidebar )
+                           teams_sidebar = teams_sidebar,
+                           selected_season = season)
 
 
 @main_bp.route("/players")
 def players():
     # default sezona ili iz query parametra
-    season_code = request.args.get("season", "E2025")
+    season = request.args.get("season", "E2025")
 
     # sve dostupne sezone za dropdown
     listseasons = get_seasons(COMPETITION_CODE)
     seasons = [{"code": r.season_code, "label": r.season_info_alias} for r in listseasons]
 
     # igrači za sezonu
-    players_list = get_players_by_season(season_code)  # vraca listu objekata
+    players_list = get_players_by_season(season)  # vraca listu objekata
     # sortiramo po prezimenu (azbučno)
-    teams_sidebar = get_clubsbyseasoncode(season_code)
+    teams_sidebar = get_clubsbyseasoncode(season)
     return render_template(
         "pages/players.html",
         teams_sidebar=teams_sidebar,
         players=players_list,
-        selected_season=season_code,
+        selected_season=season,
         seasons=seasons
     )
 
 
-@main_bp.route("/gamesold/<season>/<int:game_code>")
-def game_details_old(season, game_code):
-    teams_sidebar = get_clubsbyseasoncode(season)
-    game = get_game_details(season, game_code)
-    row = get_game_quarters(season, game_code)
-    line_score = {
-        "home": [row.q1h, row.q2h, row.q3h, row.q4h],
-        "away": [row.q1a, row.q2a, row.q3a, row.q4a]
-    }
-    quarters = ["Q1", "Q2", "Q3", "Q4"]
 
-    return render_template(
-        "pages/game_details.html",
-
-        game=game,
-       #home_players=home_players,
-      #  away_players=away_players,
-        line_score=line_score,
-        quarters=quarters,
-        teams_sidebar = teams_sidebar
-
-      # team_stats=team_stats
-    )
 
 @main_bp.route("/games/<season>/<int:game_code>")
 def game_details(season, game_code):
+    season = request.args.get("season", "E2025")
     teams_sidebar = get_clubsbyseasoncode(season)
     game = get_game_details(season, game_code)  # info o meču (played, arena, referees…)
     article = get_game_article(season, game_code)  # report / preview (može None)
@@ -325,10 +314,17 @@ def game_details(season, game_code):
         away_players = get_bs_players(season, game_code, is_home =False)
         team_stats   = get_bs_teams(season, game_code)
         row = get_game_quarters(season, game_code)
+        has_ot = row.is_ot
+
         line_score = {
             "home": [row.q1h, row.q2h, row.q3h, row.q4h],
-            "away": [row.q1a, row.q2a, row.q3a, row.q4a]
+            "away": [row.q1a, row.q2a, row.q3a, row.q4a],
         }
+
+        if has_ot:
+            line_score["home"].append(row.oth)
+            line_score["away"].append(row.ota)
+
         quarters = ["Q1", "Q2", "Q3", "Q4"]
     else:
         home_team_season_stats = get_team_stats(season, game.home_code)
@@ -337,6 +333,7 @@ def game_details(season, game_code):
     return render_template(
         "pages/game_details.html",
         teams_sidebar=teams_sidebar,
+        selected_season = season,
         game=game,
         article=article,
         home_players=home_players if game["played"] else None,
@@ -345,7 +342,8 @@ def game_details(season, game_code):
         home_team_season_stats=home_team_season_stats if not game["played"] else None,
         away_team_season_stats=away_team_season_stats if not game["played"] else None,
         line_score=line_score if game["played"] else None,
-        quarters=quarters if game["played"] else None
+        quarters=quarters if game["played"] else None,
+        has_ot = has_ot
     )
 app.register_blueprint(main_bp)
 

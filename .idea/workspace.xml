@@ -4,20 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260112_1145">
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/test/test_tabs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/test/test_tabs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/pages/test/test_tabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bbWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260115_0100">
+      <change afterPath="$PROJECT_DIR$/app/static/css/base/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/components/stats_core.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/css/standings.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/components/stats_table.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/components/stats_player.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/boxscore.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/boxscore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/info.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/linescore.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/linescore.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/game_details/team_stats.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/game_details/team_stats.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/components/game_card_full.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/game_card_full.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/components/player_games_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/components/player_games_table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_a2_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_a2_info.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_away.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_away.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_boxscore_home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/played.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/played.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restore_db.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/restore_db.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_game_linescore.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_game_linescore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/game_details/_team_stats.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/game_details/_team_stats.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/games.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/games.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/standings.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/standings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/team_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/team_details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/pages/teams.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/teams.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +44,8 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -87,53 +98,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.games.html.executor&quot;: &quot;Debug&quot;,
-    &quot;JavaScript Debug.layout.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;PowerShell.restore_db.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_person_bio.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_person_careerhighs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_person_images.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_person_stats.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_player_images.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_standings.executor&quot;: &quot;Run&quot;,
-    &quot;Python.load_team_stats_pipeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.people_api.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stats_pipeline.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
-    &quot;datagrid.heatmap.switchedByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/myPython/PythonLearning/bbWeb/app/static/css/game&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.games.html.executor": "Debug",
+    "JavaScript Debug.layout.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "PowerShell.restore_db.ps1.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.load_person_bio.executor": "Run",
+    "Python.load_person_careerhighs.executor": "Run",
+    "Python.load_person_images.executor": "Run",
+    "Python.load_person_stats.executor": "Run",
+    "Python.load_player_images.executor": "Run",
+    "Python.load_standings.executor": "Run",
+    "Python.load_team_stats_pipeline.executor": "Run",
+    "Python.people_api.executor": "Debug",
+    "Python.run.executor": "Run",
+    "Python.stats_pipeline.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "datagrid.heatmap.switchedByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/myPython/PythonLearning/bbWeb/app/static/css/game",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;TEXT&quot;
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1767342221524" />
     <option name="spentUsd" value="0.0843801" />
@@ -277,6 +288,7 @@
       <workItem from="1768150696083" duration="4493000" />
       <workItem from="1768219977652" duration="22730000" />
       <workItem from="1768304245180" duration="5554000" />
+      <workItem from="1768459110074" duration="33770000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -598,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768202993591</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="20260115_0100">
+      <option name="closed" value="true" />
+      <created>1768435783675</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1768435783675</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251218_0940" />
     <MESSAGE value="20251219_0900" />
     <MESSAGE value="20251220_0900" />
     <MESSAGE value="20251220_2045" />
@@ -641,7 +660,8 @@
     <MESSAGE value="20260109_2000" />
     <MESSAGE value="20260109_2000_1" />
     <MESSAGE value="20260111_0800" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260111_0800" />
+    <MESSAGE value="20260115_0100" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260115_0100" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -668,13 +688,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>323</line>
-          <option name="timeStamp" value="39" />
+          <line>147</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/app.py</url>
-          <line>324</line>
-          <option name="timeStamp" value="40" />
+          <line>141</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -683,7 +703,7 @@
     <SUITE FILE_PATH="coverage/bbweb$load_person_careerhighs.coverage" NAME="load_person_careerhighs Coverage Results" MODIFIED="1767006217736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_standings.coverage" NAME="load_standings Coverage Results" MODIFIED="1768059254957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1768117674809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1768413783363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1768511042508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/bbWeb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1768078644757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1768397293809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

@@ -20,16 +20,21 @@
     items=seasons,
     value_attr="code",
     label_attr="label",
-    selected_value=season,
+    selected_value=selected_season,
     id="seasonSelect"
 ) }}
+
   </div>
 
   <!-- Teams grid -->
   <div class="row" id="teamsGrid">
     {% for team in teams %}
       <div class="col-lg-3 col-md-4 col-sm-6 mb-3 team-card-wrapper" data-name="{{ team.team_name | lower }}">
-        <a href="/teams/{{ team.code }}" class="text-decoration-none text-dark">
+        <a href="{{ url_for(
+    'main_bp.team_details',
+    team_code=team.code,
+    season=selected_season
+) }}" class="text-decoration-none text-dark">
           <div class="team-card d-flex align-items-center p-2" >
             <img src="{{ team_logo(team.code) }}"
                  alt="{{ team.team_name }}"

@@ -1,43 +1,56 @@
-<div class="game-linescore">
+<div class="game-linescore-wrapper">
 
-  <table class="stat-table linescore-table">
-    <thead>
-      <tr>
-        <th class="col-name"></th>
-        {% for q in quarters %}
-          <th>{{ q }}</th>
-        {% endfor %}
-        <th class="strong">T</th>
-      </tr>
-    </thead>
+  <table class="bb-linescore-table">
+
+  <thead>
+    <tr>
+      <th class="col-team"></th>
+
+      {% for q in quarters %}
+        <th>{{ q }}</th>
+      {% endfor %}
+
+      {% if has_ot %}
+        <th class="col-ot">OT</th>
+      {% endif %}
+
+      <th class="col-total">T</th>
+    </tr>
+  </thead>
 
     <tbody>
-      <tr>
-        <td class="col-name team-cell">
-          <img src="{{ team_logo(game['home_code']) }}" class="team-logo-sm">
-          {{ game['home_code'] }}
-        </td>
+    <tr>
+      <td class="team-cell">
+        <img src="{{ team_logo(game['home_code']) }}">
+        {{ game['home_code'] }}
+      </td>
 
-        {% for p in line_score.home %}
-          <td>{{ p }}</td>
-        {% endfor %}
+      {% for p in line_score.home %}
+        <td class="num">{{ p }}</td>
+      {% endfor %}
 
-        <td class="strong">{{ game['home_score'] }}</td>
-      </tr>
 
-      <tr>
-        <td class="col-name team-cell">
-          <img src="{{ team_logo(game['away_code']) }}" class="team-logo-sm">
-          {{ game['away_code'] }}
-        </td>
 
-        {% for p in line_score.away %}
-          <td>{{ p }}</td>
-        {% endfor %}
+      <td class="num strong">{{ game['home_score'] }}</td>
+    </tr>
 
-        <td class="strong">{{ game['away_score'] }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <tr>
+      <td class="team-cell">
+        <img src="{{ team_logo(game['away_code']) }}">
+        {{ game['away_code'] }}
+      </td>
+
+      {% for p in line_score.away %}
+        <td class="num">{{ p }}</td>
+      {% endfor %}
+
+
+      <td class="num strong">{{ game['away_score'] }}</td>
+    </tr>
+  </tbody>
+
+</table>
+
+
 
 </div>

@@ -1,0 +1,106 @@
+/* =========================
+   STANDINGS TABLE
+========================= */
+
+/* alignment */
+.standings-table thead th {
+  text-align: right;
+}
+
+.standings-table thead th.text-start,
+.standings-table tbody td.text-start {
+  text-align: left;
+}
+
+.standings-table thead th.text-center,
+.standings-table tbody td.text-center {
+  text-align: center;
+}
+
+/* team column */
+.standings-table .logo-col {
+  width: 34px;
+}
+
+.standings-table .team-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* team name emphasis */
+.standings-table td:nth-child(3) {
+  font-weight: 600;
+}
+
+/* LAST 5 form dots */
+.standings-table .form {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 50%;
+  font-size: 0.65rem;
+  text-align: center;
+  font-weight: 700;
+  margin-left: 2px;
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+.standings-table .form-win {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.standings-table .form-loss {
+  background: #f8d7da;
+  color: #842029;
+}
+
+/* position delta */
+.standings-table .delta-up {
+  color: #198754;
+  font-weight: 700;
+}
+
+.standings-table .delta-down {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+.standings-table .delta-equal {
+  color: #9aa1a8;
+}
+
+/* TEAM COLUMN (logo + name) */
+
+.standings-table .team-col {
+  min-width: 200px;
+}
+
+.standings-table .team-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.standings-table .team-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.standings-table .team-name {
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.standings-row {
+  cursor: pointer;
+}
+
+.standings-row:hover {
+  background: #eef4ff;
+}

@@ -208,7 +208,7 @@ def get_available_rounds(season_code: str):
                 SELECT DISTINCT round
                 FROM dwh.vw_standings
                 WHERE season_code = :pseason_code
-                ORDER BY round
+                ORDER BY round DESC
             """),
             {
                 "pseason_code": season_code
@@ -439,7 +439,9 @@ def get_game_details(season :str, game_code :int):
 def get_game_quarters(season: str, game_code: int):
         with SessionLocal() as session:
             result = session.execute(
-                text(""" SELECT season_code, gamecode, q1h, q2h, q3h, q4h, q1h_eq, q2h_eq, q3h_eq, q4h_eq, q1a, q2a, q3a, q4a, q1a_eq, q2a_eq, q3a_eq, q4a_eq
+                text(""" SELECT season_code, gamecode, q1h, q2h, q3h, q4h, q1h_eq, q2h_eq, q3h_eq, q4h_eq, 
+                                q1a, q2a, q3a, q4a, q1a_eq, q2a_eq, q3a_eq, q4a_eq,
+                            oth, ota, is_ot
                         FROM dwh.vw_bs_game_quarters
                          WHERE season_code = :pseason_code AND gamecode = :pgame_code
                        """), {"pseason_code": season, "pgame_code": game_code}
@@ -469,7 +471,8 @@ def get_bs_players(season: str, game_code: int , is_home: bool):
                             fg2_att, fg2_per, fg3_made, fg3_att, fg3_per, is_home
 	                 FROM dwh.vw_bs_players
                      WHERE season_code = :pseason_code
-                       AND gamecode = :pgame_code AND is_home = :ishome
+                       AND gamecode = :pgame_code AND is_home = :ishome AND minutes IS NOT NULL
+                ORDER BY CAST(dorsal as int)
                  """), {"pseason_code": season, "pgame_code": game_code, "ishome": is_home}
         ).mappings().all()
         return result

@@ -34,7 +34,9 @@
 
   {% if game['played'] %}
     <div class="info-divider"></div>
-    {% include "pages/game_details/_game_linescore.html" %}
+  <div class="info-block">
+  {% include "pages/game_details/_game_linescore.html" %}
+</div>
   {% endif %}
 
 </div>

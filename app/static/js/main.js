@@ -104,3 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".standings-row").forEach(row => {
+    row.addEventListener("click", () => {
+      window.location = row.dataset.href;
+    });
+  });
+});

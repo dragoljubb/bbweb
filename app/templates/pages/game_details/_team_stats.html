@@ -11,8 +11,8 @@
   <tbody>
     <tr>
       <td class="col-name">Points</td>
-      <td class="strong">{{ team_stats.home_points }}</td>
-      <td class="strong">{{ team_stats.away_points }}</td>
+      <td class="{% if team_stats.home_points > team_stats.away_points %}better{% endif %}">{{ team_stats.home_points }}</td>
+      <td class="{% if team_stats.home_points < team_stats.away_points %}better{% endif %}">{{ team_stats.away_points }}</td>
     </tr>
 
     <tr>
