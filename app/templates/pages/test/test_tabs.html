@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabs Test</title>
+  <link rel="stylesheet" href="test_tabs.css">
+</head>
+<body>
+
+<h1>Tabs test (nested)</h1>
+
+<!-- MAIN TABS -->
+<div class="tabs-container">
+
+  <ul class="bb-tabs">
+    <li><button class="bb-tab active" data-tab="#main-1">Main Tab 1</button></li>
+    <li><button class="bb-tab" data-tab="#main-2">Main Tab 2</button></li>
+  </ul>
+
+  <div class="bb-tab-panel active" id="main-1">
+    <h2>Main Tab 1 content</h2>
+
+    <!-- NESTED TABS -->
+    <div class="tabs-container">
+
+      <ul class="bb-tabs">
+        <li><button class="bb-tab active" data-tab="#nested-1">Nested 1</button></li>
+        <li><button class="bb-tab" data-tab="#nested-2">Nested 2</button></li>
+      </ul>
+
+      <div class="bb-tab-panel active" id="nested-1">
+        <p>Nested tab 1 content</p>
+      </div>
+
+      <div class="bb-tab-panel" id="nested-2">
+        <p>Nested tab 2 content</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bb-tab-panel" id="main-2">
+    <h2>Main Tab 2 content</h2>
+    <p>Nothing nested here.</p>
+  </div>
+
+</div>
+
+<script src="test_tabs.js"></script>
+</body>
+</html>

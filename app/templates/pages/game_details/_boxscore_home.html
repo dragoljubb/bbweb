@@ -16,7 +16,6 @@
   </thead>
 
   <tbody>
-  Home count: {{ home_players|length }}
     {% for p in home_players %}
     <tr>
       <td class="col-small">{{ p.dorsal }}</td>
@@ -31,7 +30,7 @@
       <td>{{ p.assists }}</td>
       <td>{{ p.steals }}</td>
       <td>{{ p.blocks_favour }}</td>
-      <td class="col-small">{{ p.plus_minus }}</td>
+      <td class="col-small">{{ p.plusminus }}</td>
       <td class="strong">{{ p.valuation }}</td>
     </tr>
     {% endfor %}

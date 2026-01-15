@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.bb-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.bb-tabs li {
+  margin: 0;
+}
+
+.bb-tab {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+
+.bb-tab.active {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.bb-tab-panel {
+  display: none;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.bb-tab-panel.active {
+  display: block;
+}
+
+.tabs-container {
+  margin-bottom: 20px;
+}

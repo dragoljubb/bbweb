@@ -19,6 +19,10 @@
    BOTTOM SECTION (B1)
 ========================= #}
 
+{# =========================
+   BOTTOM SECTION (B1)
+========================= #}
+
 <div class="game-bottom card"
      data-tabs
      data-tabs-content="#main-tabs-content">
@@ -35,33 +39,32 @@
     {# ===== BOXSCORE PANEL ===== #}
     <div class="bb-tab-panel active" id="boxscore">
 
-      {# --- SUBTABS ROOT (HOME / AWAY) --- #}
-     <div data-tabs>
+      {# ===== SUB TABS (HOME / AWAY) ===== #}
+      <div data-tabs data-tabs-content="#boxscore-subtabs-content">
 
-  <ul class="bb-tabs bb-subtabs">
-    <li class="bb-tab active" data-tab-target="#home">
-      {{ game['home_code'] }}
-    </li>
-    <li class="bb-tab" data-tab-target="#away">
-      {{ game['away_code'] }}
-    </li>
-  </ul>
+        <ul class="bb-tabs bb-subtabs">
+          <li class="bb-tab active" data-tab-target="#home">
+            {{ game['home_code'] }}
+          </li>
+          <li class="bb-tab" data-tab-target="#away">
+            {{ game['away_code'] }}
+          </li>
+        </ul>
 
-  <div data-tabs-content>
+        <div id="boxscore-subtabs-content">
 
-    <div class="bb-tab-panel active" id="home">
-      {% include "pages/game_details/_boxscore_home.html" %}
-    </div>
+          <div class="bb-tab-panel active" id="home">
+            {% include "pages/game_details/_boxscore_home.html" %}
+          </div>
 
-    <div class="bb-tab-panel" id="away">
-      {% include "pages/game_details/_boxscore_away.html" %}
-    </div>
+          <div class="bb-tab-panel" id="away">
+            {% include "pages/game_details/_boxscore_away.html" %}
+          </div>
 
-  </div>
+        </div>
 
-</div>
-
-      {# --- END SUBTABS --- #}
+      </div>
+      {# ===== END SUB TABS ===== #}
 
     </div>
 
@@ -73,3 +76,4 @@
   </div>
 
 </div>
+
