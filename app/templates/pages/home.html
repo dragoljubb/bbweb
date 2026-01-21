@@ -4,11 +4,16 @@
 <div class="container-fluid pt-4">
 
     {% if current_round %}
-    <div class="card bg-primary text-white mb-4 p-3">
-        <h2>{{ current_round.round_name }}</h2>
-        <p>{{ current_round.min_game_start.strftime('%b %d, %Y') }} - {{ current_round.max_game_start.strftime('%b %d, %Y') }}</p>
+<div class="card round-card mb-4 p-3">
+    <h2 class="round-title">{{ current_round.round_name }}</h2>
+    <p class="round-dates">
+        {{ current_round.min_game_start.strftime('%b %d, %Y') }}
+        –
+        {{ current_round.max_game_start.strftime('%b %d, %Y') }}
+        </p>
     </div>
     {% endif %}
+
 
     <!-- Slider utakmica aktivnog kola -->
 

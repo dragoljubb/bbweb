@@ -82,3 +82,26 @@
     font-size: 1.2rem;
     flex-shrink: 0;
 }
+
+.round-card {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.round-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+.round-dates {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+
+
