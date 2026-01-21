@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260119_2020">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-Jan-26_8_57_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14-Jan-26_8_57__Changes_.xml" beforeDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260121_2020">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/pages/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +277,7 @@
       <workItem from="1768690086662" duration="1257000" />
       <workItem from="1768722737480" duration="24252000" />
       <workItem from="1768849970828" duration="1443000" />
-      <workItem from="1768896835707" duration="33347000" />
+      <workItem from="1768896835707" duration="34712000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
@@ -651,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768850042001</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="20260121_2020">
+      <option name="closed" value="true" />
+      <created>1769022745736</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1769022745737</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251225_1210" />
     <MESSAGE value="20251226_1400" />
     <MESSAGE value="20251226_2330" />
     <MESSAGE value="20251228_0900" />
@@ -694,7 +697,8 @@
     <MESSAGE value="20260118_1315" />
     <MESSAGE value="20260119_1520" />
     <MESSAGE value="20260119_2020" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260119_2020" />
+    <MESSAGE value="20260121_2020" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260121_2020" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
