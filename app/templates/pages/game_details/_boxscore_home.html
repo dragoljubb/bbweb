@@ -21,7 +21,9 @@
       <td class="col-small">{{ p.dorsal }}</td>
 
       <td class="col-name">
+         <a href="{{ url_for('player_profile', person_code=p.player_code) }}">
         {{ p.player_name}}
+        </a>
       </td>
 
       <td class="col-small">{{ p.minutes }}</td>
