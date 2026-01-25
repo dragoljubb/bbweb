@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260124_0900" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260125_0130">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load/load_standings.py" beforeDir="false" afterPath="$PROJECT_DIR$/load/load_standings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/load/load_team_stats_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/load/load_team_stats_pipeline.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,15 +284,10 @@
       <workItem from="1769092968260" duration="74000" />
       <workItem from="1769166190494" duration="627000" />
       <workItem from="1769166997969" duration="3626000" />
-      <workItem from="1769174216685" duration="22546000" />
-    </task>
-    <task id="LOCAL-00001" summary="initial">
-      <option name="closed" value="true" />
-      <created>1765188754379</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1765188754379</updated>
+      <workItem from="1769174216685" duration="22593000" />
+      <workItem from="1769327327257" duration="34000" />
+      <workItem from="1769327619151" duration="2018000" />
+      <workItem from="1769331472604" duration="4083000" />
     </task>
     <task id="LOCAL-00002" summary="20251208_1">
       <option name="closed" value="true" />
@@ -674,7 +673,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769241636350</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="20260125_0130">
+      <option name="closed" value="true" />
+      <created>1769300787362</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1769300787363</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +699,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251226_2330" />
     <MESSAGE value="20251228_0900" />
     <MESSAGE value="20251228_2200" />
     <MESSAGE value="20251229_1545" />
@@ -717,7 +723,8 @@
     <MESSAGE value="20260119_2020" />
     <MESSAGE value="20260121_2020" />
     <MESSAGE value="20260124_0900" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260124_0900" />
+    <MESSAGE value="20260125_0130" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260125_0130" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,9 +754,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bbweb$load_person_careerhighs.coverage" NAME="load_person_careerhighs Coverage Results" MODIFIED="1767006217736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$load_standings.coverage" NAME="load_standings Coverage Results" MODIFIED="1768664492608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1768668433082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
-    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1769250456629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/bbWeb$load_standings.coverage" NAME="load_standings Coverage Results" MODIFIED="1769327677794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
+    <SUITE FILE_PATH="coverage/bbWeb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1769327915166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
+    <SUITE FILE_PATH="coverage/bbWeb$app.coverage" NAME="app Coverage Results" MODIFIED="1769331476000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/bbweb$people_api.coverage" NAME="people_api Coverage Results" MODIFIED="1766931653877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
     <SUITE FILE_PATH="coverage/bbWeb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1768689625736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$app.coverage" NAME="app Coverage Results" MODIFIED="1768397293809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
@@ -757,7 +764,7 @@
     <SUITE FILE_PATH="coverage/bbWeb$load_people_by_season.coverage" NAME="load_people_by_season Coverage Results" MODIFIED="1768689405609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$load_player_images.coverage" NAME="load_player_images Coverage Results" MODIFIED="1766928653136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$stats_pipeline.coverage" NAME="stats_pipeline Coverage Results" MODIFIED="1766946241991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipelines" />
-    <SUITE FILE_PATH="coverage/bbWeb$load_person_stats.coverage" NAME="load_person_stats Coverage Results" MODIFIED="1768668368947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
+    <SUITE FILE_PATH="coverage/bbWeb$load_person_stats.coverage" NAME="load_person_stats Coverage Results" MODIFIED="1769329552502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbWeb$run.coverage" NAME="run Coverage Results" MODIFIED="1765276490271" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_bio.coverage" NAME="load_person_bio Coverage Results" MODIFIED="1767006280338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1767033209347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
