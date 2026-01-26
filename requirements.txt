@@ -3,3 +3,5 @@ flask_sqlalchemy==3.0.3
 psycopg[binary]
 python-dotenv==1.0.0
 sqlalchemy
+numpy
+pandas

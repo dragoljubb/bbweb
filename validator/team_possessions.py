@@ -186,7 +186,7 @@ def validate_possessions(df):
 
 if __name__ == "__main__":
     season_code = "E2025"
-    df = run_team_poss("E2025", "PAR")
+    df = run_team_poss("E2025", "RED")
     print(df[["game_code", "game_date", "team_code", "opp_code", "team_fga", "team_fgm", "team_fta", "team_off_rebounds",
               "team_def_rebounds", "opp_def_rebounds", "team_turnovers",
               "team_poss", "opp_poss", "game_poss", "team_poss_cum"]].to_string(index=False))
