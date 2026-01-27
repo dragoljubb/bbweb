@@ -1,6 +1,3 @@
-Kada je radjeno teams_details i tabovi:
---------------------------------------
-URL hash (#games)
-pamćenje taba na refresh
-izbacivanje Bootstrap tab CSS-a skroz
-Jinja macro za bb-tabs
+Staviti na sajt....PER po kolu računa se na osnovu učinka igrača u toj utakmici,
+ali u odnosu na timski i ligaški kontekst akumuliran do tog datuma,
+ čime se meri stvarna vrednost učinka u datom trenutku sezone.”

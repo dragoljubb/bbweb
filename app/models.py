@@ -480,7 +480,7 @@ def get_bs_players(season: str, game_code: int , is_home: bool):
 def get_bs_teams(season: str, game_code: int):
     with SessionLocal() as session:
         result = session.execute(
-            text(""" SELECT gamecode, season_code, 
+            text(""" SELECT game_code, season_code, 
                             home_team_code, home_team_name, home_coach, home_tmr_points, home_tmr_steals, 
                             home_tmr_turnovers, home_tmr_valuation, home_tmr_assistances, home_tmr_blocks_favour, 
                             home_tmr_blocks_against, home_tmr_fouls_commited, home_tmr_fouls_received, home_tmr_total_rebounds, 
@@ -497,7 +497,7 @@ def get_bs_teams(season: str, game_code: int):
                             away_fg3_made, away_fg3_att, away_fg3_per
 	                 FROM dwh.vw_bs_teams_stat
                      WHERE season_code = :pseason_code
-                       AND gamecode = :pgame_code 
+                       AND game_code = :pgame_code 
                  """), {"pseason_code": season, "pgame_code": game_code}
         ).mappings().fetchone()
         return result
