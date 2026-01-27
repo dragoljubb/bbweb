@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260114_1500">
-      <change afterPath="$PROJECT_DIR$/validator/factor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/per_components.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/vop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/bbWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/bbWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260127_1430">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restore_db.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/restore_db.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/ToDoList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ToDoList.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validator/per_components.py" beforeDir="false" afterPath="$PROJECT_DIR$/validator/per_components.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/validator/vop.py" beforeDir="false" afterPath="$PROJECT_DIR$/validator/vop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +296,6 @@
       <workItem from="1769331472604" duration="4083000" />
       <workItem from="1769415666264" duration="1420000" />
       <workItem from="1769418312423" duration="19093000" />
-    </task>
-    <task id="LOCAL-00002" summary="20251208_1">
-      <option name="closed" value="true" />
-      <created>1765199011319</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1765199011319</updated>
     </task>
     <task id="LOCAL-00003" summary="20251208_1">
       <option name="closed" value="true" />
@@ -695,7 +681,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769300787363</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="20260127_1430">
+      <option name="closed" value="true" />
+      <created>1769520280781</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1769520280783</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,7 +707,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251228_0900" />
     <MESSAGE value="20251228_2200" />
     <MESSAGE value="20251229_1545" />
     <MESSAGE value="20251229_1830" />
@@ -738,7 +731,8 @@
     <MESSAGE value="20260121_2020" />
     <MESSAGE value="20260124_0900" />
     <MESSAGE value="20260125_0130" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260125_0130" />
+    <MESSAGE value="20260127_1430" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260127_1430" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -791,7 +785,7 @@
     <SUITE FILE_PATH="coverage/bbWeb$team_possessions.coverage" NAME="team_possessions Coverage Results" MODIFIED="1769451060881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/validator" />
     <SUITE FILE_PATH="coverage/bbweb$load_person_images.coverage" NAME="load_person_images Coverage Results" MODIFIED="1767033209347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
     <SUITE FILE_PATH="coverage/bbweb$team_possessions.coverage" NAME="team_possessions Coverage Results" MODIFIED="1769439976174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/validator" />
-    <SUITE FILE_PATH="coverage/bbweb$per_components.coverage" NAME="per_components Coverage Results" MODIFIED="1769520226638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/validator" />
+    <SUITE FILE_PATH="coverage/bbweb$per_components.coverage" NAME="per_components Coverage Results" MODIFIED="1769536246446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/validator" />
     <SUITE FILE_PATH="coverage/bbweb$load_team_stats_pipeline.coverage" NAME="load_team_stats_pipeline Coverage Results" MODIFIED="1767006143337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/load" />
   </component>
 </project>

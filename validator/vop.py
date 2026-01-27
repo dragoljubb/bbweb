@@ -25,6 +25,16 @@ def run_vop(season:str) -> pd.DataFrame:
     df = pd.read_sql(sql, engine, params={
         "season": f"{season}"
     })
+    df["lg_pts_cum"] = df["lg_pts"].cumsum()
+    df["lg_fga_cum"] = df["lg_fga"].cumsum()
+    df["lg_fta_cum"] = df["lg_fta"].cumsum()
+    df["lg_or_cum"] = df["lg_or"].cumsum()
+    df["lg_to_cum"] = df["lg_to"].cumsum()
+    df["vop"] = (
+            df["lg_pts_cum"] / (df["lg_fga_cum"] + 0.44 * df["lg_fta_cum"]
+                                - df["lg_or_cum"] + df["lg_to_cum"])
+
+    )
     return df
 
 
@@ -32,16 +42,7 @@ if __name__ == "__main__":
     season_code = "E2025"
     df = run_vop(season_code)
 
-    df["lg_pts_cum"] = df["lg_pts"].cumsum()
-    df["lg_fga_cum"] = df["lg_fga"].cumsum()
-    df["lg_fta_cum"] = df["lg_fta"].cumsum()
-    df["lg_or_cum"] = df["lg_or"].cumsum()
-    df["lg_to_cum"] = df["lg_to"].cumsum()
-    df["vop"] = (
-        df["lg_pts_cum"] / (df["lg_fga_cum"] +0.44*df["lg_fta_cum"]
-                            -df["lg_or_cum"]  +df["lg_to_cum"]  )
 
-    )
     print(df.to_string(index=False))
     print("VOP  | SUM:", round(df["vop"].sum(), 6))
     # points = run_team_points("E2025", pteam_code)
