@@ -195,10 +195,10 @@ def calculate_per(pl):
     )
 
     pl["gper2_until"] = (
-            3 * pl["fg3m_cum"]
+             pl["fg3m_cum"]
     )
     pl["gper2_day"] = (
-            3 * pl["fg3m"]
+           pl["fg3m"]
     )
 
     pl["gper3_until"] = (
