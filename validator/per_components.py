@@ -3,6 +3,7 @@ import pandas as pd
 from db.connection import get_engine   # 👈 koristiš postojeći
 from factor import run_lg_4factor
 from vop import run_vop
+from team_possessions import get_team_lg_poss_pace
 
 def mmss_to_minutes(x):
     if pd.isna(x):
@@ -321,19 +322,7 @@ def calculate_per(pl):
 
     ]].sort_values("game_date")
     return pl
-
-if __name__ == "__main__":
-    season_code = "E2025"
-    team_code = 'PAR'
-    player_code = "006760"
-    # player_code = "013667"
-    factor_df = run_lg_4factor(season_code)
-    vop_df = run_vop(season_code)
-    lg_df = get_lg_params(season_code)
-    te_df = get_team_params(season_code)
-    pl_df = get_player_params(season_code)
-
-    pl = pl_df[pl_df["player_code"] == player_code].copy()
+def merge_df(pl,te_df, factor_df, vop_df ):
     pl = pl.merge(
         lg_df[[
             "season_code", "game_date",
@@ -362,9 +351,99 @@ if __name__ == "__main__":
         on=["season_code", "game_date"],
         how="left"
     )
+    return pl
+
+if __name__ == "__main__":
+    season_code = "E2025"
+    # team_code = "PAR"
+    player_code = "007027"
+
+    # player_code = "006760" #bonga
+    # player_code = "009862"  # panter
+    # player_code = "008987" #leday
+    # player_code = "007027" #maledon
+
+    # player_code = "009048"  #mekintajer
+    # player_code = "003941"  #milutinov
+    # player_code = "003469"  # vezenkov
+    # player_code = "011199"  # nebo
+
+
+
+    # player_code = "013667" #Bruno Fernando
+    factor_df = run_lg_4factor(season_code)
+    vop_df = run_vop(season_code)
+    lg_df = get_lg_params(season_code)
+    te_df = get_team_params(season_code)
+    pl_df = get_player_params(season_code)
+
+    # pl = pl_df[pl_df["player_code"] == player_code].copy()
+    pl=merge_df(pl_df,te_df, factor_df, vop_df )
+
     df_gper=calculate_per(pl)
 
-    print(df_gper.iloc[:, [-4, -3,-2, -1]])
+
+    df_gper["game_date"] = pd.to_datetime(df_gper["game_date"])
+    lg=get_team_lg_poss_pace(season_code)
+    df_cper= df_gper.merge(
+        lg,
+        on=["season_code", "game_date", "team_code"],
+        how="left"
+    )
+
+    df_cper["cper_until"]=(df_cper["gper_until"])*(df_cper["lg_pace_cum"]/df_cper["team_pace_cum"])
+
+    df_cper["game_date"] = pd.to_datetime(df_cper["game_date"])
+
+    # 1. očisti (bez minuta / bez cPER nema smisla)
+    base = df_cper.dropna(subset=["cper_until", "minutes_cum"]).copy()
+    base = base[base["minutes_cum"] > 0]
+
+    # 2. izračunaj ligaški ponder po datumu
+    lg = (
+        base.groupby(["season_code", "game_date"])
+        .apply(lambda x: (x["cper_until"] * x["minutes_cum"]).sum() / x["minutes_cum"].sum())
+        .reset_index(name="lg_cper_weighted")
+    )
+
+    # 3. spoji nazad u glavni df
+    df_cper = df_cper.merge(
+        lg,
+        on=["season_code", "game_date"],
+        how="left"
+    )
+
+    # 4. izračunaj PER15
+    df_cper["per15"] = 15 * df_cper["cper_until"] / df_cper["lg_cper_weighted"]
+
+    # (opciono) izbaci besmislene redove
+    df_cper.loc[df_cper["minutes_cum"] <= 0, "per15"] = np.nan
+
+
+
+    # pl = df_cper[df_cper["player_code"] == player_code].copy()
+    # cols = [ "player_name", "gper_until", "cper_until","lg_pace_cum", "team_pace_cum", "lg_min_cum" ]
+
+    # df_cper = df_cper.dropna(subset=["per15"])
+    cols = ["player_name", "game_date",  "minutes_cum","per15"]
+
+    # best = df_cper.sort_values("per15").reset_index(drop=True)
+    # best = best[best["minutes_cum"] > 100]
+    # best = best[best["game_date"] > "2026-01-01"]
+    # best = best[cols]
+    # print(print(best.tail(10)))
+
+    pl = df_cper[(df_cper["player_code"] == player_code)]
+    pl = pl[cols]
+    #pl = pl.dropna(subset=["per15"])
+    pl.sort_values("game_date").reset_index(drop=True)
+    # print(pl)
+    print(pl.tail(1))
+
+
+    # print(df_gper.iloc[:, [2,18,31,-2, -1]])
+    # print(df_gper.columns)
+    # print(player_code)
 
     # print(lg_df.to_string(index=False))
     # print(te_df1.to_string(index=False))
