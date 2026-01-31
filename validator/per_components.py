@@ -356,7 +356,7 @@ def merge_df(pl,te_df, factor_df, vop_df ):
 if __name__ == "__main__":
     season_code = "E2025"
     # team_code = "PAR"
-    player_code = "007027"
+    player_code = "006760"
 
     # player_code = "006760" #bonga
     # player_code = "009862"  # panter
@@ -391,7 +391,9 @@ if __name__ == "__main__":
         how="left"
     )
 
-    df_cper["cper_until"]=(df_cper["gper_until"])*(df_cper["lg_pace_cum"]/df_cper["team_pace_cum"])
+
+
+    df_cper["cper_until"]=(df_cper["gper_until"])*(df_cper["lg_pace"]/df_cper["team_pace"])
 
     df_cper["game_date"] = pd.to_datetime(df_cper["game_date"])
 
@@ -406,6 +408,12 @@ if __name__ == "__main__":
         .reset_index(name="lg_cper_weighted")
     )
 
+    print(df_cper["cper_until"].sum())
+    lg["lg_cper_weighted"]=15*lg["lg_cper_weighted"]
+    print(lg)
+
+    exit()
+
     # 3. spoji nazad u glavni df
     df_cper = df_cper.merge(
         lg,
@@ -413,19 +421,20 @@ if __name__ == "__main__":
         how="left"
     )
 
+
+
     # 4. izračunaj PER15
-    df_cper["per15"] = 15 * df_cper["cper_until"] / df_cper["lg_cper_weighted"]
-
+    df_cper["per15"] =  df_cper["cper_until"] / df_cper["lg_cper_weighted"]
     # (opciono) izbaci besmislene redove
-    df_cper.loc[df_cper["minutes_cum"] <= 0, "per15"] = np.nan
-
+    df_cper["lg_cper_weighted"]=15/df_cper["lg_cper_weighted"]
 
 
     # pl = df_cper[df_cper["player_code"] == player_code].copy()
     # cols = [ "player_name", "gper_until", "cper_until","lg_pace_cum", "team_pace_cum", "lg_min_cum" ]
 
     # df_cper = df_cper.dropna(subset=["per15"])
-    cols = ["player_name", "game_date",  "minutes_cum","per15"]
+    cols = [ "game_date", "gper_until",  "team_pace", "lg_pace","cper_until", "per15"]
+    cols_de = ["minutes_cum", "cper_until", "team_pace_cum", "lg_pace_cum"]
 
     # best = df_cper.sort_values("per15").reset_index(drop=True)
     # best = best[best["minutes_cum"] > 100]
@@ -434,11 +443,13 @@ if __name__ == "__main__":
     # print(print(best.tail(10)))
 
     pl = df_cper[(df_cper["player_code"] == player_code)]
-    pl = pl[cols]
+    pl=pl[cols]
     #pl = pl.dropna(subset=["per15"])
     pl.sort_values("game_date").reset_index(drop=True)
-    # print(pl)
+
     print(pl.tail(1))
+
+
 
 
     # print(df_gper.iloc[:, [2,18,31,-2, -1]])

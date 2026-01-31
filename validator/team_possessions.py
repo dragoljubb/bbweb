@@ -155,15 +155,33 @@ def games_possesion(season):
 
             g.home_team_code AS team_code,
             g.away_team_code AS opp_code,
+            ROUND(tm.minutes,0) as team_minutes,
+            ROUND(am.minutes,0) as opp_minutes,   
+            
             TRUE             AS is_home,
             (g.home_fg2_att + g.home_fg3_att) as fga,
-                g.home_off_rebounds as or,
-                g.away_def_rebounds as opp_dr,
-                (g.home_fg2_made + g.home_fg3_made) as fgm,
-                g.home_turnovers as to,
-                g.home_ft_att as fta   
+            (g.away_fg2_att + g.away_fg3_att) as opp_fga,
+            
+            g.home_off_rebounds as or,
+            g.away_off_rebounds as opp_or,  
+            g.away_def_rebounds as opp_dr,
+            g.home_def_rebounds as dr,
+            (g.home_fg2_made + g.home_fg3_made) as fgm,
+            (g.away_fg2_made + g.away_fg3_made) as opp_fgm,
+            g.home_turnovers as to,
+            g.away_turnovers as opp_to,
+            g.home_ft_att as fta,   
+            g.away_ft_att as opp_fta
            FROM dwh.vw_bs_teams_stat g
-           WHERE season_code = %(season)s
+               INNER JOIN dwh.vw_team_minutes_dec tm
+            ON tm.season_code = g.season_code 
+               AND tm.team_code = g.home_team_code
+               AND tm.game_code = g.game_code
+            INNER JOIN dwh.vw_team_minutes_dec am
+            ON am.season_code = g.season_code 
+               AND am.team_code = g.away_team_code
+               AND am.game_code = g.game_code
+           WHERE g.season_code = %(season)s
 
             UNION ALL
     
@@ -174,18 +192,35 @@ def games_possesion(season):
                 g.season_code,
                 g.game_code,
                 g.game_date,
-    
                 g.away_team_code AS team_code,
                 g.home_team_code AS opp_code,
+                ROUND(am.minutes,0) as team_minutes,
+                ROUND(tm.minutes,0) as opp_minutes,
+                
                 FALSE            AS is_home,
                 (g.away_fg2_att + g.away_fg3_att) as fga,
+                (g.home_fg2_att + g.home_fg3_att) as fga,
+                
                 g.away_off_rebounds as or,
+                g.home_off_rebounds as opp_or,
                 g.home_def_rebounds as opp_dr,
+                g.away_def_rebounds as dr,
                 (g.away_fg2_made + g.away_fg3_made) as fgm,
+                (g.home_fg2_made + g.home_fg3_made) as opp_fgm,
                 g.away_turnovers as to,
-                g.away_ft_att as fta
+                g.home_turnovers as opp_to,
+                g.away_ft_att as fta,
+                g.home_ft_att as opp_fta
             FROM dwh.vw_bs_teams_stat g
-           WHERE season_code = %(season)s
+               INNER JOIN dwh.vw_team_minutes_dec tm
+            ON tm.season_code = g.season_code 
+               AND tm.team_code = g.home_team_code
+               AND tm.game_code = g.game_code
+               INNER JOIN dwh.vw_team_minutes_dec am
+            ON am.season_code = g.season_code 
+               AND am.team_code = g.away_team_code
+               AND am.game_code = g.game_code
+           WHERE g.season_code = %(season)s
              
           """
 
@@ -195,177 +230,204 @@ def games_possesion(season):
     return df
 
 
-def minutes_played(season):
-    engine = get_engine()
-    sql = """
-          SELECT  game_code, 
-                  team_code, 
-                  season_code, 
-                  ROUND(minutes,0) as min 
-          from  dwh.vw_team_minutes_dec tm       
-          WHERE season_code = %(season)s
-          """
-
-    df = pd.read_sql(sql, engine, params={
-        "season": f"{season}"
-    })
-    return df
 def get_team_lg_poss_pace(season_code):
+    import pandas as pd  #
     df = games_possesion(season_code)
 
     df["game_date"] = pd.to_datetime(df["game_date"])
 
-    df_min = minutes_played(season_code)
-    df_min = df_min.sort_values(["season_code", "team_code"]).reset_index(drop=True)
-
-    df = df.merge(
-        df_min,
-        on=["season_code", "game_code", "team_code"],
-        how="left"
-    )
 
     # df = df.rename(columns={"team_code_x": "team_code"})
 
     df = df.sort_values(["season_code", "game_date", "game_code"])
 
     df = df.sort_values(["season_code", "team_code", "game_date", "game_code"])
-
-    df["fga_cum"] = df.groupby(["season_code", "team_code"])["fga"].cumsum()
-    df["fgm_cum"] = df.groupby(["season_code", "team_code"])["fgm"].cumsum()
-    df["fta_cum"] = df.groupby(["season_code", "team_code"])["fta"].cumsum()
-    df["or_cum"] = df.groupby(["season_code", "team_code"])["or"].cumsum()
-    df["opp_dr_cum"] = df.groupby(["season_code", "team_code"])["opp_dr"].cumsum()
-    df["to_cum"] = df.groupby(["season_code", "team_code"])["to"].cumsum()
-    df["min_cum"] = df.groupby(["season_code", "team_code"])["min"].cumsum()
-    df["team_poss_cum"] = (
-                df["fga_cum"] + 0.44 * df["fta_cum"] - 1.07 * (df["or"] / (df["or_cum"] + df["opp_dr_cum"])) * (
-                    df["fga_cum"] - df["fgm_cum"]) + df["to_cum"])
-    df["team_poss_cum_gameavg"] = (
-            df["fga_cum"] + 0.44 * df["fta_cum"] - 1.07 * (df["or"] / (df["or_cum"] + df["opp_dr_cum"])) * (
-            df["fga_cum"] - df["fgm_cum"]) + df["to_cum"]
-
-    )
-
-
-    df["team_pace_cum"] = df["team_poss_cum"] * 200 / df["min_cum"]
-
-    cols = ["fga", "fgm", "fta", "or", "opp_dr", "to", "min"]  # dodaj šta ti treba
-
-    df["game_date"] = pd.to_datetime(df["game_date"])
-
-    lg_day = (
-        df.groupby(["season_code", "game_date"], as_index=False)[cols]
-        .sum()
-        .sort_values(["season_code", "game_date"])
-    )
-
-    # kumulacija po sezoni
-    lg = lg_day.copy()
-    lg[[f"lg_{c}" for c in cols]] = (
-        lg_day.groupby("season_code")[cols].cumsum()
-    )
-
-    # zadrži samo kumulativne kolone + ključeve
-    lg = lg[["season_code", "game_date"] + [f"lg_{c}" for c in cols]]
-
-    lg = lg.sort_values(["season_code", "game_date"])
-
-    lg["lg_fga_cum"] = lg.groupby(["season_code", "game_date"])["lg_fga"].cumsum()
-    lg["lg_fgm_cum"] = lg.groupby(["season_code", "game_date"])["lg_fgm"].cumsum()
-    lg["lg_fta_cum"] = lg.groupby(["season_code", "game_date"])["lg_fta"].cumsum()
-    lg["lg_or_cum"] = lg.groupby(["season_code", "game_date"])["lg_or"].cumsum()
-    lg["lg_opp_dr_cum"] = lg.groupby(["season_code", "game_date"])["lg_opp_dr"].cumsum()
-    lg["lg_to_cum"] = lg.groupby(["season_code", "game_date"])["lg_to"].cumsum()
-    lg["lg_min_cum"] = 0.5 * lg.groupby(["season_code", "game_date"])["lg_min"].cumsum()
-
-    lg["lg_poss_cum"] = 0.5 * (
-            lg["lg_fga_cum"] + 0.44 * lg["lg_fta_cum"] - 1.07 * (
-                lg["lg_or"] / (lg["lg_or_cum"] + lg["lg_opp_dr_cum"])) * (
-                    lg["lg_fga_cum"] - lg["lg_fgm_cum"]) + lg["lg_to_cum"])
-
-    lg["lg_pace_cum"] = lg["lg_poss_cum"] * 200 / lg["lg_min_cum"]
-    lg = lg.sort_values(["season_code", "game_date"])
-    df = df.sort_values(["season_code", "game_date"])
-
-    df = df.merge(
-        lg,
-        on=["season_code", "game_date"],
-        how="left"
-    )
-    df = df.sort_values(["season_code", "game_date", "game_code"])
-    df = df[["season_code", "game_date", "team_code","min_cum","lg_min_cum", "team_poss_cum", "team_pace_cum", "lg_poss_cum",
-             "lg_pace_cum"]]
+    #
+    # df["fga_cum"] = df.groupby(["season_code", "team_code"])["fga"].cumsum()
+    # df["fgm_cum"] = df.groupby(["season_code", "team_code"])["fgm"].cumsum()
+    # df["fta_cum"] = df.groupby(["season_code", "team_code"])["fta"].cumsum()
+    # df["or_cum"] = df.groupby(["season_code", "team_code"])["or"].cumsum()
+    # df["opp_dr_cum"] = df.groupby(["season_code", "team_code"])["opp_dr"].cumsum()
+    # df["to_cum"] = df.groupby(["season_code", "team_code"])["to"].cumsum()
+    #
+    #
+    # df["opp_fga_cum"] = df.groupby(["season_code", "team_code"])["opp_fga"].cumsum()
+    # df["opp_fgm_cum"] = df.groupby(["season_code", "team_code"])["fgm"].cumsum()
+    # df["opp_fta_cum"] = df.groupby(["season_code", "team_code"])["fta"].cumsum()
+    # df["opp_or_cum"] = df.groupby(["season_code", "team_code"])["opp_or"].cumsum()
+    # df["dr_cum"] = df.groupby(["season_code", "team_code"])["dr"].cumsum()
+    # df["opp_to_cum"] = df.groupby(["season_code", "team_code"])["opp_to"].cumsum()
 
 
 
-    # merge nazad u originalni df
-    # df = df.merge(
-    #     lg_cum,
-    #     on=["season_code", "game_date"],
-    #     how="left"
+
+
+
+    df["team_poss"] = 0.5* ((
+                df["fga"] + 0.44 * df["fta"] - 1.07 * (df["or"] / (df["or"] + df["opp_dr"])) * (
+                    df["fga"] - df["fgm"]) + df["to"])
+        +
+
+    # + (
+    #         df["opp_fga"] + 0.44 * df["opp_fta"] - 1.07 * (df["opp_or"] / (df["opp_or"] + df["dr"])) * (
+    #         df["opp_fga"] - df["opp_fgm"]) + df["opp_to"]
+    #
     # )
+   (
+                        df["opp_fga"] + 0.44 * df["opp_fta"] - 1.07 * (df["opp_or"] / (df["opp_or"] + df["dr"])) * (
+                           df["opp_fga"] - df["opp_fgm"]) + df["opp_to"])
+                            )
+        #
+        #         )
 
-    # df_red = df[df["team_code"] == "RED"]
-    # print(df_red.columns)
-    # print(df_red)
-    # print(df_red.iloc[:, [1,2,3, 14,10,-2,-1]])
+    df["team_min"] = 0.5 * (df["team_minutes"] + df["opp_minutes"])
 
-    #
-    # df = run_team_poss("E2025", "RED")
-    # print(df[["game_code", "game_date", "team_code", "opp_code", "team_fga", "team_fgm", "team_fta", "team_off_rebounds",
-    #           "team_def_rebounds", "opp_def_rebounds", "team_turnovers",
-    #           "team_poss", "opp_poss", "game_poss", "team_poss_cum"]].to_string(index=False))
-    #
-    # print("TEAM POSS  | SUM:", round(df["team_poss"].sum(), 2),
-    #      "| AVG:", round(df["team_poss"].mean(), 2))
-    #
-    # print("GAME POSS  | SUM:", round(df["game_poss"].sum(), 2),
-    #       "| AVG:", round(df["game_poss"].mean(), 2))
-    return df
+    cols = [
+        "season_code",
+        "game_code",
+        "game_date",
+        "team_code",
+        "opp_code",
+        "is_home",
+        "team_min",
+        "team_poss"
+    ]
 
-def validate_possessions(df):
+    df_team = df[cols]
 
-    df = df.sort_values("game_date").reset_index(drop=True)
-    df["diff"] = (df["team_poss"] - df["opp_poss"]).abs()
+    df_team["game_date"] = pd.to_datetime(df_team["game_date"])
 
-    team_sum = df["team_poss"].sum()
-    team_avg = df["team_poss"].mean()
+    # OBAVEZNO sortiranje
+    df_team = df_team.sort_values(["team_code", "game_date"])
 
-    game_sum = df["game_poss"].sum()
-    game_avg = df["game_poss"].mean()
+    # kumulativi po timu
+    df_team["team_poss_until"] = (
+        df_team
+        .groupby("team_code")["team_poss"]
+        .cumsum()
+    )
 
-    print("\n=== POSSESSIONS SUMMARY ===")
-    print(f"TEAM poss | SUM: {team_sum:.2f} | AVG: {team_avg:.2f}")
-    print(f"GAME poss | SUM: {game_sum:.2f} | AVG: {game_avg:.2f}")
+    df_team["team_min_until"] = (
+        df_team
+        .groupby("team_code")["team_min"]
+        .cumsum()
+    )
+    cols = [
+        "season_code",
+        "game_code",
+        "game_date",
+        "team_code",
+        "team_min_until",
+        "team_poss_until"
+    ]
+    df_team=df_team[cols]
+    # df_team = df_team[df_team["game_code"] ==3]
 
-    print("\n=== TOP DIFF GAMES ===")
-    print(df.sort_values("diff", ascending=False)[
-        ["game_code","team_code","opp_code","team_poss","opp_poss","game_poss","diff"]
-    ].head(5).to_string(index=False))
+    df_team["team_pace_until"] =  200*df_team["team_poss_until"]/df_team["team_min_until"]
 
-    # ---------- ASSERTS ----------
+    df_tmp = (
+        df.sort_values(["game_code", "is_home"], ascending=[True, False])
+        .copy()
+    )
 
-    # 1. realan opseg
-    assert df["team_poss"].between(55, 95).all(), "Unrealistic TEAM poss found"
-    assert df["game_poss"].between(55, 95).all(), "Unrealistic GAME poss found"
+    # 2) numerisanje redova unutar svake utakmice (0 = team, 1 = opp)
+    df_tmp["side"] = df_tmp.groupby("game_code").cumcount()
 
-    # 2. game poss formula check
-    assert ((df["game_poss"] - (df["team_poss"] + df["opp_poss"]) / 2).abs() < 0.01).all(), \
-        "Game poss formula broken"
+    df_games = (
+        df_tmp
+        .pivot(
+            index=["game_code", "game_date"],
+            columns="side",
+            values=["team_code", "team_min", "team_poss"]
+        )
+    )
 
-    # 3. team vs opp balance
-    assert abs(team_sum - df["opp_poss"].sum()) < 5, "Team vs opp poss total mismatch too big"
 
-    # 4. pojedinačne utakmice
-    assert df["diff"].max() < 4, "Some games have too big poss difference"
 
-    print("\n✔ POSSESSIONS VALIDATION PASSED")
+    df_games.columns = [
+        "team_code", "opp_code",
+        "team_min", "opp_min",
+        "team_poss", "opp_poss"
+    ]
+
+    df_games = df_games.reset_index()  # ⬅️ OVO TI JE FALILO
+
+    df_games["team_norm_poss"] = 0.5 * (
+            df_games["team_poss"] + df_games["opp_poss"]
+    )
+
+    df_games["min_norm"] = 0.5 * (
+            df_games["team_min"] + df_games["opp_min"]
+    )
+
+    df_games = df_games.sort_values(["game_date"])
+
+
+
+    # 1) agregacija po datumu (međukorak, ne finalni df)
+    lg = (
+        df_games
+        .groupby("game_date", as_index=False)
+        .agg(
+            lg_poss_day=("team_norm_poss", "sum"),
+            lg_min_day=("min_norm", "sum")
+        )
+        .sort_values("game_date")
+    )
+
+    # 2) kumulativi (DO DATUMA)
+    lg["lg_poss_until"] = lg["lg_poss_day"].cumsum()
+    lg["lg_min_until"] = lg["lg_min_day"].cumsum()
+
+    # 3) liga pace-until
+    lg["lg_pace_until"] = (
+            200*lg["lg_poss_until"] / (lg["lg_min_until"] )
+
+    )
+
+    # 4) zadrži samo ono što ti treba
+    df_lg_until = lg[
+        ["game_date", "lg_poss_until", "lg_min_until", "lg_pace_until"]
+    ]
+
+
+    df_result = df_team.merge(df_lg_until, on="game_date", how="left")
+    cols = [
+        "season_code",
+        "game_date",
+        "team_code",
+        "team_poss_until",
+        "team_pace_until",
+        "team_min_until",
+        "lg_poss_until",
+        "lg_pace_until",
+        "lg_min_until"
+    ]
+
+    df_result = df_result[cols]
+
+    df_result = df_result.rename(columns={
+        "team_poss_until": "team_poss",
+        "team_pace_until": "team_pace",
+        "team_min_until" : "team_min",
+        "lg_poss_until": "lg_poss",
+        "lg_pace_until": "lg_pace",
+        "lg_min_until": "lg_min"
+    })
+
+
+
+    return df_result
 
 
 if __name__ == "__main__":
     season_code = "E2025"
     df = get_team_lg_poss_pace(season_code)
-    print(df)
+    col_de=["team_code", "game_date",  "team_poss_cum"]
+    # print(df.columns)
+    df=df[df["team_code"] == "PAR"]
+    df=df[col_de]
+    # print(df)
 
 
 
