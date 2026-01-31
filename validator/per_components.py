@@ -353,10 +353,38 @@ def merge_df(pl,te_df, factor_df, vop_df ):
     )
     return pl
 
+def calc_ponders(df_cper, dates ):
+    rows = []
+    for d in dates:
+        snap = (
+            df_cper[
+                (df_cper.season_code == season_code) &
+                (df_cper.game_date <= d) &
+                (df_cper.minutes_cum > 0)
+                ]
+            .sort_values("game_date")
+            .groupby("player_code", as_index=False)
+            .last()
+        )
+
+        lg_cper = (
+                (snap.cper_until * snap.minutes_cum).sum()
+                / snap.minutes_cum.sum()
+        )
+
+        rows.append({
+            "season_code": season_code,
+            "game_date": d,
+            "per_ponder": 15/ lg_cper
+        })
+
+    ponder = pd.DataFrame(rows)
+    return ponder
+
 if __name__ == "__main__":
     season_code = "E2025"
     # team_code = "PAR"
-    player_code = "006760"
+    player_code = "003469"
 
     # player_code = "006760" #bonga
     # player_code = "009862"  # panter
@@ -382,65 +410,39 @@ if __name__ == "__main__":
 
     df_gper=calculate_per(pl)
 
+    lg=get_team_lg_poss_pace(season_code)
 
     df_gper["game_date"] = pd.to_datetime(df_gper["game_date"])
-    lg=get_team_lg_poss_pace(season_code)
-    df_cper= df_gper.merge(
-        lg,
-        on=["season_code", "game_date", "team_code"],
-        how="left"
+    df_cper= df_gper.merge(lg,on=["season_code", "game_date", "team_code"],
+                           how="left")
+    df_cper["cper_until"] = df_cper["gper_until"] * df_cper["lg_pace"]/df_cper["team_pace"]
+
+    dates = (
+        df_cper[df_cper.season_code == season_code]["game_date"]
+        .drop_duplicates()
+        .sort_values()
     )
+    ponder = calc_ponders(df_cper, dates)
+    #########################
 
-
-
-    df_cper["cper_until"]=(df_cper["gper_until"])*(df_cper["lg_pace"]/df_cper["team_pace"])
-
-    df_cper["game_date"] = pd.to_datetime(df_cper["game_date"])
-
-    # 1. očisti (bez minuta / bez cPER nema smisla)
-    base = df_cper.dropna(subset=["cper_until", "minutes_cum"]).copy()
-    base = base[base["minutes_cum"] > 0]
-
-    # 2. izračunaj ligaški ponder po datumu
-    lg = (
-        base.groupby(["season_code", "game_date"])
-        .apply(lambda x: (x["cper_until"] * x["minutes_cum"]).sum() / x["minutes_cum"].sum())
-        .reset_index(name="lg_cper_weighted")
-    )
-
-    print(df_cper["cper_until"].sum())
-    lg["lg_cper_weighted"]=15*lg["lg_cper_weighted"]
-    print(lg)
-
-    exit()
-
-    # 3. spoji nazad u glavni df
+    #print(ponder)
     df_cper = df_cper.merge(
-        lg,
+        ponder,
         on=["season_code", "game_date"],
         how="left"
     )
 
-
-
     # 4. izračunaj PER15
-    df_cper["per15"] =  df_cper["cper_until"] / df_cper["lg_cper_weighted"]
+    df_cper["per15"] =  df_cper["cper_until"] * df_cper["per_ponder"]
     # (opciono) izbaci besmislene redove
-    df_cper["lg_cper_weighted"]=15/df_cper["lg_cper_weighted"]
+
 
 
     # pl = df_cper[df_cper["player_code"] == player_code].copy()
     # cols = [ "player_name", "gper_until", "cper_until","lg_pace_cum", "team_pace_cum", "lg_min_cum" ]
 
     # df_cper = df_cper.dropna(subset=["per15"])
-    cols = [ "game_date", "gper_until",  "team_pace", "lg_pace","cper_until", "per15"]
-    cols_de = ["minutes_cum", "cper_until", "team_pace_cum", "lg_pace_cum"]
-
-    # best = df_cper.sort_values("per15").reset_index(drop=True)
-    # best = best[best["minutes_cum"] > 100]
-    # best = best[best["game_date"] > "2026-01-01"]
-    # best = best[cols]
-    # print(print(best.tail(10)))
+    cols = [ "game_date","player_name", "team_pace", "lg_pace","cper_until","per_ponder", "per15"]
 
     pl = df_cper[(df_cper["player_code"] == player_code)]
     pl=pl[cols]
@@ -449,34 +451,23 @@ if __name__ == "__main__":
 
     print(pl.tail(1))
 
+    d = dates.iloc[-3]  # neki datum
 
+    snap = (
+        df_cper[
+            (df_cper.season_code == season_code) &
+            (df_cper.game_date <= d)
+            ]
+        .sort_values("game_date")
+        .groupby("player_code")
+        .tail(1)
+    )
 
+    snap = snap[snap.minutes_cum > 0]
+    print(d.date(),
+    (
+            round((snap["per15"] * snap["minutes_cum"]).sum()
+            / snap["minutes_cum"].sum(),2)
+    )
+        )
 
-    # print(df_gper.iloc[:, [2,18,31,-2, -1]])
-    # print(df_gper.columns)
-    # print(player_code)
-
-    # print(lg_df.to_string(index=False))
-    # print(te_df1.to_string(index=False))
-    #print("VOP  | SUM:", round(df["vop"].sum(), 6))
-    # points = run_team_points("E2025", pteam_code)
-    # poss = run_team_poss("E2025",pteam_code)
-    # df = poss.merge(points, on=["season_code", "game_code"])
-    # df["def_rat"] =100.0* ( df["opp_score"] /df["game_poss"] )
-    # df["off_rat"] = 100.0 * (df["team_score"] / df["game_poss"])
-    # df["def_rat_avg"] = df["def_rat"].expanding().mean()
-    # df["off_rat_avg"]=df["off_rat"].expanding().mean()
-    #
-
-    # print(df[["season_code","team_code", "game_poss", "game_code", "team_code", "opp_code",  "team_code1", "opp_code1", "team_score","opp_score",
-    #           "def_rat","off_rat", "def_rat_avg", "off_rat_avg"]].to_string(index=False))
-
-    # print(df[["def_rat_avg", "off_rat_avg"]].tail(1))
-
-    # print(df1[["season_code", "game_code",  "home_code", "away_code", "home_score", "away_score"]].to_string(index=False))
-
-    # print("HOME SCORE  | SUM:", round(df1["home_score"].sum(), 2),
-    #      "| AVG:", round(df1["home_score"].mean(), 2))
-    #
-    # print("AWAT SCORE  | SUM:", round(df1["away_score"].sum(), 2),
-    #       "| AVG:", round(df1["away_score"].mean(), 2))

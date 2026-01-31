@@ -416,7 +416,6 @@ def get_team_lg_poss_pace(season_code):
     })
 
 
-
     return df_result
 
 
