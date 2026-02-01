@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260131_1100">
+    <list default="true" id="7ec71de6-de7e-4500-816d-ca406bf7e413" name="Changes" comment="20260131_1530&#10;Per good in sql&amp;python">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/per_components.py" beforeDir="false" afterPath="$PROJECT_DIR$/validator/per_components.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/team_possessions.py" beforeDir="false" afterPath="$PROJECT_DIR$/validator/team_possessions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,15 +297,7 @@
       <workItem from="1769551868120" duration="3835000" />
       <workItem from="1769586113368" duration="2170000" />
       <workItem from="1769845198841" duration="208000" />
-      <workItem from="1769845695804" duration="11083000" />
-    </task>
-    <task id="LOCAL-00006" summary="20251212_1815">
-      <option name="closed" value="true" />
-      <created>1765559777525</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1765559777525</updated>
+      <workItem from="1769845695804" duration="23892000" />
     </task>
     <task id="LOCAL-00007" summary="20251213_1015">
       <option name="closed" value="true" />
@@ -693,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769853750862</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="20260131_1530&#10;Per good in sql&amp;python">
+      <option name="closed" value="true" />
+      <created>1769869766299</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1769869766300</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +709,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="20251230_1500" />
     <MESSAGE value="20260101_1845" />
     <MESSAGE value="20260102_1800" />
     <MESSAGE value="20260102_1800_1" />
@@ -736,7 +733,8 @@
     <MESSAGE value="20260127_2020" />
     <MESSAGE value="20260129_1800&#10;player per" />
     <MESSAGE value="20260131_1100" />
-    <option name="LAST_COMMIT_MESSAGE" value="20260131_1100" />
+    <MESSAGE value="20260131_1530&#10;Per good in sql&amp;python" />
+    <option name="LAST_COMMIT_MESSAGE" value="20260131_1530&#10;Per good in sql&amp;python" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
